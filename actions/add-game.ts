@@ -6,6 +6,7 @@ const GAMES_DATABASE = "f4f20be7b1cd44d3b5313416570ef19c";
 
 export const addGame = async () => {
   let game = null;
+  let trophies = null;
   try {
     game = await notion.pages.create({
       cover: {
@@ -55,7 +56,7 @@ export const addGame = async () => {
   }
 
   try {
-    const trophies = await notion.databases.create({
+    trophies = await notion.databases.create({
       parent: {
         type: "page_id",
         page_id: game?.id ?? "",
@@ -118,5 +119,26 @@ export const addGame = async () => {
   } catch (error) {
     console.log("create trophy error", error);
     throw Error("create trophy error");
+  }
+
+  try {
+    const updated = await notion.pages.update({
+      page_id: game?.id ?? "",
+      properties: {
+        Trophies: {
+          type: "relation",
+          relation: [
+            {
+              // TODO: grant access for this database
+              id: trophies?.id ?? "",
+            },
+          ],
+        },
+      },
+    });
+    console.log("updated", updated);
+  } catch (error) {
+    console.log("update game error", error);
+    throw Error("update game error");
   }
 };
