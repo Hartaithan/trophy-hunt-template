@@ -2,8 +2,7 @@
 
 import { notion } from "@/utils/notion";
 
-const GAMES_DATABASE = "4fa54e371a6f49968153694ef897d642";
-// const TROPHIES_DATABASE = "7772e75b9c2940a484c22a29b48c1546";
+const GAMES_DATABASE = "f4f20be7b1cd44d3b5313416570ef19c";
 
 export const addGame = async () => {
   let game = null;
@@ -43,15 +42,20 @@ export const addGame = async () => {
             name: "PS3",
           },
         },
+        Trophies: {
+          type: "relation",
+          relation: [],
+        },
       },
     });
     console.log("game", game);
   } catch (error) {
     console.log("create game error", error);
+    throw Error("create game error");
   }
 
   try {
-    const trophy = await notion.databases.create({
+    const trophies = await notion.databases.create({
       parent: {
         type: "page_id",
         page_id: game?.id ?? "",
@@ -60,15 +64,11 @@ export const addGame = async () => {
       title: [
         {
           text: {
-            content: "",
+            content: "Trophies",
           },
         },
       ],
       properties: {
-        Type: {
-          type: "select",
-          select: {},
-        },
         Complete: {
           type: "checkbox",
           checkbox: {},
@@ -77,10 +77,46 @@ export const addGame = async () => {
           type: "title",
           title: {},
         },
+        Type: {
+          type: "select",
+          select: {
+            options: [
+              {
+                name: "Platinum",
+                color: "blue",
+              },
+              {
+                name: "Gold",
+                color: "yellow",
+              },
+              {
+                name: "Silver",
+                color: "gray",
+              },
+              {
+                name: "Bronze",
+                color: "brown",
+              },
+            ],
+          },
+        },
+        List: {
+          type: "rich_text",
+          rich_text: {},
+        },
+        Base: {
+          type: "checkbox",
+          checkbox: {},
+        },
+        "Base Completed": {
+          type: "checkbox",
+          checkbox: {},
+        },
       },
     });
-    console.log("trophy", trophy);
+    console.log("trophies", trophies);
   } catch (error) {
     console.log("create trophy error", error);
+    throw Error("create trophy error");
   }
 };
