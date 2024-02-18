@@ -3,7 +3,7 @@
 import { notion } from "@/utils/notion";
 
 const GAMES_DATABASE = "4fa54e371a6f49968153694ef897d642";
-const TROPHIES_DATABASE = "7772e75b9c2940a484c22a29b48c1546";
+// const TROPHIES_DATABASE = "7772e75b9c2940a484c22a29b48c1546";
 
 export const addGame = async () => {
   let game = null;
@@ -51,23 +51,31 @@ export const addGame = async () => {
   }
 
   try {
-    const trophy = await notion.pages.create({
+    const trophy = await notion.databases.create({
       parent: {
-        type: "database_id",
-        database_id: TROPHIES_DATABASE,
+        type: "page_id",
+        page_id: game?.id ?? "",
       },
+      is_inline: true,
+      title: [
+        {
+          text: {
+            content: "",
+          },
+        },
+      ],
       properties: {
+        Type: {
+          type: "select",
+          select: {},
+        },
         Complete: {
           type: "checkbox",
-          checkbox: false,
+          checkbox: {},
         },
-        Game: {
-          type: "relation",
-          relation: [
-            {
-              id: game?.id ?? "",
-            },
-          ],
+        Name: {
+          type: "title",
+          title: {},
         },
       },
     });
