@@ -6,8 +6,6 @@ const GAMES_DATABASE = "f4f20be7b1cd44d3b5313416570ef19c";
 
 export const addGame = async () => {
   let game = null;
-  let trophies = null;
-  let trophy = null;
   try {
     game = await notion.pages.create({
       cover: {
@@ -32,139 +30,81 @@ export const addGame = async () => {
             },
           ],
         },
-        Status: {
-          type: "status",
-          status: {
-            name: "Backlog",
-          },
-        },
         Platform: {
           type: "select",
           select: {
             name: "PS3",
           },
         },
-        Trophies: {
-          type: "relation",
-          relation: [],
+        Status: {
+          type: "status",
+          status: {
+            name: "Backlog",
+          },
         },
       },
+      children: [
+        {
+          object: "block",
+          type: "heading_3",
+          heading_3: {
+            rich_text: [{ type: "text", text: { content: "Group" } }],
+          },
+        },
+        {
+          object: "block",
+          type: "to_do",
+          to_do: {
+            rich_text: [{ type: "text", text: { content: "Trophy" } }],
+          },
+        },
+        {
+          object: "block",
+          type: "to_do",
+          to_do: {
+            rich_text: [{ type: "text", text: { content: "Trophy" } }],
+          },
+        },
+        {
+          object: "block",
+          type: "to_do",
+          to_do: {
+            rich_text: [{ type: "text", text: { content: "Trophy" } }],
+          },
+        },
+        {
+          object: "block",
+          type: "heading_3",
+          heading_3: {
+            rich_text: [{ type: "text", text: { content: "Group" } }],
+          },
+        },
+        {
+          object: "block",
+          type: "to_do",
+          to_do: {
+            rich_text: [{ type: "text", text: { content: "Trophy" } }],
+          },
+        },
+        {
+          object: "block",
+          type: "to_do",
+          to_do: {
+            rich_text: [{ type: "text", text: { content: "Trophy" } }],
+          },
+        },
+        {
+          object: "block",
+          type: "to_do",
+          to_do: {
+            rich_text: [{ type: "text", text: { content: "Trophy" } }],
+          },
+        },
+      ],
     });
     console.log("game", game);
   } catch (error) {
     console.log("create game error", error);
     throw Error("create game error");
-  }
-
-  try {
-    trophies = await notion.databases.create({
-      parent: {
-        type: "page_id",
-        page_id: game?.id ?? "",
-      },
-      is_inline: true,
-      title: [
-        {
-          text: {
-            content: "Trophies",
-          },
-        },
-      ],
-      properties: {
-        Complete: {
-          type: "checkbox",
-          checkbox: {},
-        },
-        Name: {
-          type: "title",
-          title: {},
-        },
-        Type: {
-          type: "select",
-          select: {
-            options: [
-              {
-                name: "Platinum",
-                color: "blue",
-              },
-              {
-                name: "Gold",
-                color: "yellow",
-              },
-              {
-                name: "Silver",
-                color: "gray",
-              },
-              {
-                name: "Bronze",
-                color: "brown",
-              },
-            ],
-          },
-        },
-        List: {
-          type: "rich_text",
-          rich_text: {},
-        },
-        Base: {
-          type: "checkbox",
-          checkbox: {},
-        },
-        "Base Completed": {
-          type: "checkbox",
-          checkbox: {},
-        },
-      },
-    });
-    console.log("trophies", trophies);
-  } catch (error) {
-    console.log("create trophy error", error);
-    throw Error("create trophy error");
-  }
-
-  try {
-    trophy = await notion.pages.create({
-      parent: {
-        type: "database_id",
-        database_id: trophies?.id ?? "",
-      },
-      properties: {
-        Name: {
-          type: "title",
-          title: [
-            {
-              type: "text",
-              text: {
-                content: new Date().toISOString(),
-              },
-            },
-          ],
-        },
-      },
-    });
-    console.log("trophy", trophy);
-  } catch (error) {
-    console.log("create trophy error", error);
-    throw Error("create trophy error");
-  }
-
-  try {
-    const updated = await notion.pages.update({
-      page_id: game?.id ?? "",
-      properties: {
-        Trophies: {
-          type: "relation",
-          relation: [
-            {
-              id: trophy?.id ?? "",
-            },
-          ],
-        },
-      },
-    });
-    console.log("updated", updated);
-  } catch (error) {
-    console.log("update game error", error);
-    throw Error("update game error");
   }
 };
