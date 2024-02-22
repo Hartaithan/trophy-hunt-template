@@ -12,8 +12,9 @@
     "format": "prettier . --write"
   },
   "dependencies": {
-    "@mantine/core": "^7.5.2",
-    "@mantine/hooks": "^7.5.2",
+    "@mantine/core": "^7.5.3",
+    "@mantine/form": "^7.5.3",
+    "@mantine/hooks": "^7.5.3",
     "@notionhq/client": "^2.2.14",
     "next": "14.1.0",
     "react": "^18",
