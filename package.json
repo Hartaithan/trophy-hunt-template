@@ -15,6 +15,8 @@
     "@mantine/core": "^7.5.3",
     "@mantine/form": "^7.5.3",
     "@mantine/hooks": "^7.5.3",
+    "@mantine/modals": "^7.5.3",
+    "@mantine/notifications": "^7.5.3",
     "@notionhq/client": "^2.2.14",
     "next": "14.1.0",
     "react": "^18",

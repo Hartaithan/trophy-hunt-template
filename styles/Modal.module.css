@@ -1,0 +1,8 @@
+.content {
+  border-radius: var(--mantine-radius-lg);
+}
+
+.title {
+  font-size: var(--mantine-font-size-sm);
+  font-weight: 500;
+}

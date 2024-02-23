@@ -1,0 +1,13 @@
+.heading {
+  font-size: var(--mantine-h2-font-size);
+  @media (max-width: $mantine-breakpoint-sm) {
+    font-size: var(--mantine-font-size-xl);
+  }
+}
+
+.button {
+  @media (max-width: $mantine-breakpoint-sm) {
+    padding: 8px var(--mantine-spacing-sm);
+    height: auto;
+  }
+}
