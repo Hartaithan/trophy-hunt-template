@@ -5,9 +5,9 @@ import type { Metadata, Viewport } from "next";
 import type { FC, PropsWithChildren } from "react";
 import { ColorSchemeScript } from "@mantine/core";
 import AppProviders from "@/providers/AppProviders";
-import { Inter } from "next/font/google";
+import { Montserrat } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin", "cyrillic"] });
+const font = Montserrat({ subsets: ["latin", "cyrillic"] });
 
 export const metadata: Metadata = {
   title: "Welcome to Trophy Hunt Template",
@@ -27,7 +27,7 @@ const MainLayout: FC<PropsWithChildren> = ({ children }) => {
         <ColorSchemeScript defaultColorScheme="dark" />
       </head>
       <body>
-        <AppProviders fontFamily={inter.style.fontFamily}>
+        <AppProviders fontFamily={font.style.fontFamily}>
           {children}
         </AppProviders>
       </body>
