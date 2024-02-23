@@ -1,0 +1,5 @@
+[data-mantine-color-scheme="dark"][lang="en"] .wrapper {
+  --_input-bd: var(--mantine-color-primary-6);
+  --_input-bg: var(--mantine-color-primary-7);
+  --_input-bd-focus: var(--mantine-color-accent-8);
+}

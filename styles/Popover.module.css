@@ -1,0 +1,4 @@
+[data-mantine-color-scheme="dark"][lang="en"] .dropdown {
+  --popover-border-color: var(--mantine-color-primary-6);
+  background-color: var(--mantine-color-primary-7);
+}

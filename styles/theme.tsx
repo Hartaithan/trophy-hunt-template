@@ -14,6 +14,9 @@ import {
   Badge,
   Menu,
   SegmentedControl,
+  Input,
+  Select,
+  Popover,
 } from "@mantine/core";
 import { extendedColors } from "./colors";
 import BadgeClasses from "./Badge.module.css";
@@ -21,6 +24,9 @@ import ModalClasses from "./Modal.module.css";
 import NotificationClasses from "./Notification.module.css";
 import MenuClasses from "./Menu.module.css";
 import SegmentedControlClasses from "./SegmentedControl.module.css";
+import InputClasses from "./Input.module.css";
+import SelectClasses from "./Select.module.css";
+import PopoverClasses from "./Popover.module.css";
 
 const ContainerDefaultProps: Partial<ContainerProps> = {
   size: "xl",
@@ -62,6 +68,15 @@ export const theme = createTheme({
     }),
     SegmentedControl: SegmentedControl.extend({
       classNames: SegmentedControlClasses,
+    }),
+    Input: Input.extend({
+      classNames: InputClasses,
+    }),
+    Select: Select.extend({
+      classNames: SelectClasses,
+    }),
+    Popover: Popover.extend({
+      classNames: PopoverClasses,
     }),
   },
 });
