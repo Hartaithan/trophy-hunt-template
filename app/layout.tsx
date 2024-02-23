@@ -10,9 +10,9 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin", "cyrillic"] });
 
 export const metadata: Metadata = {
-  title: "Welcome to Trophy Hunt",
-  description: "Trophy Hunt App",
-  applicationName: "Trophy Hunt",
+  title: "Welcome to Trophy Hunt Template",
+  description: "Trophy Hunt Template",
+  applicationName: "Trophy Hunt Template",
 };
 
 export const viewport: Viewport = {
