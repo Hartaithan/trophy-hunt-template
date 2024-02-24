@@ -102,9 +102,9 @@ export const addGame = async () => {
         },
       ],
     });
-    console.log("game", game);
+    console.info("game", game);
   } catch (error) {
-    console.log("create game error", error);
+    console.info("create game error", error);
     throw Error("create game error");
   }
 };
