@@ -17,9 +17,11 @@ import {
   Input,
   Select,
   Popover,
+  Button,
 } from "@mantine/core";
 import { extendedColors } from "./colors";
 import BadgeClasses from "./Badge.module.css";
+import ButtonClasses from "./Button.module.css";
 import ModalClasses from "./Modal.module.css";
 import NotificationClasses from "./Notification.module.css";
 import MenuClasses from "./Menu.module.css";
@@ -48,6 +50,9 @@ export const theme = createTheme({
   components: {
     Badge: Badge.extend({
       classNames: BadgeClasses,
+    }),
+    Button: Button.extend({
+      classNames: ButtonClasses,
     }),
     Container: Container.extend({
       defaultProps: ContainerDefaultProps,

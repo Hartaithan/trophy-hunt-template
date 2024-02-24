@@ -1,0 +1,5 @@
+.root {
+  &:disabled {
+    background-color: var(--mantine-color-primary-dark-6);
+  }
+}

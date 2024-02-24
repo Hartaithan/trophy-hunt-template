@@ -3,6 +3,9 @@
   &:not([data-error]) {
     border-color: var(--mantine-color-primary-light-6);
   }
+  &:disabled {
+    background-color: var(--mantine-color-primary-dark-6);
+  }
   &:focus,
   &:focus-within {
     border-color: var(--mantine-color-accent-dark-8);
