@@ -1,4 +1,4 @@
 [data-mantine-color-scheme="dark"] .dropdown {
-  border-color: var(--mantine-color-primary-6);
-  background-color: var(--mantine-color-primary-7);
+  border-color: var(--mantine-color-primary-light-6);
+  background-color: var(--mantine-color-primary-light-7);
 }

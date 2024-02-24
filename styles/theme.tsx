@@ -42,9 +42,9 @@ const NotificationDefaultProps: Partial<NotificationProps> = {
 };
 
 export const theme = createTheme({
-  defaultGradient: { deg: 90, from: "accented.8", to: "accented.4" },
+  defaultGradient: { deg: 90, from: "accented.9", to: "accented.6" },
   colors: extendedColors,
-  primaryColor: "accent",
+  primaryColor: "accented",
   components: {
     Badge: Badge.extend({
       classNames: BadgeClasses,

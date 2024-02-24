@@ -1,11 +1,11 @@
 .input {
-  background-color: var(--mantine-color-primary-7);
-  border-color: var(--mantine-color-primary-6);
+  background-color: var(--mantine-color-primary-light-7);
+  border-color: var(--mantine-color-primary-light-6);
   &:focus,
   &:focus-within {
-    border-color: var(--mantine-color-accent-8);
+    border-color: var(--mantine-color-accent-dark-8);
   }
   &::placeholder {
-    color: var(--mantine-color-accent-9);
+    color: var(--mantine-color-accent-light-9);
   }
 }
