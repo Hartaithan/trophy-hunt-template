@@ -1,6 +1,8 @@
 .input {
   background-color: var(--mantine-color-primary-light-7);
-  border-color: var(--mantine-color-primary-light-6);
+  &:not([data-error]) {
+    border-color: var(--mantine-color-primary-light-6);
+  }
   &:focus,
   &:focus-within {
     border-color: var(--mantine-color-accent-dark-8);
