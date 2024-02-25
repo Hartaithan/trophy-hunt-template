@@ -1,5 +1,9 @@
 import { Client } from "@notionhq/client";
+import { cookies } from "next/headers";
 
-export const notion = new Client({
-  auth: process.env.NOTION_TOKEN,
-});
+export const getNotionClient = () => {
+  const token = cookies().get("notion-token");
+  return new Client({
+    auth: token?.value,
+  });
+};

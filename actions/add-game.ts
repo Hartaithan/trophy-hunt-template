@@ -1,10 +1,11 @@
 "use server";
 
-import { notion } from "@/utils/notion";
+import { getNotionClient } from "@/utils/notion";
 
 const GAMES_DATABASE = "f4f20be7b1cd44d3b5313416570ef19c";
 
 export const addGame = async () => {
+  const notion = getNotionClient();
   let game = null;
   try {
     game = await notion.pages.create({
