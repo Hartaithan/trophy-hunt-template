@@ -8,19 +8,17 @@ export const config = {
 
 const resetCookies = (res: NextResponse): NextResponse => {
   res.cookies.delete("notion-token");
-  res.cookies.delete("database-id");
   return res;
 };
 
 export const middleware: NextMiddleware = async (req) => {
   const notion_token = req.cookies.get("notion-token")?.value;
-  const database_id = req.cookies.get("database-id")?.value;
 
   const res = NextResponse.next();
   const pathname = req.nextUrl.pathname;
 
   const isPublicPage = publicPages.has(pathname);
-  const isAuth = !!notion_token && !!database_id;
+  const isAuth = !!notion_token;
 
   if (!isAuth && !isPublicPage) {
     const redirectRes = NextResponse.redirect(new URL("/signIn", req.url));

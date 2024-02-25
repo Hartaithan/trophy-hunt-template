@@ -7,12 +7,17 @@ import type { SignInPayload } from "@/models/AuthModel";
 import { signIn } from "@/actions/sign-in";
 import { useRouter } from "next/navigation";
 
-const SignInForm: FC = () => {
+interface Props {
+  databaseID: string | null;
+}
+
+const SignInForm: FC<Props> = (props) => {
+  const { databaseID } = props;
   const router = useRouter();
   const form = useForm<SignInPayload>({
     initialValues: {
       notion_token: "",
-      database_id: "",
+      database_id: databaseID ?? "",
     },
     validate: {
       notion_token: isNotEmpty("Notion token is empty"),
