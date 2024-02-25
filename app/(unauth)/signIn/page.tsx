@@ -1,5 +1,5 @@
 import PageContainer from "@/components/PageContainer/PageContainer";
-import SignInForm from "@/forms/signIn";
+import SignInForm from "@/forms/sign-in";
 import { cookies } from "next/headers";
 import type { FC } from "react";
 import React from "react";

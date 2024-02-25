@@ -1,11 +1,11 @@
 import type { FC } from "react";
-import { Title } from "@mantine/core";
 import PageContainer from "@/components/PageContainer/PageContainer";
+import SearchSection from "@/components/SearchSection/SearchSection";
 
 const Home: FC = () => {
   return (
-    <PageContainer>
-      <Title>Hello World!</Title>
+    <PageContainer w="100%" justify="center" align="center">
+      <SearchSection />
     </PageContainer>
   );
 };
