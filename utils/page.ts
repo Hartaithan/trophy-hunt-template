@@ -1,9 +1,9 @@
-import { API_KEY, HOST, URL } from "@/constants/urls";
+import { API_KEY, HOST, FETCH_URL } from "@/constants/urls";
 import type { PageResponse } from "@/models/PageModel";
 
 export const fetchPage = async (url: string): Promise<PageResponse | null> => {
   try {
-    const response = await fetch(URL, {
+    const response = await fetch(FETCH_URL, {
       method: "POST",
       body: JSON.stringify({ url }),
       headers: {
