@@ -4,12 +4,16 @@ import type { ActionResponse } from "@/models/ActionModel";
 import type { SignInPayload } from "@/models/AuthModel";
 import { cookies } from "next/headers";
 
+const cookiesOptions = {
+  expires: new Date(253402300000000),
+};
+
 export const signIn = async (
   payload: SignInPayload,
 ): Promise<ActionResponse> => {
   if (payload.notion_token && payload.database_id) {
-    cookies().set("database-id", payload.database_id);
-    cookies().set("notion-token", payload.notion_token);
+    cookies().set("database-id", payload.database_id, cookiesOptions);
+    cookies().set("notion-token", payload.notion_token, cookiesOptions);
     return {
       status: "success",
       message: "Successful sign in!",
