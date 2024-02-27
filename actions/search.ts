@@ -11,6 +11,7 @@ const select = {
   resultRows: "table.zebra > tbody > tr",
   resultName: "td:nth-child(2) > a",
   platforms: "td:nth-child(2) > div.platforms > span.platform",
+  image: "td:nth-child(1) > a > img",
 };
 
 export const searchByQuery = async (
@@ -47,7 +48,11 @@ export const searchByQuery = async (
         platforms.push(value);
       }
     });
-    results.push({ id: index + 1, name, url, platforms });
+
+    const image = cheerio(result).find(select.image);
+    const image_url = image.attr("src");
+
+    results.push({ id: index + 1, name, url, platforms, image_url });
   });
 
   const response: SearchResponse = { query, resultQuery, results };
