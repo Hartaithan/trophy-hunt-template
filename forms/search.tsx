@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Loader, Stack, TextInput } from "@mantine/core";
+import { Box, Loader, TextInput } from "@mantine/core";
 import {
   useCallback,
   type Dispatch,
@@ -28,15 +28,13 @@ const SearchForm: FC<Props> = (props) => {
 
   return (
     <Box w="100%">
-      <Stack>
-        <TextInput
-          label="Search"
-          placeholder="Search..."
-          value={search}
-          onChange={(e) => handleChange(e.target.value)}
-          rightSection={isLoading && <Loader size="xs" />}
-        />
-      </Stack>
+      <TextInput
+        label="Search"
+        placeholder="Search..."
+        value={search}
+        onChange={(e) => handleChange(e.target.value)}
+        rightSection={isLoading && <Loader size="xs" />}
+      />
     </Box>
   );
 };

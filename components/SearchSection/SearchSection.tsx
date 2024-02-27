@@ -27,7 +27,7 @@ const SearchSection: FC = () => {
   }, [handleDebouncedChange]);
 
   return (
-    <Flex direction="column" w="100%" maw={{ base: "95%", sm: 400 }} gap="md">
+    <Flex direction="column" w="100%" maw={{ base: "100%", sm: 400 }} gap="md">
       <SearchForm
         search={search}
         setSearch={setSearch}

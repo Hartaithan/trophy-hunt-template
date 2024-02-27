@@ -36,7 +36,7 @@ const SignInForm: FC<Props> = (props) => {
     <Box
       component="form"
       w="100%"
-      maw={{ base: "95%", sm: 400 }}
+      maw={{ base: "100%", sm: 400 }}
       onSubmit={form.onSubmit(handleSubmit)}>
       <Stack>
         <TextInput
