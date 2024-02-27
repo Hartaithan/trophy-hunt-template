@@ -15,6 +15,7 @@ const SearchSection: FC = () => {
   const [results, setResults] = useState<SearchResult[]>([]);
 
   const handleDebouncedChange = useCallback(async () => {
+    if (debounced.trim().length === 0) return;
     const response = await searchByQuery(debounced);
     if (response.status === "success") {
       setResults(response.data?.results ?? []);
