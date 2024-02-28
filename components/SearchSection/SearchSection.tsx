@@ -15,7 +15,11 @@ const SearchSection: FC = () => {
   const [results, setResults] = useState<SearchResult[]>([]);
 
   const handleDebouncedChange = useCallback(async () => {
-    if (debounced.trim().length === 0) return;
+    if (debounced.trim().length === 0) {
+      // TODO: move this reset in input onChange
+      setResults([]);
+      return;
+    }
     const response = await searchByQuery(debounced);
     if (response.status === "success") {
       setResults(response.data?.results ?? []);
@@ -28,7 +32,12 @@ const SearchSection: FC = () => {
   }, [handleDebouncedChange]);
 
   return (
-    <Flex direction="column" w="100%" maw={{ base: "100%", sm: 400 }} gap="md">
+    <Flex
+      direction="column"
+      w="100%"
+      maw={{ base: "100%", sm: 600 }}
+      gap="md"
+      align="center">
       <SearchForm
         search={search}
         setSearch={setSearch}

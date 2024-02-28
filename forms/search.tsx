@@ -20,7 +20,7 @@ const SearchForm: FC<Props> = (props) => {
 
   const handleChange = useCallback(
     (value: string) => {
-      setLoading(true);
+      if (value.trim().length > 0) setLoading(true);
       setSearch(value);
     },
     [setLoading, setSearch],

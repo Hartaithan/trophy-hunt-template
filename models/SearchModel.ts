@@ -1,7 +1,6 @@
 export interface SearchResult {
   id: number;
   name: string;
-  platform?: string;
   platforms?: string[];
   image_url: string | undefined;
   url: string;
