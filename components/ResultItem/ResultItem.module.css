@@ -1,0 +1,45 @@
+.container {
+  height: 100%;
+  flex-direction: row;
+  background: var(--mantine-color-primary-dark-6);
+  border-radius: 0.4rem;
+  padding: var(--mantine-spacing-xs) var(--mantine-spacing-sm);
+  gap: var(--mantine-spacing-sm);
+}
+
+.image {
+  height: 56px;
+  width: auto;
+  object-fit: contain;
+  border-radius: 0.225rem;
+}
+
+.content {
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.name {
+  font-size: var(--mantine-font-size-xs);
+  font-weight: 600;
+}
+
+.platform {
+  font-size: var(--mantine-font-size-xs);
+}
+
+.button {
+  height: 100%;
+  width: 40px;
+  aspect-ratio: 1 / 1;
+}
+
+.button > span {
+  display: flex;
+  flex-direction: column;
+}
+
+.button > span > p {
+  font-size: var(--mantine-font-size-xs);
+}
