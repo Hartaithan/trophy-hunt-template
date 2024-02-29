@@ -2,6 +2,7 @@
 
 import { BASE_URL } from "@/constants/urls";
 import type { ActionResponse } from "@/models/ActionModel";
+import type { Example } from "@/models/ExampleModel";
 import type { SearchResponse, SearchResult } from "@/models/SearchModel";
 import { fetchPage } from "@/utils/page";
 import { load } from "cheerio";
@@ -16,9 +17,10 @@ const select = {
 
 export const searchByQuery = async (
   query: string,
+  example: Example | null = null,
 ): Promise<ActionResponse<SearchResponse>> => {
   const url = `${BASE_URL}/search/games?q=${encodeURI(query)}`;
-  const page = await fetchPage(url);
+  const page = await fetchPage(url, example);
 
   if (!page) {
     console.error("unable to fetch page", url);

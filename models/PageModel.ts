@@ -21,6 +21,6 @@ export interface PageInfo {
 }
 
 export interface PageResponse {
-  info: PageInfo;
+  info?: PageInfo;
   body: string;
 }

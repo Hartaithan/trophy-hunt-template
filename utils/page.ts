@@ -1,7 +1,13 @@
 import { API_KEY, HOST, FETCH_URL } from "@/constants/urls";
+import { examples } from "@/example";
+import type { Example } from "@/models/ExampleModel";
 import type { PageResponse } from "@/models/PageModel";
 
-export const fetchPage = async (url: string): Promise<PageResponse | null> => {
+export const fetchPage = async (
+  url: string,
+  example: Example | null = null,
+): Promise<PageResponse | null> => {
+  if (example) return examples[example];
   try {
     const response = await fetch(FETCH_URL, {
       method: "POST",
