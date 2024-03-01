@@ -6,6 +6,7 @@ import type { FC } from "react";
 import classes from "./ResultItem.module.css";
 import Image from "next/image";
 import IconPlus from "@/icons/IconPlus";
+import { addGame } from "@/actions/add-game";
 
 interface Props {
   item: SearchResult;
@@ -33,7 +34,7 @@ const ResultItem: FC<Props> = (props) => {
           <Text className={classes.platform}>{item.platforms?.join(", ")}</Text>
         )}
       </Flex>
-      <ActionIcon className={classes.button}>
+      <ActionIcon className={classes.button} onClick={() => addGame(item.url)}>
         <IconPlus width={18} height={18} />
         <Text>Add</Text>
       </ActionIcon>
