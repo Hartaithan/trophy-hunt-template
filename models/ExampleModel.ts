@@ -10,3 +10,5 @@ export type Example =
   | "search-assassin"
   | "search-resistance"
   | "search-uncharted";
+
+export type NullableExample = Example | null;

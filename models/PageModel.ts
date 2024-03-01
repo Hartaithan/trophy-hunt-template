@@ -1,3 +1,5 @@
+import type { Client } from "@notionhq/client";
+
 export interface PageHeaders {
   date: string;
   "content-type": string;
@@ -24,3 +26,10 @@ export interface PageResponse {
   info?: PageInfo;
   body: string;
 }
+
+export type PageCreate = Client["pages"]["create"];
+export type PageCreateArgs = Parameters<PageCreate>[0];
+export type PageCreateParams = Omit<PageCreateArgs, "auth">;
+export type PageCover = PageCreateParams["cover"];
+export type PageProperties = PageCreateParams["properties"];
+export type PageChildren = NonNullable<PageCreateParams["children"]>[0];
