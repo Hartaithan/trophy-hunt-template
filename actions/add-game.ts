@@ -32,7 +32,7 @@ export const addGame = async (
     type: "external",
     external: {
       // TODO: add placeholder
-      url: game.cover ?? "Not Found",
+      url: game.thumbnail ?? "Not Found",
     },
   };
 
@@ -74,11 +74,12 @@ export const addGame = async (
       },
     });
     for (const trophy of list.trophies) {
+      const content = `[${trophy.type}] ${trophy.name} - ${trophy.description}`;
       children.push({
         object: "block",
         type: "to_do",
         to_do: {
-          rich_text: [{ type: "text", text: { content: trophy.name } }],
+          rich_text: [{ type: "text", text: { content } }],
         },
       });
     }
