@@ -10,6 +10,7 @@ import type {
   PageChildren,
 } from "@/models/PageModel";
 import type { Example } from "@/models/ExampleModel";
+import { trophyTypeColors } from "@/constants/colors";
 
 const GAMES_DATABASE = "f4f20be7b1cd44d3b5313416570ef19c";
 
@@ -74,12 +75,38 @@ export const addGame = async (
       },
     });
     for (const trophy of list.trophies) {
-      const content = `[${trophy.type}] ${trophy.name} - ${trophy.description}`;
       children.push({
         object: "block",
         type: "to_do",
         to_do: {
-          rich_text: [{ type: "text", text: { content } }],
+          rich_text: [
+            {
+              type: "text",
+              text: {
+                content: `[${trophy.type}]\n`,
+              },
+              annotations: {
+                bold: true,
+                color: trophyTypeColors[trophy.type],
+              },
+            },
+            {
+              type: "text",
+              text: {
+                content: trophy.name,
+              },
+              annotations: {
+                bold: true,
+                underline: true,
+              },
+            },
+            {
+              type: "text",
+              text: {
+                content: `\n${trophy.description}`,
+              },
+            },
+          ],
         },
       });
     }
