@@ -4,9 +4,9 @@ import type { SearchResult } from "@/models/SearchModel";
 import { ActionIcon, Flex, Text } from "@mantine/core";
 import type { FC } from "react";
 import classes from "./ResultItem.module.css";
-import Image from "next/image";
 import IconPlus from "@/icons/IconPlus";
 import { addGame } from "@/actions/add-game";
+import ResultImage from "../ResultImage/ResultImage";
 
 interface Props {
   item: SearchResult;
@@ -16,16 +16,7 @@ const ResultItem: FC<Props> = (props) => {
   const { item } = props;
   return (
     <Flex className={classes.container}>
-      {item.image_url && (
-        <Image
-          className={classes.image}
-          src={item.image_url}
-          alt={`${item.name} card`}
-          height={56}
-          width={10}
-          unoptimized
-        />
-      )}
+      <ResultImage item={item} />
       <Flex className={classes.content}>
         {item.region ? (
           <Flex>

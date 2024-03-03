@@ -7,13 +7,6 @@
   gap: var(--mantine-spacing-sm);
 }
 
-.image {
-  height: 56px;
-  width: auto;
-  object-fit: contain;
-  border-radius: 0.225rem;
-}
-
 .content {
   flex-direction: column;
   justify-content: center;

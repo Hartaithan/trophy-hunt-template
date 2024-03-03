@@ -9,6 +9,7 @@ export type Example =
   | "search-terraria"
   | "search-assassin"
   | "search-resistance"
-  | "search-uncharted";
+  | "search-uncharted"
+  | "search-control";
 
 export type NullableExample = Example | null;
