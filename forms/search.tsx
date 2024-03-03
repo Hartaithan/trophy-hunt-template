@@ -13,17 +13,22 @@ interface Props {
   setSearch: Dispatch<SetStateAction<string>>;
   isLoading: boolean;
   setLoading: Dispatch<SetStateAction<boolean>>;
+  handleReset: () => void;
 }
 
 const SearchForm: FC<Props> = (props) => {
-  const { search, setSearch, isLoading, setLoading } = props;
+  const { search, setSearch, isLoading, setLoading, handleReset } = props;
 
   const handleChange = useCallback(
     (value: string) => {
-      if (value.trim().length > 0) setLoading(true);
+      if (value.trim().length === 0) {
+        handleReset();
+      } else {
+        setLoading(true);
+      }
       setSearch(value);
     },
-    [setLoading, setSearch],
+    [handleReset, setLoading, setSearch],
   );
 
   return (

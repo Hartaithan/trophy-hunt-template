@@ -14,12 +14,12 @@ const SearchSection: FC = () => {
   const [isLoading, setLoading] = useState<boolean>(false);
   const [results, setResults] = useState<SearchResult[]>([]);
 
+  const handleReset = useCallback(() => {
+    setResults([]);
+  }, []);
+
   const handleDebouncedChange = useCallback(async () => {
-    if (debounced.trim().length === 0) {
-      // TODO: move this reset in input onChange
-      setResults([]);
-      return;
-    }
+    if (debounced.trim().length === 0) return;
     const response = await searchByQuery(debounced);
     if (response.status === "success") {
       setResults(response.data?.results ?? []);
@@ -43,6 +43,7 @@ const SearchSection: FC = () => {
         setSearch={setSearch}
         isLoading={isLoading}
         setLoading={setLoading}
+        handleReset={handleReset}
       />
       <SearchResults results={results} />
     </Flex>
