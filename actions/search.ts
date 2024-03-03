@@ -9,8 +9,9 @@ import { load } from "cheerio";
 
 const select = {
   query: "h3#breadCrumbs",
-  resultRows: "table.zebra > tbody > tr",
-  resultName: "td:nth-child(2) > a",
+  rows: "table.zebra > tbody > tr",
+  name: "td:nth-child(2) > a",
+  region: "td:nth-child(2)",
   platforms: "td:nth-child(2) > div.platforms > span.platform",
   image: "td:nth-child(1) > a > img",
 };
@@ -35,12 +36,22 @@ export const searchByQuery = async (
   const results: SearchResult[] = [];
 
   const resultQuery = cheerio(select.query).text().split("›").pop();
-  const resultRows = cheerio(select.resultRows);
+  const rows = cheerio(select.rows);
 
-  resultRows.each((index, result) => {
-    const nameElement = cheerio(result).find(select.resultName);
+  rows.each((index, result) => {
+    const nameElement = cheerio(result).find(select.name);
     const name = nameElement.text().trim();
     const url = BASE_URL + nameElement.attr("href");
+
+    let region: string | null = null;
+    const regionElement = cheerio(result).find(select.region);
+    if (regionElement.children().length > 3) {
+      region =
+        regionElement
+          .contents()
+          .filter((_, node) => node.type === "text")
+          .text() ?? null;
+    }
 
     const platforms: string[] = [];
     const platformsTags = cheerio(result).find(select.platforms);
@@ -54,7 +65,7 @@ export const searchByQuery = async (
     const image = cheerio(result).find(select.image);
     const image_url = image.attr("src");
 
-    results.push({ id: index + 1, name, url, platforms, image_url });
+    results.push({ id: index + 1, name, url, platforms, region, image_url });
   });
 
   const response: SearchResponse = { query, resultQuery, results };

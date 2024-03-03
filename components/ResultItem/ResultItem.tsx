@@ -27,9 +27,20 @@ const ResultItem: FC<Props> = (props) => {
         />
       )}
       <Flex className={classes.content}>
-        <Text className={classes.name} lineClamp={2}>
-          {item.name}
-        </Text>
+        {item.region ? (
+          <Flex>
+            <Text className={classes.name} lineClamp={2}>
+              {item.name}
+            </Text>
+            {item.region && (
+              <Text className={classes.name}>&nbsp;{`• ${item.region}`}</Text>
+            )}
+          </Flex>
+        ) : (
+          <Text className={classes.name} lineClamp={2}>
+            {item.name}
+          </Text>
+        )}
         {item.platforms && (
           <Text className={classes.platform}>{item.platforms?.join(", ")}</Text>
         )}
