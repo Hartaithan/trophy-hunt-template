@@ -1,7 +1,7 @@
 "use server";
 
 import type { ActionResponse } from "@/models/ActionModel";
-import { getNotionClient } from "@/utils/notion";
+import { getDatabaseID, getNotionClient } from "@/utils/config";
 import type { FetchGameResponse } from "@/models/GameModel";
 import { fetchGame } from "@/utils/game";
 import type {
@@ -11,8 +11,6 @@ import type {
 } from "@/models/PageModel";
 import type { Example } from "@/models/ExampleModel";
 import { trophyTypeColors } from "@/constants/colors";
-
-const GAMES_DATABASE = "f4f20be7b1cd44d3b5313416570ef19c";
 
 export const addGame = async (
   url: string,
@@ -27,13 +25,14 @@ export const addGame = async (
     };
   }
 
+  const databaseID = getDatabaseID();
   const notion = getNotionClient();
 
   const cover: PageCover = {
     type: "external",
     external: {
-      // TODO: add placeholder
-      url: game.thumbnail ?? "Not Found",
+      url:
+        game.thumbnail ?? "https://i.psnprofiles.com/games/23cbfb/L3563f1.png",
     },
   };
 
@@ -112,7 +111,7 @@ export const addGame = async (
     const page = await notion.pages.create({
       parent: {
         type: "database_id",
-        database_id: GAMES_DATABASE,
+        database_id: databaseID,
       },
       cover: cover,
       properties,
