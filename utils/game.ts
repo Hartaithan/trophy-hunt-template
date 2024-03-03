@@ -37,9 +37,14 @@ export const fetchGame = async (
     title = title.replace("Trophies", "").trim();
   }
 
-  const platforms = cheerio(select.platform);
-  const platform =
-    platforms.length > 0 ? platforms.first().text().toUpperCase() : null;
+  const platforms: string[] = [];
+  const platformsTags = cheerio(select.platform);
+  platformsTags.each((_, platform) => {
+    const value = cheerio(platform).text();
+    if (value) {
+      platforms.push(value);
+    }
+  });
 
   const thumbnail = cheerio(select.thumbnail).find("img").attr("src") || null;
 
@@ -66,7 +71,7 @@ export const fetchGame = async (
 
   const response: FetchGameResponse = {
     title,
-    platform,
+    platforms,
     thumbnail,
     cover,
     lists,

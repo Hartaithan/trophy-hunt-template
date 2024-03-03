@@ -50,16 +50,12 @@ export const addGame = async (
       ],
     },
     Platform: {
-      type: "select",
-      select: {
-        // TODO: select only one platform
-        name: game.platform ?? "Not Found",
-      },
+      type: "multi_select",
+      multi_select: game.platforms.map((i) => ({ name: i })),
     },
     Status: {
       type: "status",
       status: {
-        // TODO: add select for statuses
         name: "Backlog",
       },
     },
