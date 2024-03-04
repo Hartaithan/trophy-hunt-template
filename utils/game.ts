@@ -13,6 +13,7 @@ const select = {
   tableRows: "tbody > tr",
   name: "tbody > tr > td:nth-child(2) > span",
   nameRow: "table[style='border-bottom: 1px solid #dfdfdf;']",
+  platforms: "div.platforms",
   platform: "span.platform",
   thumbnail: "div.game-image-holder",
   cover: "div#first-banner > div.img",
@@ -38,7 +39,7 @@ export const fetchGame = async (
   }
 
   const platforms: string[] = [];
-  const platformsTags = cheerio(select.platform);
+  const platformsTags = cheerio(select.platforms).first().find(select.platform);
   platformsTags.each((_, platform) => {
     const value = cheerio(platform).text();
     if (value) {
