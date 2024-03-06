@@ -1,7 +1,7 @@
 "use client";
 
-import type { FC } from "react";
-import { Box, Button, Stack, TextInput } from "@mantine/core";
+import { useState, type FC } from "react";
+import { Box, Button, Loader, Stack, TextInput } from "@mantine/core";
 import { isNotEmpty, useForm } from "@mantine/form";
 import type { SignInPayload } from "@/models/AuthModel";
 import { signIn } from "@/actions/sign-in";
@@ -14,6 +14,8 @@ interface Props {
 const SignInForm: FC<Props> = (props) => {
   const { databaseID } = props;
   const router = useRouter();
+  const [isLoading, setLoading] = useState<boolean>(false);
+
   const form = useForm<SignInPayload>({
     initialValues: {
       notion_token: "",
@@ -26,9 +28,12 @@ const SignInForm: FC<Props> = (props) => {
   });
 
   const handleSubmit = async (values: typeof form.values): Promise<void> => {
+    setLoading(true);
     const response = await signIn(values);
     if (response.status === "success") {
       router.push("/");
+    } else {
+      setLoading(false);
     }
   };
 
@@ -49,7 +54,10 @@ const SignInForm: FC<Props> = (props) => {
           placeholder="Enter your Trophy Hunt database ID"
           {...form.getInputProps("database_id")}
         />
-        <Button type="submit" disabled={!form.isValid()}>
+        <Button
+          type="submit"
+          disabled={!form.isValid() || isLoading}
+          rightSection={isLoading && <Loader size="xs" />}>
           Submit
         </Button>
       </Stack>
