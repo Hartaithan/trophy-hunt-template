@@ -1,3 +1,22 @@
 .root {
   background: var(--mantine-color-primary-light-7);
+  padding-left: var(--mantine-spacing-md);
+  padding-right: var(--mantine-spacing-md);
+  &::before {
+    display: none;
+  }
+}
+
+.title {
+  color: var(--mantine-color-secondary-dark-8);
+}
+
+[data-mantine-color-scheme="dark"] .description {
+  color: var(--mantine-color-secondary-dark-6);
+}
+
+[data-mantine-color-scheme="dark"] .closeButton {
+  &:hover {
+    background: var(--mantine-color-primary-dark-7);
+  }
 }

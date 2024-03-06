@@ -7,7 +7,10 @@ import { ColorSchemeScript } from "@mantine/core";
 import AppProviders from "@/providers/AppProviders";
 import { Montserrat } from "next/font/google";
 
-const font = Montserrat({ subsets: ["latin", "cyrillic"] });
+const font = Montserrat({
+  subsets: ["latin"],
+  fallback: ["Arial"],
+});
 
 export const metadata: Metadata = {
   title: "Welcome to Trophy Hunt Template",

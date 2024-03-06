@@ -2,7 +2,6 @@
 
 import { theme } from "@/styles/theme";
 import { MantineProvider } from "@mantine/core";
-import { ModalsProvider } from "@mantine/modals";
 import { Notifications } from "@mantine/notifications";
 import type { FC, PropsWithChildren } from "react";
 
@@ -19,8 +18,8 @@ const AppProviders: FC<Props> = (props) => {
         fontFamily,
       }}
       defaultColorScheme="dark">
-      <Notifications />
-      <ModalsProvider>{children}</ModalsProvider>
+      <Notifications position="top-right" />
+      {children}
     </MantineProvider>
   );
 };
