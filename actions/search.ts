@@ -1,6 +1,6 @@
 "use server";
 
-import { BASE_URL } from "@/constants/urls";
+import { SERVICE_URL } from "@/constants/urls";
 import type { ActionResponse } from "@/models/ActionModel";
 import type { Example } from "@/models/ExampleModel";
 import type { SearchResponse, SearchResult } from "@/models/SearchModel";
@@ -20,7 +20,7 @@ export const searchByQuery = async (
   query: string,
   example: Example | null = null,
 ): Promise<ActionResponse<SearchResponse>> => {
-  const url = `${BASE_URL}/search/games?q=${encodeURI(query)}`;
+  const url = `${SERVICE_URL}/search/games?q=${encodeURI(query)}`;
   const page = await fetchPage(url, example);
 
   if (!page) {
@@ -41,7 +41,7 @@ export const searchByQuery = async (
   rows.each((index, result) => {
     const nameElement = cheerio(result).find(select.name);
     const name = nameElement.text().trim();
-    const url = BASE_URL + nameElement.attr("href");
+    const url = SERVICE_URL + nameElement.attr("href");
 
     let region: string | null = null;
     const regionElement = cheerio(result).find(select.region);

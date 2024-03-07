@@ -1,4 +1,4 @@
-import { API_KEY, HOST, FETCH_URL } from "@/constants/urls";
+import { FETCH_API_KEY, FETCH_HOST, FETCH_URL } from "@/constants/urls";
 import { examples } from "@/example";
 import type { Example } from "@/models/ExampleModel";
 import type { PageResponse } from "@/models/PageModel";
@@ -14,8 +14,8 @@ export const fetchPage = async (
       body: JSON.stringify({ url }),
       headers: {
         "Content-Type": "application/json",
-        "X-RapidAPI-Key": API_KEY,
-        "X-RapidAPI-Host": HOST,
+        "X-RapidAPI-Key": FETCH_API_KEY,
+        "X-RapidAPI-Host": FETCH_HOST,
       },
     }).then((res) => res.json());
     return response;
