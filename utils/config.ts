@@ -8,12 +8,10 @@ export const getDatabaseID = () => {
 
 export const getNotionToken = () => {
   const token = cookies().get("notion-token");
-  return token?.value;
+  return token?.value ?? "";
 };
 
-export const getNotionClient = () => {
-  const token = getNotionToken();
-  return new Client({
-    auth: token,
-  });
+export const getNotionClient = (token?: string) => {
+  const auth = token ?? getNotionToken();
+  return { notion: new Client({ auth }), token: auth };
 };

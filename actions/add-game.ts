@@ -28,7 +28,7 @@ export const addGame = async (
   }
 
   const databaseID = getDatabaseID();
-  const notion = getNotionClient();
+  const { notion, token } = getNotionClient();
 
   const cover: PageCover = {
     type: "external",
@@ -150,20 +150,21 @@ export const addGame = async (
   }
 
   try {
+    const session = new URLSearchParams({ session: token });
     const updated = await notion.pages.update({
       page_id: page?.id,
       properties: {
         "Update progress": {
           type: "url",
-          url: `${BASE_URL}/${page?.id}/progress`,
+          url: `${BASE_URL}/${page?.id}/progress?${session.toString()}`,
         },
         "Check all trophies": {
           type: "url",
-          url: `${BASE_URL}/${page?.id}/check`,
+          url: `${BASE_URL}/${page?.id}/check?${session.toString()}`,
         },
         "Uncheck all trophies": {
           type: "url",
-          url: `${BASE_URL}/${page?.id}/uncheck`,
+          url: `${BASE_URL}/${page?.id}/uncheck?${session.toString()}`,
         },
       },
     });
