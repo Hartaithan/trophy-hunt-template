@@ -11,6 +11,8 @@ import type {
 } from "@/models/PageModel";
 import type { Example } from "@/models/ExampleModel";
 import { trophyTypeColors } from "@/constants/colors";
+import { BASE_URL } from "@/constants/urls";
+import type { CreatePageResponse } from "@notionhq/client/build/src/api-endpoints";
 
 export const addGame = async (
   url: string,
@@ -57,6 +59,26 @@ export const addGame = async (
       status: {
         name: "Backlog",
       },
+    },
+    "Platinum Progress": {
+      type: "number",
+      number: 0,
+    },
+    "100% Progress": {
+      type: "number",
+      number: 0,
+    },
+    "Update progress": {
+      type: "url",
+      url: null,
+    },
+    "Check all trophies": {
+      type: "url",
+      url: null,
+    },
+    "Uncheck all trophies": {
+      type: "url",
+      url: null,
     },
   };
 
@@ -107,8 +129,9 @@ export const addGame = async (
     }
   }
 
+  let page: CreatePageResponse | null = null;
   try {
-    const page = await notion.pages.create({
+    page = await notion.pages.create({
       parent: {
         type: "database_id",
         database_id: databaseID,
@@ -118,15 +141,42 @@ export const addGame = async (
       children,
     });
     console.info("page created", page);
-    return {
-      status: "success",
-      message: "Game successfully added!",
-    };
   } catch (error) {
     console.info("create game error", error);
     return {
       status: "error",
       message: "Unable to add game",
+    };
+  }
+
+  try {
+    const updated = await notion.pages.update({
+      page_id: page?.id,
+      properties: {
+        "Update progress": {
+          type: "url",
+          url: `${BASE_URL}/${page?.id}/progress`,
+        },
+        "Check all trophies": {
+          type: "url",
+          url: `${BASE_URL}/${page?.id}/check`,
+        },
+        "Uncheck all trophies": {
+          type: "url",
+          url: `${BASE_URL}/${page?.id}/uncheck`,
+        },
+      },
+    });
+    console.info("page updated", updated);
+    return {
+      status: "success",
+      message: "Game successfully added!",
+    };
+  } catch (error) {
+    console.info("update game error", error);
+    return {
+      status: "error",
+      message: "Unable to add links",
     };
   }
 };
