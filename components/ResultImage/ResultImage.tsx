@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Fragment, type FC } from "react";
+import type { FC } from "react";
 import type { SearchResult } from "@/models/SearchModel";
 import classes from "./ResultImage.module.css";
 import { Box, Overlay } from "@mantine/core";
@@ -13,7 +13,7 @@ interface Props {
 const ResultImage: FC<Props> = (props) => {
   const { className, item } = props;
   if (!item.image_url) return null;
-  const overlay = item.platforms && item.platforms.includes("PS5");
+  const isOverlay = item.platforms && item.platforms.includes("PS5");
   return (
     <Box className={clsx(classes.wrapper, className)}>
       <Image
@@ -24,7 +24,7 @@ const ResultImage: FC<Props> = (props) => {
         width={10}
         unoptimized
       />
-      {overlay && (
+      {isOverlay && (
         <>
           <Overlay
             zIndex={2}
