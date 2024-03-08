@@ -31,7 +31,7 @@ export const checkTrophies = async (
   //   (block) => "type" in block && block.type === "to_do",
   // );
 
-  // TODO: update all todos with single request
+  // TODO: find a way to check/uncheck all trophies with single request
   // for (const todo of todos) {
   //   await notion.blocks.update({
   //     block_id: todo.id,

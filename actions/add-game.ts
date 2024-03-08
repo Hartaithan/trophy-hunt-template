@@ -72,14 +72,15 @@ export const addGame = async (
       type: "url",
       url: null,
     },
-    "Check all trophies": {
-      type: "url",
-      url: null,
-    },
-    "Uncheck all trophies": {
-      type: "url",
-      url: null,
-    },
+    // TODO: find a way to check/uncheck all trophies with single request
+    // "Check all trophies": {
+    //   type: "url",
+    //   url: null,
+    // },
+    // "Uncheck all trophies": {
+    //   type: "url",
+    //   url: null,
+    // },
   };
 
   const children: PageChildren[] = [];
@@ -158,14 +159,14 @@ export const addGame = async (
           type: "url",
           url: `${BASE_URL}/${page?.id}/progress?${session.toString()}`,
         },
-        "Check all trophies": {
-          type: "url",
-          url: `${BASE_URL}/${page?.id}/check?${session.toString()}`,
-        },
-        "Uncheck all trophies": {
-          type: "url",
-          url: `${BASE_URL}/${page?.id}/uncheck?${session.toString()}`,
-        },
+        // "Check all trophies": {
+        //   type: "url",
+        //   url: `${BASE_URL}/${page?.id}/check?${session.toString()}`,
+        // },
+        // "Uncheck all trophies": {
+        //   type: "url",
+        //   url: `${BASE_URL}/${page?.id}/uncheck?${session.toString()}`,
+        // },
       },
     });
     console.info("page updated", updated);
