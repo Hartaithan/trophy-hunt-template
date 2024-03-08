@@ -20,7 +20,7 @@ export const addGame = async (
 ): Promise<ActionResponse> => {
   let game: FetchGameResponse | null = await fetchGame(url, example);
   if (!game) {
-    console.info("unable to fetch game");
+    console.error("unable to fetch game");
     return {
       status: "error",
       message: "Unable to add game",
@@ -142,7 +142,7 @@ export const addGame = async (
     });
     console.info("page created", page);
   } catch (error) {
-    console.info("create game error", error);
+    console.error("create game error", error);
     return {
       status: "error",
       message: "Unable to add game",
@@ -174,7 +174,7 @@ export const addGame = async (
       message: "Game successfully added!",
     };
   } catch (error) {
-    console.info("update game error", error);
+    console.error("update game error", error);
     return {
       status: "error",
       message: "Unable to add links",

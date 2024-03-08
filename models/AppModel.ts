@@ -19,7 +19,7 @@ export interface RequestPageParams {
 }
 
 export interface RequestPageSearchParams {
-  session: string;
+  session?: string;
 }
 
 export type RequestPage = Page<RequestPageParams, RequestPageSearchParams>;
