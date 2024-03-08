@@ -2,6 +2,7 @@ import { NextResponse, type NextMiddleware } from "next/server";
 
 const authPages = new Map<string, boolean>([["/signIn", true]]);
 const publicPages = new Map<string, boolean>([["/", true]]);
+const requestPages = /^(.*?)(?:\/progress|\/check|\/uncheck)$/;
 
 export const config = {
   matcher: "/((?!api|static|.*\\..*|_next|favicon.ico).*)",
@@ -15,6 +16,9 @@ const resetCookies = (res: NextResponse): NextResponse => {
 export const middleware: NextMiddleware = async (req) => {
   const res = NextResponse.next();
   const pathname = req.nextUrl.pathname;
+
+  const isRequestPage = requestPages.test(pathname);
+  if (isRequestPage) return res;
 
   const isPublicPage = publicPages.has(pathname);
   if (isPublicPage) return res;
