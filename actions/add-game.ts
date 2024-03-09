@@ -13,6 +13,7 @@ import type { Example } from "@/models/ExampleModel";
 import { trophyTypeColors } from "@/constants/colors";
 import { BASE_URL } from "@/constants/urls";
 import type { CreatePageResponse } from "@notionhq/client/build/src/api-endpoints";
+import lz from "lz-string";
 
 export const addGame = async (
   url: string,
@@ -151,7 +152,8 @@ export const addGame = async (
   }
 
   try {
-    const session = new URLSearchParams({ session: token });
+    const compressed = lz.compressToEncodedURIComponent(token);
+    const session = new URLSearchParams({ session: compressed });
     const updated = await notion.pages.update({
       page_id: page?.id,
       properties: {
