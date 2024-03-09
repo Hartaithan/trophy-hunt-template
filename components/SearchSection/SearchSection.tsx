@@ -7,6 +7,8 @@ import SearchResults from "../SearchResults/SearchResults";
 import type { SearchResult } from "@/models/SearchModel";
 import { useDebouncedValue } from "@mantine/hooks";
 import { searchByQuery } from "@/actions/search";
+import { notifications } from "@mantine/notifications";
+import { IconAlertOctagon } from "@tabler/icons-react";
 
 const SearchSection: FC = () => {
   const [search, setSearch] = useState<string>("");
@@ -23,8 +25,17 @@ const SearchSection: FC = () => {
     const response = await searchByQuery(debounced);
     if (response.status === "success") {
       setResults(response.data?.results ?? []);
-      setLoading(false);
+    } else {
+      notifications.update({
+        loading: false,
+        color: "red",
+        title: "Something went wrong!",
+        message: response.message,
+        icon: <IconAlertOctagon size="1rem" />,
+        withCloseButton: true,
+      });
     }
+    setLoading(false);
   }, [debounced]);
 
   useEffect(() => {

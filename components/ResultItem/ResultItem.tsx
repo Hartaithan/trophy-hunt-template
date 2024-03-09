@@ -17,7 +17,7 @@ interface Props {
 const ResultItem: FC<Props> = (props) => {
   const { item } = props;
 
-  const handleAdd = useCallback((url: string) => {
+  const handleAdd = useCallback(async (url: string) => {
     notifications.show({
       id: "add",
       loading: true,
@@ -27,29 +27,27 @@ const ResultItem: FC<Props> = (props) => {
       autoClose: false,
       withCloseButton: false,
     });
-    addGame(url)
-      .then((res) => {
-        notifications.update({
-          id: "add",
-          loading: false,
-          title: "Success!",
-          message: res.message,
-          icon: <IconCheck size="1rem" />,
-          autoClose: 3000,
-        });
-      })
-      .catch(() => {
-        notifications.update({
-          id: "add",
-          loading: false,
-          color: "red",
-          title: "Something went wrong!",
-          message:
-            "For some reason the game didn't get added, please try again.",
-          icon: <IconAlertOctagon size="1rem" />,
-          withCloseButton: true,
-        });
+    const response = await addGame(url);
+    if (response.status === "success") {
+      notifications.update({
+        id: "add",
+        loading: false,
+        title: "Success!",
+        message: response.message,
+        icon: <IconCheck size="1rem" />,
+        autoClose: 3000,
       });
+    } else {
+      notifications.update({
+        id: "add",
+        loading: false,
+        color: "red",
+        title: "Something went wrong!",
+        message: response.message,
+        icon: <IconAlertOctagon size="1rem" />,
+        withCloseButton: true,
+      });
+    }
   }, []);
 
   return (
