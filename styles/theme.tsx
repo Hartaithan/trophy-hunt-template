@@ -18,6 +18,7 @@ import {
   Select,
   Popover,
   Button,
+  Skeleton,
 } from "@mantine/core";
 import { extendedColors } from "./colors";
 import BadgeClasses from "./Badge.module.css";
@@ -29,6 +30,7 @@ import SegmentedControlClasses from "./SegmentedControl.module.css";
 import InputClasses from "./Input.module.css";
 import SelectClasses from "./Select.module.css";
 import PopoverClasses from "./Popover.module.css";
+import SkeletonClasses from "./Skeleton.module.css";
 
 const ContainerDefaultProps: Partial<ContainerProps> = {
   size: "xl",
@@ -82,6 +84,9 @@ export const theme = createTheme({
     }),
     Popover: Popover.extend({
       classNames: PopoverClasses,
+    }),
+    Skeleton: Skeleton.extend({
+      classNames: SkeletonClasses,
     }),
   },
 });
