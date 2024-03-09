@@ -19,6 +19,7 @@ import {
   Popover,
   Button,
   Skeleton,
+  Alert,
 } from "@mantine/core";
 import { extendedColors } from "./colors";
 import BadgeClasses from "./Badge.module.css";
@@ -31,6 +32,7 @@ import InputClasses from "./Input.module.css";
 import SelectClasses from "./Select.module.css";
 import PopoverClasses from "./Popover.module.css";
 import SkeletonClasses from "./Skeleton.module.css";
+import AlertClasses from "./Alert.module.css";
 
 const ContainerDefaultProps: Partial<ContainerProps> = {
   size: "xl",
@@ -87,6 +89,9 @@ export const theme = createTheme({
     }),
     Skeleton: Skeleton.extend({
       classNames: SkeletonClasses,
+    }),
+    Alert: Alert.extend({
+      classNames: AlertClasses,
     }),
   },
 });
