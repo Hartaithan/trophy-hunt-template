@@ -57,6 +57,9 @@ export const fetchGame = async (
   const listsEl = cheerio(select.list);
   const lists: TrophyList[] = [];
 
+  let base = 0;
+  let total = 0;
+
   listsEl.each((_, list) => {
     const haveDLC = listsEl.length > 1;
     const nameRow = cheerio(list).find(select.nameRow);
@@ -67,6 +70,10 @@ export const fetchGame = async (
     const rows = table.find(select.tableRows);
     const trophies = getTrophyList(cheerio, rows);
     const count = trophies.length;
+
+    if (name === "Base Game") base = base + trophies.length;
+    total = total + trophies.length;
+
     lists.push({ name, count, trophies });
   });
 
@@ -76,6 +83,7 @@ export const fetchGame = async (
     thumbnail,
     cover,
     lists,
+    counts: { base, total },
   };
 
   return response;

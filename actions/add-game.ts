@@ -69,16 +69,24 @@ export const addGame = async (
       type: "number",
       number: 0,
     },
-    "Update progress": {
+    "Update Progress": {
       type: "url",
       url: null,
     },
+    "All Trophies": {
+      type: "number",
+      number: game.counts.total,
+    },
+    "Base Trophies": {
+      type: "number",
+      number: game.counts.base,
+    },
     // TODO: find a way to check/uncheck all trophies with single request
-    // "Check all trophies": {
+    // "Check All Trophies": {
     //   type: "url",
     //   url: null,
     // },
-    // "Uncheck all trophies": {
+    // "Uncheck All Trophies": {
     //   type: "url",
     //   url: null,
     // },
@@ -157,15 +165,15 @@ export const addGame = async (
     const updated = await notion.pages.update({
       page_id: page?.id,
       properties: {
-        "Update progress": {
+        "Update Progress": {
           type: "url",
           url: `${BASE_URL}/${page?.id}/progress?${session.toString()}`,
         },
-        // "Check all trophies": {
+        // "Check All Trophies": {
         //   type: "url",
         //   url: `${BASE_URL}/${page?.id}/check?${session.toString()}`,
         // },
-        // "Uncheck all trophies": {
+        // "Uncheck All Trophies": {
         //   type: "url",
         //   url: `${BASE_URL}/${page?.id}/uncheck?${session.toString()}`,
         // },

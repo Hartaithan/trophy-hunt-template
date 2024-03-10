@@ -1,4 +1,4 @@
-import type { TrophyList } from "./TrophyModel";
+import type { TrophyCounts, TrophyList } from "./TrophyModel";
 
 export interface FetchGameResponse {
   title: string;
@@ -6,5 +6,6 @@ export interface FetchGameResponse {
   thumbnail: string | null;
   cover: string | null;
   lists: TrophyList[];
+  counts: TrophyCounts;
   message?: string;
 }

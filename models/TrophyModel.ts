@@ -9,3 +9,8 @@ export interface TrophyList {
   count: number;
   trophies: Trophy[];
 }
+
+export interface TrophyCounts {
+  base: number;
+  total: number;
+}
