@@ -3,6 +3,7 @@
   justify-content: center;
   height: 56px;
   width: auto;
+  min-width: 100px;
   position: relative;
   aspect-ratio: 320 / 176;
   overflow: hidden;
