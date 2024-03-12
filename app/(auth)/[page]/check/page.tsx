@@ -1,8 +1,8 @@
 import PageContainer from "@/components/PageContainer/PageContainer";
+import ResultAlert from "@/components/ResultAlert/ResultAlert";
 import ResultFallback from "@/components/ResultFallback/ResultFallback";
 import type { RequestPage } from "@/models/AppModel";
 import { mockResponse } from "@/utils/mock";
-import { Alert } from "@mantine/core";
 import { Suspense } from "react";
 
 const Result: RequestPage = async (props) => {
@@ -14,17 +14,7 @@ const Result: RequestPage = async (props) => {
     status: "success",
     message: "CheckPage",
   });
-  return (
-    <Alert
-      w="100%"
-      variant="light"
-      maw={{ base: "100%", sm: 300 }}
-      radius="md"
-      color={response?.status === "success" ? "accented" : "red"}
-      title={response?.status === "success" ? "Success!" : "Oops..."}>
-      {response?.message ?? "Message not found"}
-    </Alert>
-  );
+  return <ResultAlert response={response} />;
 };
 
 const CheckPage: RequestPage = (props) => {
