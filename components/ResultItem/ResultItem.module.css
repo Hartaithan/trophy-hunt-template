@@ -5,6 +5,7 @@
   border-radius: 0.4rem;
   padding: var(--mantine-spacing-xs) var(--mantine-spacing-sm);
   gap: var(--mantine-spacing-sm);
+  align-items: center;
 }
 
 .content {
@@ -25,6 +26,7 @@
 .button {
   height: 100%;
   width: 40px;
+  min-width: 40px;
   aspect-ratio: 1 / 1;
 }
 

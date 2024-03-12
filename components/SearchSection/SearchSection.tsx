@@ -22,7 +22,7 @@ const SearchSection: FC = () => {
 
   const handleDebouncedChange = useCallback(async () => {
     if (debounced.trim().length === 0) return;
-    const response = await searchByQuery(debounced, "search-cod");
+    const response = await searchByQuery(debounced);
     if (response.status === "success") {
       setResults(response.data?.results ?? []);
     } else {

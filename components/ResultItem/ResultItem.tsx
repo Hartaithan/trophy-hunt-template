@@ -54,20 +54,14 @@ const ResultItem: FC<Props> = (props) => {
     <Flex className={classes.container}>
       <ResultImage item={item} />
       <Flex className={classes.content}>
-        {item.region ? (
-          <Flex>
-            <Text className={classes.name} lineClamp={2}>
-              {item.name}
+        <Text className={classes.name}>
+          {item.name}
+          {item.region && (
+            <Text className={classes.name} component="span">
+              &nbsp;{`• ${item.region}`}
             </Text>
-            {item.region && (
-              <Text className={classes.name}>&nbsp;{`• ${item.region}`}</Text>
-            )}
-          </Flex>
-        ) : (
-          <Text className={classes.name} lineClamp={2}>
-            {item.name}
-          </Text>
-        )}
+          )}
+        </Text>
         {item.platforms && (
           <Text className={classes.platform}>{item.platforms?.join(", ")}</Text>
         )}
