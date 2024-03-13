@@ -21,7 +21,7 @@ const ResultImage: FC<Props> = (props) => {
         src={item.image_url}
         alt={`${item.name} card`}
         height={56}
-        width={10}
+        width={100}
         unoptimized
       />
       {isOverlay && (
@@ -34,7 +34,6 @@ const ResultImage: FC<Props> = (props) => {
             className={classes.background}
             src={item.image_url}
             fill
-            priority
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             alt={`${item.name} card background`}
             unoptimized

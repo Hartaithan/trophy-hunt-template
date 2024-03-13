@@ -12,7 +12,6 @@
 
 .image {
   position: relative;
-  width: auto;
   border-radius: 0.225rem;
   object-fit: contain;
   z-index: 3;
