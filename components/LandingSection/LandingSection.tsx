@@ -1,19 +1,11 @@
-import { Button, Flex, Text } from "@mantine/core";
-import Link from "next/link";
+import { Flex } from "@mantine/core";
 import type { FC } from "react";
+import HeroSection from "../HeroSection/HeroSection";
 
 const LandingSection: FC = () => {
   return (
-    <Flex
-      direction="column"
-      w="100%"
-      maw={{ base: "100%", sm: 600 }}
-      gap="md"
-      align="center">
-      <Text>Please sign in</Text>
-      <Button component={Link} href="/signIn">
-        Sign in!
-      </Button>
+    <Flex direction="column" w="100%">
+      <HeroSection />
     </Flex>
   );
 };
