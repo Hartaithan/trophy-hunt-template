@@ -1,4 +1,4 @@
-import type { MantineGradient } from "@mantine/core";
+import type { MantineGradient, TextProps } from "@mantine/core";
 import { Flex, Grid, GridCol, Text } from "@mantine/core";
 import type { FC } from "react";
 import classes from "./FeaturesSection.module.css";
@@ -12,6 +12,13 @@ const gradient: MantineGradient = {
   from: "accented.6",
   to: "accented.3",
   deg: 90,
+};
+
+const highlight: Partial<TextProps> = {
+  span: true,
+  c: "accented.3",
+  fw: "bold",
+  inherit: true,
 };
 
 const FeaturesSection: FC = () => {
@@ -29,12 +36,13 @@ const FeaturesSection: FC = () => {
             </Text>
           </Flex>
           <Text className={classes.description}>
-            Effortlessly structure your gaming backlog with our intuitive
-            interface. Use the drag-and-drop sorting feature to prioritize your
-            games. Stay updated with at-a-glance status updates that let you
-            know whether a game in backlog, in progress, or completed. Template
-            is designed to make managing your gaming backlog as simple and
-            enjoyable as possible.
+            Effortlessly
+            <Text {...highlight}>&nbsp;structure your gaming backlog</Text> with
+            our intuitive interface. Use the drag-and-drop sorting feature to
+            prioritize your games. Stay updated with at-a-glance status updates
+            that let you know whether a game in backlog, in progress, or
+            completed. Template is designed to make managing your gaming backlog
+            as <Text {...highlight}>simple and enjoyable</Text> as possible.
           </Text>
         </Flex>
       </GridCol>
@@ -53,9 +61,9 @@ const FeaturesSection: FC = () => {
             </Text>
           </Flex>
           <Text className={classes.description}>
-            Quickly add new titles to your backlog with our streamlined search
-            and select feature, designed to make building your trophy list a
-            breeze.
+            <Text {...highlight}>Quickly</Text> add new titles to your backlog
+            with our streamlined search and select feature, designed to make
+            building your backlog a breeze.
           </Text>
         </Flex>
       </GridCol>
@@ -74,9 +82,10 @@ const FeaturesSection: FC = () => {
             </Text>
           </Flex>
           <Text className={classes.description}>
-            Mark games as &apos;In Progress&apos;, &apos;Completed&apos;, or
-            &apos;Platinum Achieved&apos; with a single click, making backlog
-            updates quick and simple.
+            Mark games as <Text {...highlight}>In Progress</Text>,
+            <Text {...highlight}>&nbsp;Platinum</Text>, or
+            <Text {...highlight}>&nbsp;100% Completed</Text> with a single
+            click, making backlog updates quick and simple.
           </Text>
         </Flex>
       </GridCol>
