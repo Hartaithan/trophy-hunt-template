@@ -3,7 +3,7 @@
 import { Text } from "@mantine/core";
 import { Button, Flex, Group } from "@mantine/core";
 import { useSession, signIn, signOut } from "next-auth/react";
-import { Fragment, type FC } from "react";
+import type { FC } from "react";
 
 const DownloadSection: FC = () => {
   const session = useSession();
