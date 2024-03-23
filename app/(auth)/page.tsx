@@ -1,8 +1,8 @@
 import type { FC } from "react";
 import PageContainer from "@/components/PageContainer/PageContainer";
-import SearchSection from "@/components/SearchSection/SearchSection";
+import SearchSection from "@/sections/SearchSection/SearchSection";
 import { getNotionToken } from "@/utils/config";
-import LandingSection from "@/components/LandingSection/LandingSection";
+import LandingSection from "@/sections/LandingSection/LandingSection";
 
 const Home: FC = () => {
   const token = getNotionToken();

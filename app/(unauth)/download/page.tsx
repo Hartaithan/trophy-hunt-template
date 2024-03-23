@@ -1,6 +1,6 @@
 import type { FC } from "react";
 import PageContainer from "@/components/PageContainer/PageContainer";
-import DownloadSection from "@/components/DownloadSection/DownloadSection";
+import DownloadSection from "@/sections/DownloadSection/DownloadSection";
 
 const DownloadPage: FC = () => {
   return (

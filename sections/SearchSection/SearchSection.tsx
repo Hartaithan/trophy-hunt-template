@@ -3,7 +3,7 @@
 import { useState, type FC, useEffect, useCallback } from "react";
 import { Flex } from "@mantine/core";
 import SearchForm from "@/forms/search";
-import SearchResults from "../SearchResults/SearchResults";
+import SearchResults from "../../components/SearchResults/SearchResults";
 import type { SearchResult } from "@/models/SearchModel";
 import { useDebouncedValue } from "@mantine/hooks";
 import { searchByQuery } from "@/actions/search";
