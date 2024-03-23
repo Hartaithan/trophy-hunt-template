@@ -1,7 +1,7 @@
 import type { FC } from "react";
 import classes from "./HeroSection.module.css";
 import type { MantineGradient, TextProps } from "@mantine/core";
-import { Button, Flex, Text } from "@mantine/core";
+import { Button, Flex, Group, Text } from "@mantine/core";
 import Link from "next/link";
 
 const titleGradient: MantineGradient = {
@@ -13,7 +13,6 @@ const titleGradient: MantineGradient = {
 const linkGradient: MantineGradient = {
   from: "accented.9",
   to: "accented.8",
-  deg: 90,
 };
 
 const highlight: Partial<TextProps> = {
@@ -42,14 +41,24 @@ const HeroSection: FC = () => {
         <Text {...highlight}>&nbsp;celebrate&nbsp;</Text>
         each victory with a visual showcase.
       </Text>
-      <Button
-        className={classes.link}
-        variant="gradient"
-        gradient={linkGradient}
-        component={Link}
-        href="/signIn">
-        Try it out!
-      </Button>
+      <Group>
+        <Button
+          className={classes.link}
+          variant="gradient"
+          gradient={{ ...linkGradient, deg: 0 }}
+          component={Link}
+          href="/signIn">
+          Try it out!
+        </Button>
+        <Button
+          className={classes.link}
+          variant="gradient"
+          gradient={{ ...linkGradient, deg: 180 }}
+          component={Link}
+          href="/download">
+          Download!
+        </Button>
+      </Group>
     </Flex>
   );
 };
