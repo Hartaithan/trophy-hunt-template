@@ -1,5 +1,5 @@
-import { getServerSession } from "next-auth";
 import type { FC, PropsWithChildren } from "react";
+import { getServerSession } from "@/utils/session";
 import SessionProvider from "../../../providers/SessionProvider";
 
 const DownloadLayout: FC<PropsWithChildren> = async ({ children }) => {
