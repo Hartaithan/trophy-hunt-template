@@ -17,6 +17,7 @@
     "@mantine/hooks": "^7.6.1",
     "@mantine/notifications": "^7.6.1",
     "@notionhq/client": "^2.2.14",
+    "@octokit/rest": "^20.0.2",
     "@tabler/icons-react": "^2.47.0",
     "cheerio": "^1.0.0-rc.12",
     "clsx": "^2.1.0",
