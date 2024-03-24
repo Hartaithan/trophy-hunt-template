@@ -27,13 +27,13 @@ const ResultItem: FC<Props> = (props) => {
       autoClose: false,
       withCloseButton: false,
     });
-    const response = await addGame(url);
-    if (response.status === "success") {
+    const { status, message } = await addGame(url);
+    if (status === "success") {
       notifications.update({
         id: "add",
         loading: false,
         title: "Success!",
-        message: response.message,
+        message: message,
         icon: <IconCheck size="1rem" />,
         autoClose: 3000,
       });
@@ -43,7 +43,7 @@ const ResultItem: FC<Props> = (props) => {
         loading: false,
         color: "red",
         title: "Something went wrong!",
-        message: response.message,
+        message: message,
         icon: <IconAlertOctagon size="1rem" />,
         withCloseButton: true,
       });
