@@ -11,9 +11,10 @@ import type {
 } from "@/models/PageModel";
 import type { Example } from "@/models/ExampleModel";
 import { trophyTypeColors } from "@/constants/colors";
-import { BASE_URL } from "@/constants/urls";
+import { BASE_URL } from "@/constants/variables";
 import type { CreatePageResponse } from "@notionhq/client/build/src/api-endpoints";
 import lz from "lz-string";
+import { getTrophyTitle } from "@/utils/trophy";
 
 export const addGame = async (
   url: string,
@@ -110,7 +111,7 @@ export const addGame = async (
             {
               type: "text",
               text: {
-                content: `[${trophy.type}]\n`,
+                content: getTrophyTitle(trophy.type),
               },
               annotations: {
                 bold: true,

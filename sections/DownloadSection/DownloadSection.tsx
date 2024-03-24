@@ -1,7 +1,7 @@
 "use client";
 
 import { checkStar } from "@/actions/check-star";
-import { TEMPLATE_URL } from "@/constants/urls";
+import { TEMPLATE_URL } from "@/constants/variables";
 import { Button, Flex, Group } from "@mantine/core";
 import { notifications } from "@mantine/notifications";
 import { IconAlertOctagon, IconCheck } from "@tabler/icons-react";

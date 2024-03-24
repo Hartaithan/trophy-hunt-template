@@ -1,6 +1,6 @@
 "use server";
 
-import { SERVICE_URL } from "@/constants/urls";
+import { SERVICE_URL } from "@/constants/variables";
 import type { ActionResponse } from "@/models/ActionModel";
 import type { Example } from "@/models/ExampleModel";
 import type { SearchResponse, SearchResult } from "@/models/SearchModel";

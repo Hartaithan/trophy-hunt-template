@@ -1,6 +1,8 @@
 import type { Trophy } from "@/models/TrophyModel";
 import type { Cheerio, CheerioAPI, Element } from "cheerio";
 
+const EMPTY_SYMBOL = "\u200B";
+
 const select = {
   trophyContent: "td:nth-child(2)",
   trophyType: "td:nth-child(6) > span > img",
@@ -22,4 +24,8 @@ export const getTrophyList = (
     }
   });
   return trophies;
+};
+
+export const getTrophyTitle = (value: string): string => {
+  return `[${EMPTY_SYMBOL}${value}${EMPTY_SYMBOL}]\n`;
 };

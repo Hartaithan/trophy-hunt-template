@@ -1,4 +1,4 @@
-import { FETCH_API_KEY, FETCH_HOST, FETCH_URL } from "@/constants/urls";
+import { FETCH_API_KEY, FETCH_HOST, FETCH_URL } from "@/constants/variables";
 import { examples } from "@/example";
 import type { Example } from "@/models/ExampleModel";
 import type { PageResponse } from "@/models/PageModel";
