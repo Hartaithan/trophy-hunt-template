@@ -6,6 +6,7 @@ import type {
   BlockObjectResponse,
   ListBlockChildrenResponse,
 } from "@notionhq/client/build/src/api-endpoints";
+import { isTrophyBlock } from "./trophy";
 
 export const empty: ProgressCounts = {
   all: 0,
@@ -24,6 +25,7 @@ export const calculateProgress = (
   for (const block of results) {
     if (block.type === "heading_3") headings = headings + 1;
     if (block.type !== "to_do") continue;
+    if (!isTrophyBlock(block)) continue;
     total.all = total.all + 1;
     total.completed = total.completed + (block.to_do.checked ? 1 : 0);
     const isBaseBlock = headings <= 1;

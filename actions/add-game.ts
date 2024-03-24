@@ -14,7 +14,7 @@ import { trophyTypeColors } from "@/constants/colors";
 import { BASE_URL } from "@/constants/variables";
 import type { CreatePageResponse } from "@notionhq/client/build/src/api-endpoints";
 import lz from "lz-string";
-import { getTrophyTitle } from "@/utils/trophy";
+import { createTrophyTitle } from "@/utils/trophy";
 
 export const addGame = async (
   url: string,
@@ -111,7 +111,7 @@ export const addGame = async (
             {
               type: "text",
               text: {
-                content: getTrophyTitle(trophy.type),
+                content: createTrophyTitle(trophy.type),
               },
               annotations: {
                 bold: true,

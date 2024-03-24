@@ -1,4 +1,5 @@
 import type { Trophy } from "@/models/TrophyModel";
+import type { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import type { Cheerio, CheerioAPI, Element } from "cheerio";
 
 const EMPTY_SYMBOL = "\u200B";
@@ -26,6 +27,13 @@ export const getTrophyList = (
   return trophies;
 };
 
-export const getTrophyTitle = (value: string): string => {
+export const createTrophyTitle = (value: string): string => {
   return `[${EMPTY_SYMBOL}${value}${EMPTY_SYMBOL}]\n`;
+};
+
+export const isTrophyBlock = (block: BlockObjectResponse) => {
+  if (block.type !== "to_do") return false;
+  const content = block.to_do.rich_text[0].plain_text;
+  if (!content.includes(EMPTY_SYMBOL)) return false;
+  return true;
 };
