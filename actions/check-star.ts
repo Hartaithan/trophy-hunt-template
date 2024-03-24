@@ -2,13 +2,18 @@
 
 import type { ActionResponse } from "@/models/ActionModel";
 import { Octokit } from "@octokit/rest";
-import { cookies } from "next/headers";
 
 export const checkStar = async (
-  owner = "mantinedev",
-  repo = "mantine",
+  token: string | undefined,
+  owner = "Hartaithan",
+  repo = "trophy-hunt-template",
 ): Promise<ActionResponse> => {
-  const token = cookies().get("access_token")?.value ?? "";
+  if (!token) {
+    return {
+      status: "error",
+      message: "Token not found!",
+    };
+  }
 
   const octokit = new Octokit({ auth: token });
 

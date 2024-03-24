@@ -21,7 +21,6 @@ const options: AuthOptions = {
       return token;
     },
     async session({ session, token }) {
-      // TODO: fix token assign
       if (session) session.access_token = token.access_token;
       return session;
     },

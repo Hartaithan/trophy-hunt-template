@@ -10,7 +10,7 @@ const DownloadSection: FC = () => {
   const session = useSession();
 
   const handleCheckStar = async () => {
-    const response = await checkStar();
+    const response = await checkStar(session.data?.access_token);
     console.info("response", response);
   };
 
