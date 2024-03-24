@@ -1,6 +1,6 @@
 import type { FC } from "react";
 import PageContainer from "@/components/PageContainer/PageContainer";
-import SearchSection from "@/sections/SearchSection/SearchSection";
+import HomeSection from "@/sections/HomeSection/HomeSection";
 import { getNotionToken } from "@/utils/config";
 import LandingSection from "@/sections/LandingSection/LandingSection";
 
@@ -9,7 +9,7 @@ const Home: FC = () => {
   const isAuth = !!token;
   return (
     <PageContainer w="100%" justify="center" align="center">
-      {isAuth ? <SearchSection /> : <LandingSection />}
+      {isAuth ? <HomeSection /> : <LandingSection />}
     </PageContainer>
   );
 };
