@@ -41,7 +41,7 @@ const HeroSection: FC = () => {
         <Text {...highlight}>&nbsp;celebrate&nbsp;</Text>
         each victory with a visual showcase.
       </Text>
-      <Group>
+      <Group className={classes.links}>
         <Button
           className={classes.link}
           variant="gradient"
