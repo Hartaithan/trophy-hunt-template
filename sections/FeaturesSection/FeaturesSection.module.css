@@ -5,6 +5,7 @@
 }
 
 .feature {
+  height: 100%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -18,6 +19,11 @@
   &:hover {
     border-color: var(--mantine-color-accent-dark-3);
   }
+  @media (max-width: $mantine-breakpoint-sm) {
+    padding: var(--mantine-spacing-lg);
+    padding-top: var(--mantine-spacing-md);
+    padding-bottom: var(--mantine-spacing-md);
+  }
 }
 
 .titleWrapper {
@@ -27,14 +33,35 @@
   margin-bottom: var(--mantine-spacing-sm);
 }
 
+.titleWrapper > svg {
+  @media (max-width: $mantine-breakpoint-sm) {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  @media (max-width: 24rem) {
+    display: none;
+  }
+}
+
 .title {
   font-weight: var(--mantine-h3-font-weight);
   line-height: var(--mantine-h3-line-height);
   font-size: var(--mantine-h3-font-size);
   text-align: center;
+  @media (max-width: $mantine-breakpoint-sm) {
+    font-weight: var(--mantine-h4-font-weight);
+    line-height: var(--mantine-h4-line-height);
+    font-size: var(--mantine-h4-font-size);
+  }
+  @media (max-width: $mantine-breakpoint-xs) {
+    font-size: var(--mantine-font-size-md);
+  }
 }
 
 .description {
   font-size: calc(0.95rem * var(--mantine-scale));
   text-align: center;
+  @media (max-width: $mantine-breakpoint-sm) {
+    font-size: var(--mantine-font-size-xs);
+  }
 }

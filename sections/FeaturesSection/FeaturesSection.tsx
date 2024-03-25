@@ -23,7 +23,9 @@ const highlight: Partial<TextProps> = {
 
 const FeaturesSection: FC = () => {
   return (
-    <Grid className={classes.container} gutter="xl">
+    <Grid
+      className={classes.container}
+      gutter={{ base: "sm", xs: "md", md: "xl" }}>
       <GridCol span={12}>
         <Flex className={classes.feature}>
           <Flex className={classes.titleWrapper}>
@@ -46,7 +48,7 @@ const FeaturesSection: FC = () => {
           </Text>
         </Flex>
       </GridCol>
-      <GridCol span={6}>
+      <GridCol span={{ base: 12, sm: 6 }}>
         <Flex className={classes.feature}>
           <Flex className={classes.titleWrapper}>
             <IconPlaylistAdd
@@ -67,7 +69,7 @@ const FeaturesSection: FC = () => {
           </Text>
         </Flex>
       </GridCol>
-      <GridCol span={6}>
+      <GridCol span={{ base: 12, sm: 6 }}>
         <Flex className={classes.feature}>
           <Flex className={classes.titleWrapper}>
             <IconRefreshDot
