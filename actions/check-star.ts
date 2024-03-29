@@ -3,10 +3,11 @@
 import type { ActionResponse } from "@/models/ActionModel";
 import { Octokit } from "@octokit/rest";
 
+const owner = process.env.NEXT_PUBLIC_OWNER ?? "";
+const repo = process.env.NEXT_PUBLIC_REPO ?? "";
+
 export const checkStar = async (
   token: string | undefined,
-  owner = "Hartaithan",
-  repo = "trophy-hunt-template",
 ): Promise<ActionResponse> => {
   if (!token) {
     return {
