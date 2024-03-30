@@ -2,6 +2,7 @@
 
 import type { CheckResponse } from "@/actions/check-requirements";
 import { checkRequirements } from "@/actions/check-requirements";
+import { getDownloadLink } from "@/actions/get-download-link";
 import { Anchor, Collapse, Group, Text } from "@mantine/core";
 import { Button, Flex, Stepper } from "@mantine/core";
 import { notifications } from "@mantine/notifications";
@@ -53,6 +54,26 @@ const DownloadSection: FC = () => {
         icon: <IconAlertOctagon size="1rem" />,
         withCloseButton: true,
       });
+    }
+  };
+
+  const handleDownload = async () => {
+    try {
+      const { status, message } = await getDownloadLink(
+        session.data?.access_token,
+      );
+      if (status === "error") {
+        notifications.show({
+          color: "red",
+          title: "Oops!",
+          message,
+          icon: <IconAlertOctagon size="1rem" />,
+          autoClose: false,
+          withCloseButton: true,
+        });
+      }
+    } catch (error) {
+      console.error("getDownloadLink error", error);
     }
   };
 
@@ -121,6 +142,7 @@ const DownloadSection: FC = () => {
             <Button
               mt="lg"
               variant="subtle"
+              onClick={handleDownload}
               leftSection={<IconDownload size="1.2rem" />}>
               Download!
             </Button>

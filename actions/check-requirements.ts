@@ -60,7 +60,7 @@ export const checkRequirements = async (
   return {
     status: "success",
     message:
-      "Thanks for the follow and star. You will be redirected to the template download link",
+      "Thanks for the follow and star. Now you can download the template!",
     data,
   };
 };
