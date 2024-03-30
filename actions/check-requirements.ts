@@ -3,7 +3,7 @@
 import type { ActionResponse } from "@/models/ActionModel";
 import { Octokit } from "@octokit/rest";
 
-interface Response {
+export interface CheckResponse {
   follow: boolean;
   star: boolean;
   download: boolean;
@@ -14,7 +14,7 @@ const repo = process.env.NEXT_PUBLIC_REPO ?? "";
 
 export const checkRequirements = async (
   token: string | undefined,
-): Promise<ActionResponse<Response>> => {
+): Promise<ActionResponse<CheckResponse>> => {
   if (!token) {
     return {
       status: "error",
