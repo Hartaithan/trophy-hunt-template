@@ -3,7 +3,7 @@
 import type { CheckResponse } from "@/actions/check-requirements";
 import { checkRequirements } from "@/actions/check-requirements";
 import { getDownloadLink } from "@/actions/get-download-link";
-import { Anchor, Collapse, Group, Text } from "@mantine/core";
+import { Alert, Anchor, Collapse, Group, Portal, Text } from "@mantine/core";
 import { Button, Flex, Stepper } from "@mantine/core";
 import { notifications } from "@mantine/notifications";
 import {
@@ -13,9 +13,11 @@ import {
   IconFileSearch,
   IconLogin2,
   IconLogout2,
+  IconNote,
 } from "@tabler/icons-react";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useState, type FC } from "react";
+import classes from "./DownloadSection.module.css";
 
 const DownloadSection: FC = () => {
   const [check, setCheck] = useState<CheckResponse | null>(null);
@@ -78,7 +80,20 @@ const DownloadSection: FC = () => {
   };
 
   return (
-    <Flex direction="column" justify="center" align="center">
+    <Flex className={classes.container}>
+      <Portal className={classes.portal}>
+        <Alert
+          title="Developer's Note"
+          icon={<IconNote />}
+          classNames={classes}>
+          Signing in with GitHub is a one-time requirement to download a
+          template. This allows to verify if you&apos;ve followed profile and
+          starred the repository. Once this step is completed, you won&apos;t
+          need to worry about it again. Template is completely free and this
+          requirements is a simple way to say &apos;thank you&apos; and show
+          your appreciation.
+        </Alert>
+      </Portal>
       {session.status === "authenticated" ? (
         <Flex direction="column" align="center">
           <Group>
@@ -95,7 +110,7 @@ const DownloadSection: FC = () => {
               Sign Out
             </Button>
           </Group>
-          <Group mt="lg" gap="xl">
+          <Group mt="xl" gap="xl">
             <Stepper active={check?.follow ? 1 : -1}>
               <Stepper.Step
                 label="Follow"
@@ -140,7 +155,7 @@ const DownloadSection: FC = () => {
           </Group>
           <Collapse in={check?.download ?? false}>
             <Button
-              mt="lg"
+              mt="xl"
               variant="subtle"
               onClick={handleDownload}
               leftSection={<IconDownload size="1.2rem" />}>

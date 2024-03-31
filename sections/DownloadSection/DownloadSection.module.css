@@ -1,0 +1,30 @@
+.container {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.portal {
+  position: fixed;
+  top: var(--mantine-spacing-lg);
+  left: var(--mantine-spacing-lg);
+}
+
+.root {
+  width: 500px;
+  padding: var(--mantine-spacing-xs) var(--mantine-spacing-sm);
+  border-radius: var(--mantine-radius-md);
+}
+
+.body {
+  gap: 0.25rem;
+}
+
+.icon {
+  margin-right: var(--mantine-spacing-xs);
+}
+
+.message {
+  font-size: var(--mantine-font-size-xs);
+  font-weight: 500;
+}
