@@ -47,8 +47,16 @@ const HeroSection: FC = () => {
           variant="gradient"
           gradient={{ ...linkGradient, deg: 0 }}
           component={Link}
+          href="/tutorial">
+          How to use it?
+        </Button>
+        <Button
+          className={classes.link}
+          variant="gradient"
+          gradient={{ ...linkGradient, deg: 0 }}
+          component={Link}
           href="/signIn">
-          Try it out!
+          I already have a template!
         </Button>
         <Button
           className={classes.link}

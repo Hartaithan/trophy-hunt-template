@@ -4,6 +4,7 @@ const authPages = new Map<string, boolean>([["/signIn", true]]);
 const publicPages = new Map<string, boolean>([
   ["/", true],
   ["/download", true],
+  ["/tutorial", true],
 ]);
 const requestPages = /^(.*?)(?:\/progress|\/check|\/uncheck)$/;
 
