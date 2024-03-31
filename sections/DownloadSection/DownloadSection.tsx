@@ -3,7 +3,7 @@
 import type { CheckResponse } from "@/actions/check-requirements";
 import { checkRequirements } from "@/actions/check-requirements";
 import { getDownloadLink } from "@/actions/get-download-link";
-import { Alert, Anchor, Collapse, Group, Portal, Text } from "@mantine/core";
+import { Alert, Anchor, Collapse, Group, Text } from "@mantine/core";
 import { Button, Flex, Stepper } from "@mantine/core";
 import { notifications } from "@mantine/notifications";
 import {
@@ -18,10 +18,12 @@ import {
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useState, type FC } from "react";
 import classes from "./DownloadSection.module.css";
+import { useDisclosure } from "@mantine/hooks";
 
 const DownloadSection: FC = () => {
   const [check, setCheck] = useState<CheckResponse | null>(null);
   const session = useSession();
+  const [visible, { close }] = useDisclosure(true);
 
   const handleСheckRequirements = async () => {
     notifications.show({
@@ -81,11 +83,13 @@ const DownloadSection: FC = () => {
 
   return (
     <Flex className={classes.container}>
-      <Portal className={classes.portal}>
+      {visible && (
         <Alert
           title="Developer's Note"
           icon={<IconNote />}
-          classNames={classes}>
+          classNames={classes}
+          withCloseButton
+          onClose={close}>
           Signing in with GitHub is a one-time requirement to download a
           template. This allows to verify if you&apos;ve followed profile and
           starred the repository. Once this step is completed, you won&apos;t
@@ -93,7 +97,7 @@ const DownloadSection: FC = () => {
           requirements is a simple way to say &apos;thank you&apos; and show
           your appreciation.
         </Alert>
-      </Portal>
+      )}
       {session.status === "authenticated" ? (
         <Flex direction="column" align="center">
           <Group>

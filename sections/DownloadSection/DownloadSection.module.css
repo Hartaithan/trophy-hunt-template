@@ -4,14 +4,11 @@
   align-items: center;
 }
 
-.portal {
-  position: fixed;
-  top: var(--mantine-spacing-lg);
-  left: var(--mantine-spacing-lg);
-}
-
 .root {
   width: 500px;
+  position: fixed;
+  top: var(--mantine-spacing-lg);
+  right: var(--mantine-spacing-lg);
   padding: var(--mantine-spacing-xs) var(--mantine-spacing-sm);
   border-radius: var(--mantine-radius-md);
 }
