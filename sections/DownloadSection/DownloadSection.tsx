@@ -19,6 +19,7 @@ import { useSession, signIn, signOut } from "next-auth/react";
 import { useState, type FC } from "react";
 import classes from "./DownloadSection.module.css";
 import { useDisclosure } from "@mantine/hooks";
+import { featureGradient } from "@/constants/gradients";
 
 const DownloadSection: FC = () => {
   const session = useSession();
@@ -181,12 +182,26 @@ const DownloadSection: FC = () => {
           </Collapse>
         </Flex>
       ) : (
-        <Button
-          variant="subtle"
-          onClick={() => signIn("github")}
-          leftSection={<IconLogin2 size="1.2rem" />}>
-          Sign In
-        </Button>
+        <Flex direction="column" align="center">
+          <Text
+            size="var(--mantine-h2-font-size)"
+            lh="var(--mantine-h2-line-height)"
+            variant="gradient"
+            gradient={featureGradient}
+            fw={700}
+            mb="xs">
+            Alright, before we dive in
+          </Text>
+          <Text fw={500} size="sm" mb="sm">
+            Could you quickly sign into your GitHub account?
+          </Text>
+          <Button
+            variant="subtle"
+            onClick={() => signIn("github")}
+            leftSection={<IconLogin2 size="1.2rem" />}>
+            Sign In
+          </Button>
+        </Flex>
       )}
     </Flex>
   );

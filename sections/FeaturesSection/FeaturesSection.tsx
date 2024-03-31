@@ -1,4 +1,3 @@
-import type { MantineGradient, TextProps } from "@mantine/core";
 import { Flex, Grid, GridCol, Text } from "@mantine/core";
 import type { FC } from "react";
 import classes from "./FeaturesSection.module.css";
@@ -7,19 +6,7 @@ import {
   IconPlaylistAdd,
   IconRefreshDot,
 } from "@tabler/icons-react";
-
-const gradient: MantineGradient = {
-  from: "accented.6",
-  to: "accented.3",
-  deg: 90,
-};
-
-const highlight: Partial<TextProps> = {
-  span: true,
-  c: "accented.3",
-  fw: "bold",
-  inherit: true,
-};
+import { featureGradient, highlight } from "@/constants/gradients";
 
 const FeaturesSection: FC = () => {
   return (
@@ -33,7 +20,7 @@ const FeaturesSection: FC = () => {
             <Text
               className={classes.title}
               variant="gradient"
-              gradient={gradient}>
+              gradient={featureGradient}>
               Backlog Structuring
             </Text>
           </Flex>
@@ -58,7 +45,7 @@ const FeaturesSection: FC = () => {
             <Text
               className={classes.title}
               variant="gradient"
-              gradient={gradient}>
+              gradient={featureGradient}>
               Intuitive Game Addition
             </Text>
           </Flex>
@@ -79,7 +66,7 @@ const FeaturesSection: FC = () => {
             <Text
               className={classes.title}
               variant="gradient"
-              gradient={gradient}>
+              gradient={featureGradient}>
               Quick Status Update
             </Text>
           </Flex>

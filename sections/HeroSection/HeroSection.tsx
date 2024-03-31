@@ -1,26 +1,8 @@
 import type { FC } from "react";
 import classes from "./HeroSection.module.css";
-import type { MantineGradient, TextProps } from "@mantine/core";
 import { Button, Flex, Group, Text } from "@mantine/core";
 import Link from "next/link";
-
-const titleGradient: MantineGradient = {
-  from: "accented.4",
-  to: "accented.5",
-  deg: 90,
-};
-
-const linkGradient: MantineGradient = {
-  from: "accented.9",
-  to: "accented.8",
-};
-
-const highlight: Partial<TextProps> = {
-  span: true,
-  c: "accented.3",
-  fw: "bold",
-  inherit: true,
-};
+import { titleGradient, linkGradient, highlight } from "@/constants/gradients";
 
 const HeroSection: FC = () => {
   return (
