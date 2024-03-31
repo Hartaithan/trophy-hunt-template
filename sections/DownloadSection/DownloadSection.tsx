@@ -21,11 +21,14 @@ import classes from "./DownloadSection.module.css";
 import { useDisclosure } from "@mantine/hooks";
 
 const DownloadSection: FC = () => {
-  const [check, setCheck] = useState<CheckResponse | null>(null);
   const session = useSession();
+  const [check, setCheck] = useState<CheckResponse | null>(null);
+  const [isChecking, setChecking] = useState<boolean>(false);
+  const [isDownloading, setDownloading] = useState<boolean>(false);
   const [visible, { close }] = useDisclosure(true);
 
   const handleСheckRequirements = async () => {
+    setChecking(true);
     notifications.show({
       id: "check",
       loading: true,
@@ -38,6 +41,7 @@ const DownloadSection: FC = () => {
     const { status, message, data } = await checkRequirements(
       session.data?.access_token,
     );
+    setChecking(false);
     setCheck(data ?? null);
     if (status === "success") {
       notifications.update({
@@ -63,9 +67,11 @@ const DownloadSection: FC = () => {
 
   const handleDownload = async () => {
     try {
+      setDownloading(true);
       const { status, message } = await getDownloadLink(
         session.data?.access_token,
       );
+      setDownloading(false);
       if (status === "error") {
         notifications.show({
           color: "red",
@@ -78,6 +84,7 @@ const DownloadSection: FC = () => {
       }
     } catch (error) {
       console.error("getDownloadLink error", error);
+      setDownloading(false);
     }
   };
 
@@ -104,12 +111,14 @@ const DownloadSection: FC = () => {
             <Button
               variant="subtle"
               onClick={handleСheckRequirements}
+              disabled={isChecking}
               leftSection={<IconFileSearch size="1.2rem" />}>
               Check requirements
             </Button>
             <Button
               variant="subtle"
               onClick={() => signOut()}
+              disabled={isChecking}
               leftSection={<IconLogout2 size="1.2rem" />}>
               Sign Out
             </Button>
@@ -118,6 +127,7 @@ const DownloadSection: FC = () => {
             <Stepper active={check?.follow ? 1 : -1}>
               <Stepper.Step
                 label="Follow"
+                loading={isChecking}
                 icon={<Text fw="bold">1</Text>}
                 description={
                   <Text size="sm">
@@ -134,6 +144,7 @@ const DownloadSection: FC = () => {
             <Stepper active={check?.star ? 1 : -1}>
               <Stepper.Step
                 label="Star"
+                loading={isChecking}
                 icon={<Text fw="bold">2</Text>}
                 description={
                   <Text size="sm">
@@ -149,8 +160,9 @@ const DownloadSection: FC = () => {
             </Stepper>
             <Stepper active={check?.download ? 1 : -1}>
               <Stepper.Step
-                icon={<Text fw="bold">3</Text>}
                 label="Download"
+                loading={isChecking}
+                icon={<Text fw="bold">3</Text>}
                 description={
                   <Text size="sm">Thanks! Your link will be below!</Text>
                 }
@@ -162,6 +174,7 @@ const DownloadSection: FC = () => {
               mt="xl"
               variant="subtle"
               onClick={handleDownload}
+              loading={isDownloading}
               leftSection={<IconDownload size="1.2rem" />}>
               Download!
             </Button>
