@@ -33,11 +33,11 @@ const HeroSection: FC = () => {
       </Text>
       <Text className={classes.description}>
         <Text {...highlight}>Organize&nbsp;</Text>
-        your gaming adventures with Notion.
+        your trophy hunting adventures with Notion.
         <Text {...highlight}>&nbsp;Add&nbsp;</Text>
         new games to your backlog,
         <Text {...highlight}>&nbsp;prioritize&nbsp;</Text>
-        your current challenges, and
+        your current goals, and
         <Text {...highlight}>&nbsp;celebrate&nbsp;</Text>
         each victory with a visual showcase.
       </Text>

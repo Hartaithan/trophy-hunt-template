@@ -39,12 +39,12 @@ const FeaturesSection: FC = () => {
           </Flex>
           <Text className={classes.description}>
             Effortlessly
-            <Text {...highlight}>&nbsp;structure your gaming backlog</Text> with
-            our intuitive interface. Use the drag-and-drop sorting feature to
-            prioritize your games. Stay updated with at-a-glance status updates
+            <Text {...highlight}>&nbsp;structure your backlog</Text> with
+            intuitive interface. Use the drag-and-drop sorting feature to
+            prioritize your goals. Stay updated with at-a-glance status updates
             that let you know whether a game in backlog, in progress, or
-            completed. Template is designed to make managing your gaming backlog
-            as <Text {...highlight}>simple and enjoyable</Text> as possible.
+            completed. Template is designed to make managing your backlog as
+            <Text {...highlight}>&nbsp;simple and enjoyable</Text> as possible.
           </Text>
         </Flex>
       </GridCol>
@@ -86,8 +86,8 @@ const FeaturesSection: FC = () => {
           <Text className={classes.description}>
             Mark games as <Text {...highlight}>In Progress</Text>,
             <Text {...highlight}>&nbsp;Platinum</Text>, or
-            <Text {...highlight}>&nbsp;100% Completed</Text> with a single
-            click, making backlog updates quick and simple.
+            <Text {...highlight}>&nbsp;100% Completed</Text> with a simple
+            action, making backlog updates quick and simple.
           </Text>
         </Flex>
       </GridCol>
