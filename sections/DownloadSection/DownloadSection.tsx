@@ -95,7 +95,13 @@ const DownloadSection: FC = () => {
         <Alert
           title="Developer's Note"
           icon={<IconNote />}
-          classNames={classes}
+          classNames={{
+            root: classes.alertRoot,
+            body: classes.alertBody,
+            icon: classes.alertIcon,
+            title: classes.alertTitle,
+            message: classes.alertMessage,
+          }}
           withCloseButton
           onClose={close}>
           Signing in with GitHub is a one-time requirement to download a
@@ -107,8 +113,8 @@ const DownloadSection: FC = () => {
         </Alert>
       )}
       {session.status === "authenticated" ? (
-        <Flex direction="column" align="center">
-          <Group>
+        <Flex className={classes.checkSection}>
+          <Group className={classes.checkButtons}>
             <Button
               variant="subtle"
               onClick={handleСheckRequirements}
@@ -124,8 +130,10 @@ const DownloadSection: FC = () => {
               Sign Out
             </Button>
           </Group>
-          <Group mt="xl" gap="xl">
-            <Stepper active={check?.follow ? 1 : -1}>
+          <Group className={classes.checkSteps}>
+            <Stepper
+              active={check?.follow ? 1 : -1}
+              classNames={{ root: classes.stepRoot }}>
               <Stepper.Step
                 label="Follow"
                 loading={isChecking}
@@ -142,7 +150,9 @@ const DownloadSection: FC = () => {
                 }
               />
             </Stepper>
-            <Stepper active={check?.star ? 1 : -1}>
+            <Stepper
+              active={check?.star ? 1 : -1}
+              classNames={{ root: classes.stepRoot }}>
               <Stepper.Step
                 label="Star"
                 loading={isChecking}
@@ -159,7 +169,9 @@ const DownloadSection: FC = () => {
                 }
               />
             </Stepper>
-            <Stepper active={check?.download ? 1 : -1}>
+            <Stepper
+              active={check?.download ? 1 : -1}
+              classNames={{ root: classes.stepRoot }}>
               <Stepper.Step
                 label="Download"
                 loading={isChecking}
