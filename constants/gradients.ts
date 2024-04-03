@@ -9,6 +9,7 @@ export const titleGradient: MantineGradient = {
 export const linkGradient: MantineGradient = {
   from: "accented.9",
   to: "accented.8",
+  deg: 90,
 };
 
 export const featureGradient: MantineGradient = {

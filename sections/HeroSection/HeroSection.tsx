@@ -27,7 +27,7 @@ const HeroSection: FC = () => {
         <Button
           className={classes.link}
           variant="gradient"
-          gradient={{ ...linkGradient, deg: 0 }}
+          gradient={linkGradient}
           component={Link}
           href="/tutorial">
           How to use it?
@@ -35,18 +35,18 @@ const HeroSection: FC = () => {
         <Button
           className={classes.link}
           variant="gradient"
-          gradient={{ ...linkGradient, deg: 0 }}
+          gradient={linkGradient}
           component={Link}
           href="/signIn">
-          I already have a template!
+          I already have a template
         </Button>
         <Button
           className={classes.link}
           variant="gradient"
-          gradient={{ ...linkGradient, deg: 180 }}
+          gradient={linkGradient}
           component={Link}
           href="/download">
-          Download!
+          Download template
         </Button>
       </Group>
     </Flex>
