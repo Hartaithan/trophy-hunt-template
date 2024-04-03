@@ -11,6 +11,11 @@
   right: var(--mantine-spacing-lg);
   padding: var(--mantine-spacing-xs) var(--mantine-spacing-sm);
   border-radius: var(--mantine-radius-md);
+  @media (max-width: $mantine-breakpoint-sm) {
+    top: var(--mantine-spacing-xs);
+    right: var(--mantine-spacing-xs);
+    width: calc(100% - (var(--mantine-spacing-xs) * 2));
+  }
 }
 
 .body {
@@ -19,9 +24,41 @@
 
 .icon {
   margin-right: var(--mantine-spacing-xs);
+  @media (max-width: $mantine-breakpoint-sm) {
+    display: none;
+  }
+}
+
+.title {
+  @media (max-width: $mantine-breakpoint-sm) {
+    font-size: var(--mantine-font-size-xs);
+  }
 }
 
 .message {
   font-size: var(--mantine-font-size-xs);
   font-weight: 500;
+  @media (max-width: $mantine-breakpoint-sm) {
+    font-size: 0.65rem;
+  }
+}
+
+.sectionTitle {
+  font-weight: var(--mantine-h2-font-weight);
+  line-height: var(--mantine-h2-line-height);
+  font-size: var(--mantine-h2-font-size);
+  margin-bottom: var(--mantine-spacing-xs);
+  text-align: center;
+  @media (max-width: $mantine-breakpoint-sm) {
+    font-weight: var(--mantine-h3-font-weight);
+    line-height: var(--mantine-h3-line-height);
+    font-size: var(--mantine-h3-font-size);
+  }
+}
+
+.sectionDescription {
+  font-weight: 500;
+  font-size: var(--mantine-font-size-sm);
+  margin-bottom: var(--mantine-spacing-sm);
+  text-align: center;
 }

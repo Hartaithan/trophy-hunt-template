@@ -184,15 +184,12 @@ const DownloadSection: FC = () => {
       ) : (
         <Flex direction="column" align="center">
           <Text
-            size="var(--mantine-h2-font-size)"
-            lh="var(--mantine-h2-line-height)"
+            className={classes.sectionTitle}
             variant="gradient"
-            gradient={featureGradient}
-            fw={700}
-            mb="xs">
+            gradient={featureGradient}>
             Alright, before we dive in
           </Text>
-          <Text fw={500} size="sm" mb="sm">
+          <Text className={classes.sectionDescription}>
             Could you quickly sign into your GitHub account?
           </Text>
           <Button
