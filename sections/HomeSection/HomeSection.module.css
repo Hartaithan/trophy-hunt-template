@@ -1,5 +1,6 @@
 .card {
-  aspect-ratio: 1 / 1;
+  height: 100px;
+  width: 120px;
   display: flex;
   gap: 0.3rem;
   flex-direction: column;
@@ -7,7 +8,6 @@
   align-items: center;
   background: var(--mantine-color-primary-dark-7);
   border-radius: var(--mantine-radius-lg);
-  padding: var(--mantine-spacing-sm);
   border: 2px solid transparent;
   transition: 0.5s all ease-in-out;
   &:hover {

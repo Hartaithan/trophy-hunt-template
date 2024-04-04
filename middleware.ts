@@ -12,11 +12,6 @@ export const config = {
   matcher: "/((?!api|static|.*\\..*|_next|favicon.ico).*)",
 };
 
-const resetCookies = (res: NextResponse): NextResponse => {
-  res.cookies.delete("notion-token");
-  return res;
-};
-
 export const middleware: NextMiddleware = async (req) => {
   const res = NextResponse.next();
   const pathname = req.nextUrl.pathname;
@@ -33,7 +28,8 @@ export const middleware: NextMiddleware = async (req) => {
 
   if (!isAuth && !isAuthPage) {
     const toSignIn = NextResponse.redirect(new URL("/signIn", req.url));
-    return resetCookies(toSignIn);
+    toSignIn.cookies.delete("notion-token");
+    return toSignIn;
   }
 
   if (isAuth && isAuthPage) {
