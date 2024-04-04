@@ -151,7 +151,7 @@ export const addGame = async (
       properties,
       children,
     });
-    console.info("page created", page);
+    console.info("page created", page.id);
   } catch (error) {
     console.error("create game error", error);
     return {
@@ -180,7 +180,7 @@ export const addGame = async (
         // },
       },
     });
-    console.info("page updated", updated);
+    console.info("page updated", updated.id);
     return {
       status: "success",
       message: "Game successfully added!",

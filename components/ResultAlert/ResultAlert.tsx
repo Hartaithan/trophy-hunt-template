@@ -13,6 +13,7 @@ const ResultAlert: FC<Props> = (props) => {
       w="100%"
       variant="light"
       maw={{ base: "100%", sm: 300 }}
+      p={{ base: "sm", sm: "md" }}
       radius="md"
       color={response?.status === "success" ? "accented" : "red"}
       title={response?.status === "success" ? "Success!" : "Oops..."}>
