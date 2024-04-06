@@ -1,14 +1,13 @@
 import type { FC } from "react";
-import { Anchor, Text, Title } from "@mantine/core";
+import { Anchor, List, ListItem, Text, Title } from "@mantine/core";
+import classes from "../../styles/Tutorial.module.css";
 
 const TutorialDownloadSection: FC = () => {
   return (
-    <div>
-      <Title order={2} mb="sm">
-        Download the Template
-      </Title>
-      <ul>
-        <Text component="li">
+    <div className={classes.container}>
+      <Title className={classes.title}>Download the Template</Title>
+      <List className={classes.list} type="ordered">
+        <ListItem className={classes.item}>
           Go to&nbsp;
           <Anchor
             fw="bold"
@@ -18,8 +17,8 @@ const TutorialDownloadSection: FC = () => {
             Download Page
           </Anchor>
           &nbsp;and sign in with your GitHub account
-        </Text>
-        <Text component="li">
+        </ListItem>
+        <ListItem className={classes.item}>
           Show your appreciation by following&nbsp;
           <Anchor
             fw="bold"
@@ -36,15 +35,15 @@ const TutorialDownloadSection: FC = () => {
             target="_blank">
             the repository
           </Anchor>
-        </Text>
-        <Text component="li">
+        </ListItem>
+        <ListItem className={classes.item}>
           Verify the requirements by clicking on&nbsp;
           <Text fw="bold" c="accented.4" span>
             Check requirements
           </Text>
           &nbsp;and then download the template
-        </Text>
-      </ul>
+        </ListItem>
+      </List>
     </div>
   );
 };

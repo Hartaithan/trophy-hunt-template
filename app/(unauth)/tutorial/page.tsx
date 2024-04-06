@@ -6,7 +6,7 @@ import type { FC } from "react";
 
 const TutorialPage: FC = () => {
   return (
-    <PageContainer w="100%" justify="center" gap="xl">
+    <PageContainer w="100%" justify="center" gap="xl" py="3rem">
       <TutorialNotionSection />
       <TutorialDownloadSection />
       <TutorialAppSection />

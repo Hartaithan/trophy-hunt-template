@@ -1,0 +1,33 @@
+.container {
+  --list-spacing: 0.2rem;
+  @media (max-width: $mantine-breakpoint-lg) {
+    padding: 0 var(--mantine-spacing-sm);
+  }
+}
+
+.title {
+  font-weight: var(--mantine-h2-font-weight);
+  line-height: var(--mantine-h2-line-height);
+  font-size: var(--mantine-h2-font-size);
+  margin-bottom: var(--mantine-spacing-sm);
+  padding-left: 1.6rem;
+  @media (max-width: $mantine-breakpoint-sm) {
+    font-weight: var(--mantine-h3-font-weight);
+    line-height: var(--mantine-h3-line-height);
+    font-size: var(--mantine-h3-font-size);
+  }
+}
+
+.item {
+  &::marker {
+    font-weight: 700;
+  }
+  & > div {
+    margin-left: 0.4rem;
+  }
+  @media (max-width: $mantine-breakpoint-sm) {
+    & > div {
+      width: calc(100% - 1.65rem);
+    }
+  }
+}

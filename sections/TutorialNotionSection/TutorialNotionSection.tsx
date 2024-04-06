@@ -1,14 +1,13 @@
 import type { FC } from "react";
-import { Anchor, Text, Title } from "@mantine/core";
+import { Anchor, List, ListItem, Text, Title } from "@mantine/core";
+import classes from "../../styles/Tutorial.module.css";
 
 const TutorialNotionSection: FC = () => {
   return (
-    <div>
-      <Title order={2} mb="sm">
-        Set Up Your Notion Integration
-      </Title>
-      <ul>
-        <Text component="li">
+    <div className={classes.container}>
+      <Title className={classes.title}>Set Up Your Notion Integration</Title>
+      <List className={classes.list} type="ordered">
+        <ListItem className={classes.item}>
           Go to&nbsp;
           <Anchor
             fw="bold"
@@ -17,27 +16,27 @@ const TutorialNotionSection: FC = () => {
             target="_blank">
             Notion
           </Anchor>
-          &nbsp;and sign in to your account.
-        </Text>
-        <Text component="li">
+          &nbsp;and sign in to your account
+        </ListItem>
+        <ListItem className={classes.item}>
           Click the&nbsp;
           <Text fw="bold" c="accented.4" span>
-            &quot;New Integration&quot;
+            New Integration
           </Text>
           &nbsp;button, give your integration a name and click the&nbsp;
           <Text fw="bold" c="accented.4" span>
-            &quot;Submit&quot;
+            Submit
           </Text>
-          &nbsp;button.
-        </Text>
-        <Text component="li">
+          &nbsp;button
+        </ListItem>
+        <ListItem className={classes.item}>
           Copy your&nbsp;
           <Text fw="bold" c="accented.4" span>
             Internal Integration Secret.
           </Text>
-          &nbsp;You&apos;ll need it later.
-        </Text>
-      </ul>
+          &nbsp;You&apos;ll need it later
+        </ListItem>
+      </List>
     </div>
   );
 };
