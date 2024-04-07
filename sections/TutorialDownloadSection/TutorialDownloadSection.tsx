@@ -1,6 +1,8 @@
 import type { FC } from "react";
-import { Anchor, List, ListItem, Text, Title } from "@mantine/core";
+import { List, ListItem, Title } from "@mantine/core";
 import classes from "../../styles/Tutorial.module.css";
+import TutorialLink from "@/components/Highlight/TutorialLink";
+import TutorialHighlight from "@/components/Highlight/TutorialHighlight";
 
 const TutorialDownloadSection: FC = () => {
   return (
@@ -9,38 +11,24 @@ const TutorialDownloadSection: FC = () => {
       <List className={classes.list} type="ordered">
         <ListItem className={classes.item}>
           Go to&nbsp;
-          <Anchor
-            fw="bold"
-            c="accented.4"
-            href="https://trophy-hunt-template.vercel.app/download"
-            target="_blank">
+          <TutorialLink href="https://trophy-hunt-template.vercel.app/download">
             Download Page
-          </Anchor>
+          </TutorialLink>
           &nbsp;and sign in using your GitHub account
         </ListItem>
         <ListItem className={classes.item}>
           Show your appreciation by following&nbsp;
-          <Anchor
-            fw="bold"
-            c="accented.4"
-            href="https://github.com/Hartaithan"
-            target="_blank">
+          <TutorialLink href="https://github.com/Hartaithan">
             the profile
-          </Anchor>
+          </TutorialLink>
           &nbsp;and starring&nbsp;
-          <Anchor
-            fw="bold"
-            c="accented.4"
-            href="https://github.com/Hartaithan/trophy-hunt-template"
-            target="_blank">
+          <TutorialLink href="https://github.com/Hartaithan/trophy-hunt-template">
             the repository
-          </Anchor>
+          </TutorialLink>
         </ListItem>
         <ListItem className={classes.item}>
           Verify the requirements by clicking on&nbsp;
-          <Text fw="bold" c="accented.4" span>
-            Check requirements
-          </Text>
+          <TutorialHighlight>Check requirements</TutorialHighlight>
           &nbsp;and then download the template
         </ListItem>
       </List>

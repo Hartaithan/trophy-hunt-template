@@ -19,7 +19,7 @@ import { useSession, signIn, signOut } from "next-auth/react";
 import { useState, type FC } from "react";
 import classes from "./DownloadSection.module.css";
 import { useDisclosure } from "@mantine/hooks";
-import { featureGradient } from "@/constants/gradients";
+import LandingFeature from "@/components/Highlight/LandingFeature";
 
 const DownloadSection: FC = () => {
   const session = useSession();
@@ -195,12 +195,9 @@ const DownloadSection: FC = () => {
         </Flex>
       ) : (
         <Flex direction="column" align="center">
-          <Text
-            className={classes.sectionTitle}
-            variant="gradient"
-            gradient={featureGradient}>
+          <LandingFeature className={classes.sectionTitle}>
             Alright, before we dive in
-          </Text>
+          </LandingFeature>
           <Text className={classes.sectionDescription}>
             Could you quickly sign into your GitHub account?
           </Text>

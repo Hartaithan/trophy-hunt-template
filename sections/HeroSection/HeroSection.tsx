@@ -1,53 +1,36 @@
 import type { FC } from "react";
 import classes from "./HeroSection.module.css";
-import { Button, Flex, Group, Text } from "@mantine/core";
-import Link from "next/link";
-import { titleGradient, linkGradient, highlight } from "@/constants/gradients";
+import { Flex, Group, Text } from "@mantine/core";
+import LandingLink from "@/components/Highlight/LandingLink";
+import LandingTitle from "@/components/Highlight/LandingTitle";
+import LandingHighlight from "@/components/Highlight/LandingHighlight";
 
 const HeroSection: FC = () => {
   return (
     <Flex className={classes.container}>
-      <Text
-        className={classes.title}
-        variant="gradient"
-        gradient={titleGradient}>
+      <LandingTitle className={classes.title}>
         Effortless Backlog Management
-      </Text>
+      </LandingTitle>
       <Text className={classes.description}>
-        <Text {...highlight}>Organize&nbsp;</Text>
+        <LandingHighlight>Organize&nbsp;</LandingHighlight>
         your trophy hunting adventures with Notion.
-        <Text {...highlight}>&nbsp;Add&nbsp;</Text>
+        <LandingHighlight>&nbsp;Add&nbsp;</LandingHighlight>
         new games to your backlog,
-        <Text {...highlight}>&nbsp;prioritize&nbsp;</Text>
+        <LandingHighlight>&nbsp;prioritize&nbsp;</LandingHighlight>
         your current goals, and
-        <Text {...highlight}>&nbsp;celebrate&nbsp;</Text>
+        <LandingHighlight>&nbsp;celebrate&nbsp;</LandingHighlight>
         each victory with a visual showcase.
       </Text>
       <Group className={classes.links}>
-        <Button
-          className={classes.link}
-          variant="gradient"
-          gradient={linkGradient}
-          component={Link}
-          href="/tutorial">
+        <LandingLink className={classes.link} href="/tutorial">
           How to use it?
-        </Button>
-        <Button
-          className={classes.link}
-          variant="gradient"
-          gradient={linkGradient}
-          component={Link}
-          href="/signIn">
+        </LandingLink>
+        <LandingLink className={classes.link} href="/signIn">
           I already have a template
-        </Button>
-        <Button
-          className={classes.link}
-          variant="gradient"
-          gradient={linkGradient}
-          component={Link}
-          href="/download">
+        </LandingLink>
+        <LandingLink className={classes.link} href="/download">
           Download template
-        </Button>
+        </LandingLink>
       </Group>
     </Flex>
   );

@@ -1,6 +1,8 @@
 import type { FC } from "react";
-import { Anchor, List, ListItem, Text, Title } from "@mantine/core";
+import { List, ListItem, Title } from "@mantine/core";
 import classes from "../../styles/Tutorial.module.css";
+import TutorialLink from "@/components/Highlight/TutorialLink";
+import TutorialHighlight from "@/components/Highlight/TutorialHighlight";
 
 const TutorialAppSection: FC = () => {
   return (
@@ -9,26 +11,16 @@ const TutorialAppSection: FC = () => {
       <List className={classes.list} type="ordered">
         <ListItem className={classes.item}>
           On the&nbsp;
-          <Anchor
-            fw="bold"
-            c="accented.4"
-            href="https://trophy-hunt-template.vercel.app/signIn"
-            target="_blank">
+          <TutorialLink href="https://trophy-hunt-template.vercel.app/signIn">
             login page
-          </Anchor>
+          </TutorialLink>
           , enter your&nbsp;
-          <Text fw="bold" c="accented.4" span>
-            Notion Secret
-          </Text>
+          <TutorialHighlight>Notion Secret</TutorialHighlight>
           &nbsp;and&nbsp;
-          <Text fw="bold" c="accented.4" span>
-            Database ID
-          </Text>
+          <TutorialHighlight>Database ID</TutorialHighlight>
         </ListItem>
         <ListItem className={classes.item}>
-          <Text fw="bold" c="accented.4" span>
-            You&apos;re all set!
-          </Text>
+          <TutorialHighlight>You&apos;re all set!</TutorialHighlight>
           &nbsp;Head over to the search page to start adding games to your
           backlog
         </ListItem>

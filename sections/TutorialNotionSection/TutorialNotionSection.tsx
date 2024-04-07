@@ -1,6 +1,8 @@
 import type { FC } from "react";
-import { Anchor, List, ListItem, Text, Title } from "@mantine/core";
+import { List, ListItem, Title } from "@mantine/core";
 import classes from "../../styles/Tutorial.module.css";
+import TutorialLink from "@/components/Highlight/TutorialLink";
+import TutorialHighlight from "@/components/Highlight/TutorialHighlight";
 
 const TutorialNotionSection: FC = () => {
   return (
@@ -9,31 +11,21 @@ const TutorialNotionSection: FC = () => {
       <List className={classes.list} type="ordered">
         <ListItem className={classes.item}>
           Go to&nbsp;
-          <Anchor
-            fw="bold"
-            c="accented.4"
-            href="https://www.notion.so/my-integrations"
-            target="_blank">
+          <TutorialLink href="https://www.notion.so/my-integrations">
             Notion Integrations
-          </Anchor>
+          </TutorialLink>
           &nbsp;and sign in to your account
         </ListItem>
         <ListItem className={classes.item}>
           Click the&nbsp;
-          <Text fw="bold" c="accented.4" span>
-            New Integration
-          </Text>
+          <TutorialHighlight>New Integration</TutorialHighlight>
           &nbsp;button, give your integration a name and click the&nbsp;
-          <Text fw="bold" c="accented.4" span>
-            Submit
-          </Text>
+          <TutorialHighlight>Submit</TutorialHighlight>
           &nbsp;button
         </ListItem>
         <ListItem className={classes.item}>
           Copy your&nbsp;
-          <Text fw="bold" c="accented.4" span>
-            Internal Integration Secret.
-          </Text>
+          <TutorialHighlight>Internal Integration Secret.</TutorialHighlight>
           &nbsp;You&apos;ll need it later
         </ListItem>
       </List>

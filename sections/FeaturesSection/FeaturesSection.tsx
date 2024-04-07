@@ -6,7 +6,8 @@ import {
   IconPlaylistAdd,
   IconRefreshDot,
 } from "@tabler/icons-react";
-import { featureGradient, highlight } from "@/constants/gradients";
+import LandingHighlight from "@/components/Highlight/LandingHighlight";
+import LandingFeature from "@/components/Highlight/LandingFeature";
 
 const FeaturesSection: FC = () => {
   return (
@@ -17,21 +18,21 @@ const FeaturesSection: FC = () => {
         <Flex className={classes.feature}>
           <Flex className={classes.titleWrapper}>
             <IconBooks size="2rem" color="var(--mantine-color-accent-dark-9)" />
-            <Text
-              className={classes.title}
-              variant="gradient"
-              gradient={featureGradient}>
+            <LandingFeature className={classes.title}>
               Backlog Structuring
-            </Text>
+            </LandingFeature>
           </Flex>
           <Text className={classes.description}>
             Effortlessly
-            <Text {...highlight}>&nbsp;structure your backlog</Text> with
-            intuitive interface. Use the drag-and-drop sorting feature to
+            <LandingHighlight>
+              &nbsp;structure your backlog&nbsp;
+            </LandingHighlight>
+            with intuitive interface. Use the drag-and-drop sorting feature to
             prioritize your goals. Stay updated with at-a-glance status updates
             that let you know whether a game in backlog, in progress, or
             completed. Template is designed to make managing your backlog as
-            <Text {...highlight}>&nbsp;simple and enjoyable</Text> as possible.
+            <LandingHighlight>&nbsp;simple and enjoyable</LandingHighlight> as
+            possible.
           </Text>
         </Flex>
       </GridCol>
@@ -42,17 +43,14 @@ const FeaturesSection: FC = () => {
               size="1.85rem"
               color="var(--mantine-color-accent-dark-9)"
             />
-            <Text
-              className={classes.title}
-              variant="gradient"
-              gradient={featureGradient}>
+            <LandingFeature className={classes.title}>
               Intuitive Game Addition
-            </Text>
+            </LandingFeature>
           </Flex>
           <Text className={classes.description}>
-            <Text {...highlight}>Quickly</Text> add new titles to your backlog
-            with our streamlined search and select feature, designed to make
-            building your backlog a breeze.
+            <LandingHighlight>Quickly</LandingHighlight> add new titles to your
+            backlog with our streamlined search and select feature, designed to
+            make building your backlog a breeze.
           </Text>
         </Flex>
       </GridCol>
@@ -63,18 +61,15 @@ const FeaturesSection: FC = () => {
               size="1.85rem"
               color="var(--mantine-color-accent-dark-9)"
             />
-            <Text
-              className={classes.title}
-              variant="gradient"
-              gradient={featureGradient}>
+            <LandingFeature className={classes.title}>
               Quick Status Update
-            </Text>
+            </LandingFeature>
           </Flex>
           <Text className={classes.description}>
-            Mark games as <Text {...highlight}>In Progress</Text>,
-            <Text {...highlight}>&nbsp;Platinum</Text>, or
-            <Text {...highlight}>&nbsp;100% Completed</Text> with a simple
-            action, making backlog updates quick and simple.
+            Mark games as <LandingHighlight>In Progress</LandingHighlight>,
+            <LandingHighlight>&nbsp;Platinum</LandingHighlight>, or
+            <LandingHighlight>&nbsp;100% Completed</LandingHighlight> with a
+            simple action, making backlog updates quick and simple.
           </Text>
         </Flex>
       </GridCol>
