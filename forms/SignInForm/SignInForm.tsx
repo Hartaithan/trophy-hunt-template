@@ -1,11 +1,23 @@
 "use client";
 
-import { useState, type FC } from "react";
-import { Box, Button, Loader, Stack, TextInput } from "@mantine/core";
+import type { ChangeEventHandler } from "react";
+import { useCallback, useState, type FC } from "react";
+import {
+  Box,
+  Button,
+  Input,
+  InputDescription,
+  InputLabel,
+  InputWrapper,
+  Loader,
+  Stack,
+  TextInput,
+} from "@mantine/core";
 import { isNotEmpty, useForm } from "@mantine/form";
 import type { SignInPayload } from "@/models/AuthModel";
 import { signIn } from "@/actions/sign-in";
 import { useRouter } from "next/navigation";
+import { extractDatabaseID } from "@/utils/auth";
 
 interface Props {
   databaseID: string | null;
@@ -13,7 +25,7 @@ interface Props {
 
 const SignInForm: FC<Props> = (props) => {
   const { databaseID } = props;
-  const router = useRouter();
+  const { push } = useRouter();
   const [isLoading, setLoading] = useState<boolean>(false);
 
   const form = useForm<SignInPayload>({
@@ -27,11 +39,20 @@ const SignInForm: FC<Props> = (props) => {
     },
   });
 
+  const handleDatabaseID: ChangeEventHandler<HTMLInputElement> = useCallback(
+    (e) => {
+      const { value } = e.target;
+      const extracted = extractDatabaseID(value);
+      form.setFieldValue("database_id", extracted);
+    },
+    [form],
+  );
+
   const handleSubmit = async (values: typeof form.values): Promise<void> => {
     setLoading(true);
     const response = await signIn(values);
     if (response.status === "success") {
-      router.push("/");
+      push("/");
     } else {
       setLoading(false);
     }
@@ -45,15 +66,21 @@ const SignInForm: FC<Props> = (props) => {
       onSubmit={form.onSubmit(handleSubmit)}>
       <Stack>
         <TextInput
-          label="Notion Token"
-          placeholder="Enter your Notion token"
+          label="Notion Secret"
+          placeholder="Enter your Notion secret"
           {...form.getInputProps("notion_token")}
         />
-        <TextInput
-          label="Database ID"
-          placeholder="Enter your Trophy Hunt database ID"
-          {...form.getInputProps("database_id")}
-        />
+        <InputWrapper>
+          <InputLabel>Database ID</InputLabel>
+          <Input
+            placeholder="Enter your Trophy Hunt database ID"
+            {...form.getInputProps("database_id")}
+            onChange={handleDatabaseID}
+          />
+          <InputDescription mt="xs">
+            Paste the Trophy Hunt Page link here, I&apos;ll extract ID for you.
+          </InputDescription>
+        </InputWrapper>
         <Button
           type="submit"
           disabled={!form.isValid() || isLoading}
