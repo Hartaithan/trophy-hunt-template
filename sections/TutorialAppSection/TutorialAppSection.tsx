@@ -30,7 +30,7 @@ const TutorialAppSection: FC = () => {
             You&apos;re all set!
           </Text>
           &nbsp;Head over to the search page to start adding games to your
-          collection.
+          backlog
         </ListItem>
       </List>
     </div>

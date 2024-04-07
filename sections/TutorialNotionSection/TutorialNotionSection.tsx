@@ -14,7 +14,7 @@ const TutorialNotionSection: FC = () => {
             c="accented.4"
             href="https://www.notion.so/my-integrations"
             target="_blank">
-            Notion
+            Notion Integrations
           </Anchor>
           &nbsp;and sign in to your account
         </ListItem>

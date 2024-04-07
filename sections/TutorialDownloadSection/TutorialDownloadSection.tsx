@@ -16,7 +16,7 @@ const TutorialDownloadSection: FC = () => {
             target="_blank">
             Download Page
           </Anchor>
-          &nbsp;and sign in with your GitHub account
+          &nbsp;and sign in using your GitHub account
         </ListItem>
         <ListItem className={classes.item}>
           Show your appreciation by following&nbsp;
@@ -25,7 +25,7 @@ const TutorialDownloadSection: FC = () => {
             c="accented.4"
             href="https://github.com/Hartaithan"
             target="_blank">
-            profile
+            the profile
           </Anchor>
           &nbsp;and starring&nbsp;
           <Anchor

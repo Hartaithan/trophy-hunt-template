@@ -5,11 +5,12 @@ import classes from "../../styles/Tutorial.module.css";
 const TutorialTemplateSection: FC = () => {
   return (
     <div className={classes.container}>
-      <Title className={classes.title}>Prepare a Template</Title>
+      <Title className={classes.title}>Prepare the Template</Title>
       <List className={classes.list} type="ordered">
-        <ListItem className={classes.item}>
-          Once you&apos;ve duplicated the template to your workspace, you need
-          to do two things -&nbsp;
+        <Text className={classes.item} ml="var(--paragraph)" mb="sm">
+          Once you&apos;ve duplicated the template to your workspace, there are
+          two things you need to do:&nbsp;
+          <br />
           <Text fw="bold" c="accented.4" span>
             connect the template to the integration
           </Text>
@@ -17,10 +18,9 @@ const TutorialTemplateSection: FC = () => {
           <Text fw="bold" c="accented.4" span>
             Database ID
           </Text>
-        </ListItem>
+        </Text>
         <ListItem className={classes.item}>
-          You can connect the template to the integration by going through the
-          following steps:&nbsp;
+          To connect the template to the integration, follow these steps:&nbsp;
           <Text fw="bold" c="accented.4" span>
             Menu (•••)
           </Text>
@@ -38,11 +38,10 @@ const TutorialTemplateSection: FC = () => {
           </Text>
         </ListItem>
         <ListItem className={classes.item}>
-          You can find the&nbsp;
           <Text fw="bold" c="accented.4" span>
-            Database ID
+            The Database ID&nbsp;
           </Text>
-          &nbsp;in the template link by following the steps:&nbsp;
+          can be found in the template link by following the steps:&nbsp;
           <Text fw="bold" c="accented.4" span>
             Share
           </Text>
