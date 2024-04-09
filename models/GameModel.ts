@@ -7,5 +7,6 @@ export interface FetchGameResponse {
   cover: string | null;
   lists: TrophyList[];
   counts: TrophyCounts;
+  guide: string | null;
   message?: string;
 }

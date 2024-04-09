@@ -6,6 +6,7 @@ import type { Example } from "@/models/ExampleModel";
 import { load } from "cheerio";
 import type { TrophyList } from "@/models/TrophyModel";
 import { getTrophyList } from "./trophy";
+import { SERVICE_URL } from "@/constants/variables";
 
 const select = {
   list: "#content > div.row > div.col-xs > div.box.no-top-border",
@@ -17,6 +18,7 @@ const select = {
   platform: "span.platform",
   thumbnail: "div.game-image-holder",
   cover: "div#first-banner > div.img",
+  guide: "div.guide-page-info > a",
 };
 
 export const fetchGame = async (
@@ -77,6 +79,9 @@ export const fetchGame = async (
     lists.push({ name, count, trophies });
   });
 
+  const guideElement = cheerio(select.guide);
+  const guide = guideElement ? SERVICE_URL + guideElement.attr("href") : null;
+
   const response: FetchGameResponse = {
     title,
     platforms,
@@ -84,6 +89,7 @@ export const fetchGame = async (
     cover,
     lists,
     counts: { base, total },
+    guide,
   };
 
   return response;
