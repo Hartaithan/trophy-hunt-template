@@ -1,3 +1,4 @@
+import { SERVICE_URL } from "@/constants/variables";
 import type { Trophy } from "@/models/TrophyModel";
 import type { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import type { Cheerio, CheerioAPI, Element } from "cheerio";
@@ -18,10 +19,12 @@ export const getTrophyList = (
     const content = cheerio(row).find(select.trophyContent).first();
     const type =
       cheerio(row).find(select.trophyType).attr("title") || "Type not found";
-    const name = content.find("a").text().trim();
+    const nameElement = content.find("a");
+    const name = nameElement.text().trim();
     const description = content.contents().last().text().trim();
+    const url = nameElement.attr("href") ?? null;
     if (name.length !== 0 && description.length !== 0) {
-      trophies.push({ name, description, type });
+      trophies.push({ name, description, type, url: SERVICE_URL + url });
     }
   });
   return trophies;

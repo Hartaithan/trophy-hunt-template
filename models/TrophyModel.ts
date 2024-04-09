@@ -2,6 +2,7 @@ export interface Trophy {
   name: string;
   description: string;
   type: string;
+  url: string | null;
 }
 
 export interface TrophyList {
