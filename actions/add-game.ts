@@ -85,20 +85,32 @@ export const addGame = async (
   };
 
   const children: PageChildren[] = [];
-
+  children.push({
+    object: "block",
+    type: "heading_3",
+    heading_3: {
+      rich_text: [
+        {
+          type: "text",
+          text: { content: "Links" },
+        },
+      ],
+    },
+  });
+  children.push({
+    object: "block",
+    type: "paragraph",
+    paragraph: {
+      rich_text: [
+        {
+          type: "text",
+          text: { content: "Game Page", link: { url: game.page } },
+          annotations: { bold: true },
+        },
+      ],
+    },
+  });
   if (game.guide) {
-    children.push({
-      object: "block",
-      type: "heading_3",
-      heading_3: {
-        rich_text: [
-          {
-            type: "text",
-            text: { content: "Links" },
-          },
-        ],
-      },
-    });
     children.push({
       object: "block",
       type: "paragraph",

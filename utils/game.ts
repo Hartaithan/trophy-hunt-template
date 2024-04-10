@@ -89,6 +89,7 @@ export const fetchGame = async (
     cover,
     lists,
     counts: { base, total },
+    page: url,
     guide,
   };
 
