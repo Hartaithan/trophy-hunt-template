@@ -85,6 +85,35 @@ export const addGame = async (
   };
 
   const children: PageChildren[] = [];
+
+  if (game.guide) {
+    children.push({
+      object: "block",
+      type: "heading_3",
+      heading_3: {
+        rich_text: [
+          {
+            type: "text",
+            text: { content: "Links" },
+          },
+        ],
+      },
+    });
+    children.push({
+      object: "block",
+      type: "paragraph",
+      paragraph: {
+        rich_text: [
+          {
+            type: "text",
+            text: { content: "Trophy Guide", link: { url: game.guide } },
+            annotations: { bold: true },
+          },
+        ],
+      },
+    });
+  }
+
   for (const list of game.lists) {
     children.push({
       object: "block",
@@ -113,6 +142,7 @@ export const addGame = async (
               type: "text",
               text: {
                 content: trophy.name,
+                link: { url: trophy.url ?? "" },
               },
               annotations: {
                 bold: true,
