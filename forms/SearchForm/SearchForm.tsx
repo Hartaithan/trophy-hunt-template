@@ -1,6 +1,7 @@
 "use client";
 
-import { Box, Loader, TextInput } from "@mantine/core";
+import { languageOptions } from "@/constants/language";
+import { Flex, Loader, Select, TextInput } from "@mantine/core";
 import {
   useCallback,
   type Dispatch,
@@ -32,7 +33,13 @@ const SearchForm: FC<Props> = (props) => {
   );
 
   return (
-    <Box w="100%">
+    <Flex direction="column" w="100%" gap="md">
+      <Select
+        label="Language"
+        placeholder="Select"
+        defaultValue="en-us"
+        data={languageOptions}
+      />
       <TextInput
         label="Search"
         placeholder="Search..."
@@ -40,7 +47,7 @@ const SearchForm: FC<Props> = (props) => {
         onChange={(e) => handleChange(e.target.value)}
         rightSection={isLoading && <Loader size="xs" />}
       />
-    </Box>
+    </Flex>
   );
 };
 
