@@ -12,9 +12,13 @@ import type {
 import type { Example } from "@/models/ExampleModel";
 import { trophyTypeColors } from "@/constants/colors";
 import { BASE_URL } from "@/constants/variables";
-import type { CreatePageResponse } from "@notionhq/client/build/src/api-endpoints";
+import type {
+  CreatePageResponse,
+  CreatePageParameters,
+} from "@notionhq/client/build/src/api-endpoints";
 import lz from "lz-string";
 import { createTrophyTitle } from "@/utils/trophy";
+import { chunkBlocks } from "@/utils/blocks";
 
 export const addGame = async (
   url: string,
@@ -174,17 +178,41 @@ export const addGame = async (
   }
 
   let page: CreatePageResponse | null = null;
+  const parent: CreatePageParameters["parent"] = {
+    type: "database_id",
+    database_id: databaseID,
+  };
+
   try {
-    page = await notion.pages.create({
-      parent: {
-        type: "database_id",
-        database_id: databaseID,
-      },
-      cover: cover,
-      properties,
-      children,
-    });
-    console.info("page created", page.id);
+    if (children.length > 100) {
+      const chunked = chunkBlocks(children, 100);
+      for (let i = 0; i < chunked.length; i++) {
+        const chunk = chunked[i];
+        if (i === 0) {
+          page = await notion.pages.create({
+            parent,
+            cover,
+            properties,
+            children: chunk,
+          });
+          console.info("page created", chunk.length, page.id);
+        } else {
+          await notion.blocks.children.append({
+            block_id: page?.id ?? "",
+            children: chunk,
+          });
+          console.info("chunk appended", chunk.length, page?.id);
+        }
+      }
+    } else {
+      page = await notion.pages.create({
+        parent,
+        cover,
+        properties,
+        children,
+      });
+      console.info("page created", page.id);
+    }
   } catch (error) {
     console.error("create game error", error);
     return {
@@ -197,7 +225,7 @@ export const addGame = async (
     const compressed = lz.compressToEncodedURIComponent(token);
     const session = new URLSearchParams({ session: compressed });
     const updated = await notion.pages.update({
-      page_id: page?.id,
+      page_id: page?.id ?? "",
       properties: {
         "Update Progress": {
           type: "url",
