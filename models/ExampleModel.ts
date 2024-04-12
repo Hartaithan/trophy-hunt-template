@@ -5,6 +5,8 @@ export type Example =
   | "game-blackops"
   | "game-astro"
   | "game-godofwar"
+  | "game-rocketleague"
+  | "game-minecraft"
   | "search-cod"
   | "search-terraria"
   | "search-assassin"
