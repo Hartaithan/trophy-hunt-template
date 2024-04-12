@@ -23,12 +23,17 @@ const select = {
 
 export const fetchGame = async (
   url: string,
+  lang: string,
   example: Example | null = null,
 ): Promise<FetchGameResponse | null> => {
-  const page = await fetchPage(url, example);
+  const urlWithParams = new URL(url);
+  urlWithParams.searchParams.set("lang", lang);
+  const urlFormatted = urlWithParams.toString();
+
+  const page = await fetchPage(urlFormatted, example);
 
   if (!page) {
-    console.error("unable to fetch page", url);
+    console.error("unable to fetch page", urlFormatted);
     return null;
   }
 
@@ -89,7 +94,7 @@ export const fetchGame = async (
     cover,
     lists,
     counts: { base, total },
-    page: url,
+    page: urlFormatted,
     guide,
   };
 

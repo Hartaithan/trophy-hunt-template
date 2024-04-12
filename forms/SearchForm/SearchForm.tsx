@@ -1,6 +1,6 @@
 "use client";
 
-import { languageOptions } from "@/constants/language";
+import { defaultLanguage, languageOptions } from "@/constants/language";
 import { Flex, Loader, Select, TextInput } from "@mantine/core";
 import {
   useCallback,
@@ -37,7 +37,7 @@ const SearchForm: FC<Props> = (props) => {
       <Select
         label="Language"
         placeholder="Select"
-        defaultValue="en-us"
+        defaultValue={defaultLanguage}
         data={languageOptions}
       />
       <TextInput

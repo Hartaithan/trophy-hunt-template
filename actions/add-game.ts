@@ -15,12 +15,14 @@ import { BASE_URL } from "@/constants/variables";
 import type { CreatePageResponse } from "@notionhq/client/build/src/api-endpoints";
 import lz from "lz-string";
 import { createTrophyTitle } from "@/utils/trophy";
+import { defaultLanguage } from "@/constants/language";
 
 export const addGame = async (
   url: string,
+  lang: string = defaultLanguage,
   example: Example | null = null,
 ): Promise<ActionResponse> => {
-  let game: FetchGameResponse | null = await fetchGame(url, example);
+  let game: FetchGameResponse | null = await fetchGame(url, lang, example);
   if (!game) {
     console.error("unable to fetch game");
     return {

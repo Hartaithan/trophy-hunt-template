@@ -21,3 +21,5 @@ export const languageOptions: ComboboxItem[] = [
   { value: "pt-br", label: "Portuguese (Brazil)" },
   { value: "jp", label: "Japanese" },
 ];
+
+export const defaultLanguage = "en-us";
