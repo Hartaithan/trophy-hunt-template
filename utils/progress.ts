@@ -28,7 +28,7 @@ export const calculateProgress = (
     if (!isTrophyBlock(block)) continue;
     total.all = total.all + 1;
     total.completed = total.completed + (block.to_do.checked ? 1 : 0);
-    const isBaseBlock = headings <= 1;
+    const isBaseBlock = headings <= 2;
     if (isBaseBlock) {
       base.all = base.all + 1;
       base.completed = base.completed + (block.to_do.checked ? 1 : 0);
