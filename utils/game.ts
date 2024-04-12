@@ -80,7 +80,8 @@ export const fetchGame = async (
   });
 
   const guideElement = cheerio(select.guide);
-  const guide = guideElement ? SERVICE_URL + guideElement.attr("href") : null;
+  const guide =
+    guideElement.length > 0 ? SERVICE_URL + guideElement.attr("href") : null;
 
   const response: FetchGameResponse = {
     title,
