@@ -29,7 +29,7 @@ const FeaturesSection: FC = () => {
             </LandingHighlight>
             with intuitive interface. Use the drag-and-drop sorting feature to
             prioritize your goals. Stay updated with at-a-glance status updates
-            that let you know whether a game in backlog, in progress, or
+            that let you know whether a game is in backlog, in progress, or
             completed. Template is designed to make managing your backlog as
             <LandingHighlight>&nbsp;simple and enjoyable</LandingHighlight> as
             possible.
@@ -66,7 +66,8 @@ const FeaturesSection: FC = () => {
             </LandingFeature>
           </Flex>
           <Text className={classes.description}>
-            Mark games as <LandingHighlight>In Progress</LandingHighlight>,
+            Mark games as <LandingHighlight>Backlog</LandingHighlight>,
+            <LandingHighlight>&nbsp;In Progress</LandingHighlight>,
             <LandingHighlight>&nbsp;Platinum</LandingHighlight>, or
             <LandingHighlight>&nbsp;100% Completed</LandingHighlight> with a
             simple action, making backlog updates quick and simple.
