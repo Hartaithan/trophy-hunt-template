@@ -22,7 +22,7 @@
     "cheerio": "^1.0.0-rc.12",
     "clsx": "^2.1.0",
     "lz-string": "^1.5.0",
-    "next": "^14.2.1-canary.0",
+    "next": "^14.2.1-canary.4",
     "next-auth": "^4.24.7",
     "react": "^18",
     "react-dom": "^18"
