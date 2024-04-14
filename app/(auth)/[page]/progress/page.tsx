@@ -1,5 +1,6 @@
 import { updateProgress } from "@/actions/update-progress";
 import PageContainer from "@/components/PageContainer/PageContainer";
+import ResultFallback from "@/components/ResultFallback/ResultFallback";
 import ResultHandler from "@/components/ResultHandler/ResultHandler";
 import type { RequestPage } from "@/models/AppModel";
 
@@ -13,7 +14,7 @@ const ProgressPage: RequestPage = (props) => {
 
   return (
     <PageContainer w="100%" justify="center" align="center">
-      <ResultHandler request={request} />
+      <ResultHandler fallback={<ResultFallback />} request={request} />
     </PageContainer>
   );
 };
