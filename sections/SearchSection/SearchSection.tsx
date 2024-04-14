@@ -17,6 +17,7 @@ const SearchSection: FC = () => {
   const [results, setResults] = useState<SearchResult[]>([]);
 
   const handleReset = useCallback(() => {
+    setLoading(false);
     setResults([]);
   }, []);
 
