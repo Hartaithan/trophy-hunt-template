@@ -28,13 +28,15 @@ export const calculateProgress = (
     if (!isTrophyBlock(block)) continue;
     total.all = total.all + 1;
     total.completed = total.completed + (block.to_do.checked ? 1 : 0);
-    const isBaseBlock = headings <= 1;
+    const isBaseBlock = headings <= 2;
     if (isBaseBlock) {
       base.all = base.all + 1;
       base.completed = base.completed + (block.to_do.checked ? 1 : 0);
     }
   }
-  base.progress = parseFloat(((base.completed * 100) / base.all).toFixed(1));
-  total.progress = parseFloat(((total.completed * 100) / total.all).toFixed(1));
+  base.progress =
+    parseFloat(((base.completed * 100) / base.all).toFixed(1)) || 0;
+  total.progress =
+    parseFloat(((total.completed * 100) / total.all).toFixed(1)) || 0;
   return { base, total };
 };
