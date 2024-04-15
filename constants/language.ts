@@ -1,25 +1,32 @@
 import type { ComboboxItem } from "@mantine/core";
 
-export const languageOptions: ComboboxItem[] = [
-  { value: "en-us", label: "English (US)" },
-  { value: "en-gb", label: "English (UK)" },
-  { value: "fr", label: "German" },
-  { value: "es", label: "Spanish" },
-  { value: "de", label: "German" },
-  { value: "it", label: "Italian" },
-  { value: "nl", label: "Dutch" },
-  { value: "pt", label: "Portuguese" },
-  { value: "ru", label: "Russian" },
-  { value: "ko", label: "Korean" },
-  { value: "zh-tw", label: "Traditional Chinese" },
-  { value: "zh-cn", label: "Simplified Chinese" },
-  { value: "fi", label: "Finnish" },
-  { value: "sv", label: "Swedish" },
-  { value: "da", label: "Danish" },
-  { value: "no", label: "Norwegian" },
-  { value: "pl", label: "Polish" },
-  { value: "pt-br", label: "Portuguese (Brazil)" },
-  { value: "jp", label: "Japanese" },
-];
+export const languageMap: Map<string, string> = new Map([
+  ["English (US)", "en-us"],
+  ["English (UK)", "en-gb"],
+  ["Danish", "da"],
+  ["German", "de"],
+  ["Spanish", "es"],
+  ["Finnish", "fi"],
+  ["French", "fr"],
+  ["Italian", "it"],
+  ["Japanese", "jp"],
+  ["Korean", "ko"],
+  ["Dutch", "nl"],
+  ["Norwegian", "no"],
+  ["Polish", "pl"],
+  ["Portuguese", "pt"],
+  ["Portuguese (Brazil)", "pt-br"],
+  ["Russian", "ru"],
+  ["Swedish", "sv"],
+  ["Simplified Chinese", "zh-cn"],
+  ["Traditional Chinese", "zh-tw"],
+]);
+
+export const languageOptions: ComboboxItem[] = Array.from(languageMap).map(
+  ([label, value]) => ({
+    label,
+    value,
+  }),
+);
 
 export const defaultLanguage = "en-us";
