@@ -21,6 +21,18 @@ const SearchSection: FC = () => {
     setResults([]);
   }, []);
 
+  const handleChange = useCallback(
+    (value: string) => {
+      if (value.trim().length === 0) {
+        handleReset();
+      } else {
+        setLoading(true);
+      }
+      setSearch(value);
+    },
+    [handleReset, setLoading, setSearch],
+  );
+
   const handleDebouncedChange = useCallback(async () => {
     if (debounced.trim().length === 0) return;
     const { status, message, data } = await searchByQuery(debounced);
@@ -52,10 +64,8 @@ const SearchSection: FC = () => {
       align="center">
       <SearchForm
         search={search}
-        setSearch={setSearch}
         isLoading={isLoading}
-        setLoading={setLoading}
-        handleReset={handleReset}
+        handleChange={handleChange}
       />
       <SearchResults results={results} />
     </Flex>

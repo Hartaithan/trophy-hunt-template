@@ -1,7 +1,6 @@
-"use client";
-
 import type { SearchResult } from "@/models/SearchModel";
 import { Stack } from "@mantine/core";
+import { memo } from "react";
 import type { FC } from "react";
 import ResultItem from "../ResultItem/ResultItem";
 
@@ -20,4 +19,4 @@ const SearchResults: FC<Props> = (props) => {
   );
 };
 
-export default SearchResults;
+export default memo(SearchResults);

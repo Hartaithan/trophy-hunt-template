@@ -2,36 +2,17 @@
 
 import { defaultLanguage, languageOptions } from "@/constants/language";
 import { Flex, Loader, Select, TextInput } from "@mantine/core";
-import {
-  useCallback,
-  type Dispatch,
-  type FC,
-  type SetStateAction,
-} from "react";
+import { memo } from "react";
+import type { FC } from "react";
 
 interface Props {
   search: string;
-  setSearch: Dispatch<SetStateAction<string>>;
   isLoading: boolean;
-  setLoading: Dispatch<SetStateAction<boolean>>;
-  handleReset: () => void;
+  handleChange: (value: string) => void;
 }
 
 const SearchForm: FC<Props> = (props) => {
-  const { search, setSearch, isLoading, setLoading, handleReset } = props;
-
-  const handleChange = useCallback(
-    (value: string) => {
-      if (value.trim().length === 0) {
-        handleReset();
-      } else {
-        setLoading(true);
-      }
-      setSearch(value);
-    },
-    [handleReset, setLoading, setSearch],
-  );
-
+  const { search, isLoading, handleChange } = props;
   return (
     <Flex direction="column" w="100%" gap="md">
       <Select
@@ -51,4 +32,4 @@ const SearchForm: FC<Props> = (props) => {
   );
 };
 
-export default SearchForm;
+export default memo(SearchForm);
