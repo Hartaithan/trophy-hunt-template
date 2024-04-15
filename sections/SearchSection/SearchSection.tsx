@@ -9,12 +9,14 @@ import { useDebouncedValue } from "@mantine/hooks";
 import { searchByQuery } from "@/actions/search";
 import { notifications } from "@mantine/notifications";
 import { IconAlertOctagon } from "@tabler/icons-react";
+import { defaultLanguage } from "@/constants/language";
 
 const SearchSection: FC = () => {
   const [search, setSearch] = useState<string>("");
   const [debounced] = useDebouncedValue(search, 1500);
   const [isLoading, setLoading] = useState<boolean>(false);
   const [results, setResults] = useState<SearchResult[]>([]);
+  const [language, setLanguage] = useState<string>(defaultLanguage);
 
   const handleReset = useCallback(() => {
     setLoading(false);
@@ -65,9 +67,10 @@ const SearchSection: FC = () => {
       <SearchForm
         search={search}
         isLoading={isLoading}
+        setLanguage={setLanguage}
         handleChange={handleChange}
       />
-      <SearchResults results={results} />
+      <SearchResults results={results} language={language} />
     </Flex>
   );
 };

@@ -12,43 +12,47 @@ import { IconAlertOctagon, IconCheck } from "@tabler/icons-react";
 
 interface Props {
   item: SearchResult;
+  language: string;
 }
 
 const ResultItem: FC<Props> = (props) => {
-  const { item } = props;
+  const { item, language } = props;
 
-  const handleAdd = useCallback(async (url: string) => {
-    notifications.show({
-      id: "add",
-      loading: true,
-      title: "Adding a game...",
-      message:
-        "The game is being added, it shouldn't take long, don't reload the page.",
-      autoClose: false,
-      withCloseButton: false,
-    });
-    const { status, message } = await addGame(url);
-    if (status === "success") {
-      notifications.update({
+  const handleAdd = useCallback(
+    async (url: string) => {
+      notifications.show({
         id: "add",
-        loading: false,
-        title: "Success!",
-        message: message,
-        icon: <IconCheck size="1rem" />,
-        autoClose: 3000,
+        loading: true,
+        title: "Adding a game...",
+        message:
+          "The game is being added, it shouldn't take long, don't reload the page.",
+        autoClose: false,
+        withCloseButton: false,
       });
-    } else {
-      notifications.update({
-        id: "add",
-        loading: false,
-        color: "red",
-        title: "Something went wrong!",
-        message: message,
-        icon: <IconAlertOctagon size="1rem" />,
-        withCloseButton: true,
-      });
-    }
-  }, []);
+      const { status, message } = await addGame(url, language);
+      if (status === "success") {
+        notifications.update({
+          id: "add",
+          loading: false,
+          title: "Success!",
+          message: message,
+          icon: <IconCheck size="1rem" />,
+          autoClose: 3000,
+        });
+      } else {
+        notifications.update({
+          id: "add",
+          loading: false,
+          color: "red",
+          title: "Something went wrong!",
+          message: message,
+          icon: <IconAlertOctagon size="1rem" />,
+          withCloseButton: true,
+        });
+      }
+    },
+    [language],
+  );
 
   return (
     <Flex className={classes.container}>
