@@ -1,0 +1,24 @@
+.container {
+  flex-direction: column;
+  width: 100%;
+  gap: var(--mantine-spacing-xs);
+  @media (max-width: $mantine-breakpoint-sm) {
+    gap: 0.25rem;
+  }
+}
+
+.group {
+  justify-content: space-between;
+}
+
+.link {
+  font-weight: 500;
+  font-size: var(--mantine-font-size-xs);
+}
+
+.dropdown {
+  width: 400px;
+  @media (max-width: 420px) {
+    width: 90%;
+  }
+}
