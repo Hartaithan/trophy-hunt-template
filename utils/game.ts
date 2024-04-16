@@ -7,6 +7,7 @@ import { load } from "cheerio";
 import type { TrophyList } from "@/models/TrophyModel";
 import { getTrophyList } from "./trophy";
 import { SERVICE_URL } from "@/constants/variables";
+import { baseTitle } from "@/constants/trophy";
 
 const select = {
   list: "#content > div.row > div.col-xs > div.box.no-top-border",
@@ -72,13 +73,13 @@ export const fetchGame = async (
     const nameRow = cheerio(list).find(select.nameRow);
     const name = haveDLC
       ? cheerio(nameRow).find(select.name).text().trim()
-      : "Base Game";
+      : baseTitle;
     const table = haveDLC ? nameRow.next() : listsEl.first().find(select.table);
     const rows = table.find(select.tableRows);
     const trophies = getTrophyList(cheerio, rows);
     const count = trophies.length;
 
-    if (name === "Base Game") base = base + trophies.length;
+    if (name === baseTitle) base = base + trophies.length;
     total = total + trophies.length;
 
     lists.push({ name, count, trophies });

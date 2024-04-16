@@ -20,6 +20,7 @@ import lz from "lz-string";
 import { createTrophyTitle } from "@/utils/trophy";
 import { defaultLanguage } from "@/constants/language";
 import { chunkBlocks } from "@/utils/blocks";
+import { baseTitle } from "@/constants/trophy";
 
 export const addGame = async (
   url: string,
@@ -133,6 +134,7 @@ export const addGame = async (
   }
 
   for (const list of game.lists) {
+    const isBase = list.name === baseTitle;
     children.push({
       object: "block",
       type: "heading_3",
@@ -149,7 +151,7 @@ export const addGame = async (
             {
               type: "text",
               text: {
-                content: createTrophyTitle(trophy.type),
+                content: createTrophyTitle(trophy.type, isBase),
               },
               annotations: {
                 bold: true,

@@ -15,3 +15,5 @@ export interface TrophyCounts {
   base: number;
   total: number;
 }
+
+export type TrophyTarget = "trophy" | "base" | null;
