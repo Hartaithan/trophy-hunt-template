@@ -1,9 +1,10 @@
 "use server";
 
 import type { ActionResponse } from "@/models/ActionModel";
+import type { PageBlocks } from "@/models/PageModel";
+import { getAllBlocks } from "@/utils/blocks";
 import { getNotionClient } from "@/utils/config";
 import { calculateProgress } from "@/utils/progress";
-import type { ListBlockChildrenResponse } from "@notionhq/client/build/src/api-endpoints";
 
 export const updateProgress = async (
   page: string,
@@ -11,12 +12,9 @@ export const updateProgress = async (
 ): Promise<ActionResponse> => {
   const { notion } = getNotionClient(session);
 
-  let blocks: ListBlockChildrenResponse | null = null;
+  let blocks: PageBlocks | null = null;
   try {
-    blocks = await notion.blocks.children.list({
-      block_id: page,
-      page_size: 999,
-    });
+    blocks = await getAllBlocks(notion, page);
   } catch (error) {
     console.error("page children list error", error);
     return {

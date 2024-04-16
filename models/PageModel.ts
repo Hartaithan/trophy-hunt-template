@@ -1,5 +1,8 @@
 import type { Client } from "@notionhq/client";
-import type { ParagraphBlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
+import type {
+  ListBlockChildrenResponse,
+  ParagraphBlockObjectResponse,
+} from "@notionhq/client/build/src/api-endpoints";
 
 export interface PageHeaders {
   date: string;
@@ -34,6 +37,7 @@ export type PageCreateParams = Omit<PageCreateArgs, "auth">;
 export type PageCover = PageCreateParams["cover"];
 export type PageProperties = PageCreateParams["properties"];
 export type PageChildren = NonNullable<PageCreateParams["children"]>[0];
+export type PageBlocks = ListBlockChildrenResponse["results"];
 
 export type TextAnnotationColor =
   ParagraphBlockObjectResponse["paragraph"]["color"];

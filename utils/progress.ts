@@ -2,11 +2,9 @@ import type {
   CalculatedProgress,
   ProgressCounts,
 } from "@/models/ProgressModel";
-import type {
-  BlockObjectResponse,
-  ListBlockChildrenResponse,
-} from "@notionhq/client/build/src/api-endpoints";
+import type { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import { checkTrophyBlock } from "./trophy";
+import type { PageBlocks } from "@/models/PageModel";
 
 export const empty: ProgressCounts = {
   all: 0,
@@ -15,10 +13,10 @@ export const empty: ProgressCounts = {
 };
 
 export const calculateProgress = (
-  blocks: ListBlockChildrenResponse | null,
+  blocks: PageBlocks | null,
 ): CalculatedProgress => {
   if (blocks === null) return { base: empty, total: empty };
-  const results = blocks.results as BlockObjectResponse[];
+  const results = blocks as BlockObjectResponse[];
   let base: ProgressCounts = { all: 0, completed: 0, progress: 0 };
   let total: ProgressCounts = { all: 0, completed: 0, progress: 0 };
   for (const block of results) {
