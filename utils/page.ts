@@ -9,7 +9,7 @@ export const fetchPage = async (
 ): Promise<PageResponse | null> => {
   if (example) return examples[example];
   try {
-    const response = await fetch(FETCH_URL, {
+    const request = await fetch(FETCH_URL, {
       method: "POST",
       body: JSON.stringify({ url }),
       headers: {
@@ -17,7 +17,9 @@ export const fetchPage = async (
         "X-RapidAPI-Key": FETCH_API_KEY,
         "X-RapidAPI-Host": FETCH_HOST,
       },
-    }).then((res) => res.json());
+    });
+    const response = await request.json();
+    if (!request.ok) throw Error(JSON.stringify(response));
     return response;
   } catch (error) {
     console.error("unable to fetch page", error);
