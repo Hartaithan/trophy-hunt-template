@@ -28,7 +28,7 @@
 }
 
 .description {
-  max-width: 600px;
+  max-width: 650px;
   font-weight: 500;
   @media (max-width: $mantine-breakpoint-sm) {
     font-size: var(--mantine-font-size-sm);

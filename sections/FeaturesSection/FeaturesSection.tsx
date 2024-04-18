@@ -27,8 +27,8 @@ const FeaturesSection: FC = () => {
             <LandingHighlight>
               &nbsp;structure your backlog&nbsp;
             </LandingHighlight>
-            with intuitive interface. Use the drag-and-drop sorting feature to
-            prioritize your goals. Stay updated with at-a-glance status updates
+            with intuitive interface. Easily prioritize your goals using our
+            drag-and-drop feature. Stay updated with at-a-glance status updates
             that let you know whether a game is in backlog, in progress, or
             completed. Template is designed to make managing your backlog as
             <LandingHighlight>&nbsp;simple and enjoyable</LandingHighlight> as

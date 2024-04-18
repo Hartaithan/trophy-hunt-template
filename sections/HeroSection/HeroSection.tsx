@@ -13,7 +13,7 @@ const HeroSection: FC = () => {
       </LandingTitle>
       <Text className={classes.description}>
         <LandingHighlight>Organize&nbsp;</LandingHighlight>
-        your trophy hunting adventures with Notion.
+        your trophy hunting adventures with our Notion template!
         <LandingHighlight>&nbsp;Add&nbsp;</LandingHighlight>
         new games to your backlog,
         <LandingHighlight>&nbsp;prioritize&nbsp;</LandingHighlight>
@@ -29,7 +29,7 @@ const HeroSection: FC = () => {
           I already have a template
         </LandingLink>
         <LandingLink className={classes.link} href="/download">
-          Download template
+          Get it for free!
         </LandingLink>
       </Group>
     </Flex>
