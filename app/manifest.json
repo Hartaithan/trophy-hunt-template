@@ -1,8 +1,14 @@
 {
   "name": "Trophy Hunt Template",
   "short_name": "Trophy Hunt",
+  "description": "Trophy Hunt Template for Notion",
   "orientation": "portrait",
+  "id": "/",
+  "scope": "/",
   "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#132b2c",
+  "background_color": "#4a7b71",
   "icons": [
     {
       "src": "/icon-192x192.png",
@@ -27,7 +33,19 @@
       "purpose": "maskable"
     }
   ],
-  "theme_color": "#132b2c",
-  "background_color": "#4a7b71",
-  "display": "standalone"
+  "screenshots": [
+    {
+      "src": "/screenshot.webp",
+      "sizes": "540x720",
+      "type": "image/webp",
+      "label": "Search Page"
+    },
+    {
+      "src": "/screenshot-wide.webp",
+      "sizes": "800x600",
+      "type": "image/webp",
+      "form_factor": "wide",
+      "label": "Search Page"
+    }
+  ]
 }
