@@ -29,7 +29,7 @@ const HeroSection: FC = () => {
           I already have a template
         </LandingLink>
         <LandingLink className={classes.link} href="/download">
-          Get it for free!
+          Get template!
         </LandingLink>
       </Group>
     </Flex>

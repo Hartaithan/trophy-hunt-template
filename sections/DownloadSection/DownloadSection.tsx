@@ -39,17 +39,15 @@ const DownloadSection: FC = () => {
       autoClose: false,
       withCloseButton: false,
     });
-    const { status, message, data } = await checkRequirements(
-      session.data?.access_token,
-    );
+    const response = await checkRequirements(session.data?.access_token);
     setChecking(false);
-    setCheck(data ?? null);
-    if (status === "success") {
+    setCheck(response?.data ?? null);
+    if (response?.status === "success") {
       notifications.update({
         id: "check",
         loading: false,
         title: "Success!",
-        message: message,
+        message: response?.message,
         icon: <IconCheck size="1rem" />,
         autoClose: 3000,
       });
@@ -59,7 +57,7 @@ const DownloadSection: FC = () => {
         loading: false,
         color: "red",
         title: "Oops!",
-        message: message,
+        message: response?.message,
         icon: <IconAlertOctagon size="1rem" />,
         withCloseButton: true,
       });
@@ -69,15 +67,13 @@ const DownloadSection: FC = () => {
   const handleDownload = async () => {
     try {
       setDownloading(true);
-      const { status, message } = await getDownloadLink(
-        session.data?.access_token,
-      );
+      const response = await getDownloadLink(session.data?.access_token);
       setDownloading(false);
-      if (status === "error") {
+      if (response?.status === "error") {
         notifications.show({
           color: "red",
           title: "Oops!",
-          message,
+          message: response?.message,
           icon: <IconAlertOctagon size="1rem" />,
           autoClose: false,
           withCloseButton: true,

@@ -36,16 +36,16 @@ const SearchSection: FC = () => {
 
   const handleDebouncedChange = useCallback(async () => {
     if (debounced.trim().length === 0) return;
-    const { status, message, data } = await searchByQuery(debounced);
-    if (status === "success") {
-      setResults(data?.results ?? []);
+    const response = await searchByQuery(debounced);
+    if (response?.status === "success") {
+      setResults(response?.data?.results ?? []);
     } else {
-      notifications.update({
-        loading: false,
+      notifications.show({
         color: "red",
-        title: "Something went wrong!",
-        message: message,
+        title: "Oops!",
+        message: response?.message,
         icon: <IconAlertOctagon size="1rem" />,
+        autoClose: false,
         withCloseButton: true,
       });
     }
