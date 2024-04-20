@@ -19,12 +19,12 @@ const select = {
 
 export const searchByQuery = async (
   query: string,
-  page = 1,
+  page: number | null = null,
   example: Example | null = null,
 ): Promise<ActionResponse<SearchResponse>> => {
   const url = new URL(`${SERVICE_URL}/search`);
   url.searchParams.set("q", encodeURI(query));
-  url.searchParams.set("page", page.toString());
+  url.searchParams.set("page", page ? page.toString() : "1");
 
   const content = await fetchPage(url.toString(), example);
   if (!content) {
@@ -79,8 +79,6 @@ export const searchByQuery = async (
     const page = link.split("page=")[1];
     nextPage = page ? Number(page) : null;
   }
-
-  console.log("nextPage", nextPage);
 
   const response: SearchResponse = { query, resultQuery, results, nextPage };
 

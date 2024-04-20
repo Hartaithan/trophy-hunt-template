@@ -1,20 +1,23 @@
 "use client";
 
 import { useState, type FC, useEffect, useCallback, useRef } from "react";
-import { Flex } from "@mantine/core";
+import { Button, Flex } from "@mantine/core";
 import SearchForm from "@/forms/SearchForm/SearchForm";
 import SearchResults from "../../components/SearchResults/SearchResults";
 import type { SearchResult } from "@/models/SearchModel";
 import { useDebouncedValue } from "@mantine/hooks";
 import { searchByQuery } from "@/actions/search";
 import { notifications } from "@mantine/notifications";
-import { IconAlertOctagon } from "@tabler/icons-react";
+import { IconAlertOctagon, IconChevronRight } from "@tabler/icons-react";
 
 const SearchSection: FC = () => {
   const [search, setSearch] = useState<string>("");
+  const searchValue = useRef<string>("");
   const [debounced] = useDebouncedValue(search, 1500);
-  const [isLoading, setLoading] = useState<boolean>(false);
   const [results, setResults] = useState<SearchResult[]>([]);
+  const [nextPage, setNextPage] = useState<number | null>(null);
+  const [isLoading, setLoading] = useState<boolean>(false);
+  const [isFetching, setFetching] = useState<boolean>(false);
   const languageRef = useRef<HTMLInputElement>(null);
 
   const handleReset = useCallback(() => {
@@ -30,6 +33,7 @@ const SearchSection: FC = () => {
         setLoading(true);
       }
       setSearch(value);
+      searchValue.current = value;
     },
     [handleReset, setLoading, setSearch],
   );
@@ -39,6 +43,7 @@ const SearchSection: FC = () => {
     const response = await searchByQuery(debounced);
     if (response?.status === "success") {
       setResults(response?.data?.results ?? []);
+      setNextPage(response?.data?.nextPage ?? null);
     } else {
       notifications.show({
         color: "red",
@@ -51,6 +56,26 @@ const SearchSection: FC = () => {
     }
     setLoading(false);
   }, [debounced]);
+
+  const handleNextPage = useCallback(async (page: number) => {
+    setFetching(true);
+    const response = await searchByQuery(searchValue.current, page);
+    if (response?.status === "success") {
+      const resultsList = response?.data?.results ?? [];
+      setResults((prev) => [...prev, ...resultsList]);
+      setNextPage(response?.data?.nextPage ?? null);
+    } else {
+      notifications.show({
+        color: "red",
+        title: "Oops!",
+        message: response?.message,
+        icon: <IconAlertOctagon size="1rem" />,
+        autoClose: false,
+        withCloseButton: true,
+      });
+    }
+    setFetching(false);
+  }, []);
 
   useEffect(() => {
     handleDebouncedChange();
@@ -70,6 +95,16 @@ const SearchSection: FC = () => {
         handleChange={handleChange}
       />
       <SearchResults results={results} languageRef={languageRef} />
+      {!isLoading && results.length > 0 && nextPage && (
+        <Button
+          variant="light"
+          fullWidth
+          loading={isFetching}
+          rightSection={<IconChevronRight size="1.25rem" />}
+          onClick={() => handleNextPage(nextPage)}>
+          Next page
+        </Button>
+      )}
     </Flex>
   );
 };
