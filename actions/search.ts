@@ -18,12 +18,15 @@ const select = {
 
 export const searchByQuery = async (
   query: string,
+  page = 1,
   example: Example | null = null,
 ): Promise<ActionResponse<SearchResponse>> => {
-  const url = `${SERVICE_URL}/search/games?q=${encodeURI(query)}`;
-  const page = await fetchPage(url, example);
+  const url = new URL(`${SERVICE_URL}/search`);
+  url.searchParams.set("q", encodeURI(query));
+  url.searchParams.set("page", page.toString());
 
-  if (!page) {
+  const content = await fetchPage(url.toString(), example);
+  if (!content) {
     console.error("unable to fetch page", url);
     return {
       status: "error",
@@ -31,10 +34,9 @@ export const searchByQuery = async (
     };
   }
 
-  const cheerio = load(page.body);
+  const cheerio = load(content.body);
 
   const results: SearchResult[] = [];
-
   const resultQuery = cheerio(select.query).text().split("›").pop();
   const rows = cheerio(select.rows);
 
