@@ -14,6 +14,7 @@ const select = {
   region: "td:nth-child(2)",
   platforms: "td:nth-child(2) > div.platforms > span.platform",
   image: "td:nth-child(1) > a > img",
+  active: "a.typo-button.active",
 };
 
 export const searchByQuery = async (
@@ -70,7 +71,18 @@ export const searchByQuery = async (
     results.push({ id: index + 1, name, url, platforms, region, image_url });
   });
 
-  const response: SearchResponse = { query, resultQuery, results };
+  let nextPage: number | null = null;
+  const activePage = cheerio(select.active);
+  const nextLink = activePage.parent().next().find("a");
+  if (nextLink.length > 0 && nextLink.hasClass("typo-button")) {
+    const link = nextLink.attr("href") ?? "";
+    const page = link.split("page=")[1];
+    nextPage = page ? Number(page) : null;
+  }
+
+  console.log("nextPage", nextPage);
+
+  const response: SearchResponse = { query, resultQuery, results, nextPage };
 
   return {
     data: response,

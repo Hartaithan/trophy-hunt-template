@@ -11,4 +11,5 @@ export interface SearchResponse {
   query: string;
   resultQuery: string | undefined;
   results: SearchResult[];
+  nextPage: number | null;
 }
