@@ -41,10 +41,12 @@ export const searchByQuery = async (
   const resultQuery = cheerio(select.query).text().split("›").pop();
   const rows = cheerio(select.rows);
 
-  rows.each((index, result) => {
+  rows.each((_index, result) => {
     const nameElement = cheerio(result).find(select.name);
     const name = nameElement.text().trim();
-    const url = SERVICE_URL + nameElement.attr("href");
+
+    const path = nameElement.attr("href") ?? name;
+    const url = SERVICE_URL + path;
 
     let region: string | null = null;
     const regionElement = cheerio(result).find(select.region);
@@ -68,7 +70,7 @@ export const searchByQuery = async (
     const image = cheerio(result).find(select.image);
     const image_url = image.attr("src");
 
-    results.push({ id: index + 1, name, url, platforms, region, image_url });
+    results.push({ path, name, url, platforms, region, image_url });
   });
 
   let nextPage: number | null = null;

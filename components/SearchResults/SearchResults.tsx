@@ -14,7 +14,7 @@ const SearchResults: FC<Props> = (props) => {
   return (
     <Stack w="100%">
       {results.map((result) => (
-        <ResultItem key={result.id} item={result} languageRef={languageRef} />
+        <ResultItem key={result.path} item={result} languageRef={languageRef} />
       ))}
     </Stack>
   );

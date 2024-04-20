@@ -1,5 +1,5 @@
 export interface SearchResult {
-  id: number;
+  path: string;
   name: string;
   platforms?: string[];
   region: string | null;
