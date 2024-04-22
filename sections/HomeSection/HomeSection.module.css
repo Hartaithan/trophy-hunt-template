@@ -1,23 +1,26 @@
+.container {
+  width: 300px;
+  justify-content: center;
+}
+
 .card {
-  height: 100px;
-  width: 120px;
+  width: 100%;
+  gap: 0.6rem;
   display: flex;
-  gap: 0.3rem;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   background: var(--mantine-color-primary-dark-7);
   border-radius: var(--mantine-radius-lg);
   border: 2px solid transparent;
   transition: 0.5s all ease-in-out;
+  padding: var(--mantine-spacing-xs) var(--mantine-spacing-sm);
   &:hover {
     border-color: var(--mantine-color-accent-dark-3);
   }
 }
 
 .title {
-  font-weight: var(--mantine-h4-font-weight);
-  line-height: var(--mantine-h4-line-height);
-  font-size: var(--mantine-h4-font-size);
+  font-weight: 700;
+  font-size: var(--mantine-font-size-md);
   text-align: center;
 }

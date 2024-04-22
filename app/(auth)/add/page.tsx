@@ -2,7 +2,7 @@ import type { FC } from "react";
 import PageContainer from "@/components/PageContainer/PageContainer";
 import SearchSection from "@/sections/SearchSection/SearchSection";
 
-const SearchPage: FC = () => {
+const AddPage: FC = () => {
   return (
     <PageContainer w="100%" justify="center" align="center">
       <SearchSection />
@@ -10,4 +10,4 @@ const SearchPage: FC = () => {
   );
 };
 
-export default SearchPage;
+export default AddPage;
