@@ -14,7 +14,7 @@ const SearchSection: FC = () => {
   const [search, setSearch] = useState<string>("");
   const searchValue = useRef<string>("");
   const [debounced] = useDebouncedValue(search, 1500);
-  const [results, setResults] = useState<SearchResult[]>([]);
+  const [results, setResults] = useState<SearchResult[] | null>(null);
   const [nextPage, setNextPage] = useState<number | null>(null);
   const [isLoading, setLoading] = useState<boolean>(false);
   const [isFetching, setFetching] = useState<boolean>(false);
@@ -62,7 +62,7 @@ const SearchSection: FC = () => {
     const response = await searchByQuery(searchValue.current, page);
     if (response?.status === "success") {
       const resultsList = response?.data?.results ?? [];
-      setResults((prev) => [...prev, ...resultsList]);
+      setResults((prev) => (prev ? [...prev, ...resultsList] : resultsList));
       setNextPage(response?.data?.nextPage ?? null);
     } else {
       notifications.show({
@@ -95,7 +95,7 @@ const SearchSection: FC = () => {
         handleChange={handleChange}
       />
       <SearchResults results={results} languageRef={languageRef} />
-      {!isLoading && results.length > 0 && nextPage && (
+      {!isLoading && results && results.length > 0 && nextPage && (
         <Button
           variant="light"
           fullWidth

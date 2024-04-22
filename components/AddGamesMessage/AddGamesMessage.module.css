@@ -1,0 +1,25 @@
+.container {
+  margin-bottom: var(--mantine-spacing-xl);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  @media (max-width: $mantine-breakpoint-sm) {
+    margin-bottom: var(--mantine-spacing-md);
+  }
+}
+
+.title {
+  font-size: var(--mantine-font-size-lg);
+  text-align: center;
+  margin-bottom: 0.2rem;
+  @media (max-width: $mantine-breakpoint-sm) {
+    font-size: var(--mantine-font-size-md);
+  }
+}
+
+.description {
+  text-align: center;
+  @media (max-width: $mantine-breakpoint-sm) {
+    font-size: var(--mantine-font-size-sm);
+  }
+}
