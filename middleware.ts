@@ -1,11 +1,7 @@
 import { NextResponse, type NextMiddleware } from "next/server";
 
-const authPages = new Map<string, boolean>([["/signIn", true]]);
-const publicPages = new Map<string, boolean>([
-  ["/", true],
-  ["/download", true],
-  ["/tutorial", true],
-]);
+const authPages = new Set<string>(["/signIn"]);
+const publicPages = new Set<string>(["/", "/download", "/tutorial"]);
 const requestPages = /^(.*?)(?:\/progress|\/check|\/uncheck)$/;
 
 export const config = {
