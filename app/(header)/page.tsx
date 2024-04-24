@@ -10,6 +10,7 @@ const Home: FC = () => {
   return (
     <PageContainer w="100%" justify="center" align="center">
       {isAuth ? <HomeSection /> : <LandingSection />}
+      {!isAuth && <div id="hide-header" />}
     </PageContainer>
   );
 };

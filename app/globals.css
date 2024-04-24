@@ -43,6 +43,12 @@ body {
   padding-right: calc(var(--mantine-spacing-md) - var(--scrollbar-size));
 }
 
+#main:has(#hide-header) {
+  #header {
+    display: none;
+  }
+}
+
 ::-webkit-scrollbar {
   height: var(--scrollbar-size);
   width: var(--scrollbar-size);

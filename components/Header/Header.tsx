@@ -70,7 +70,7 @@ const Header: FC = () => {
   );
 
   return (
-    <Flex className={classes.root}>
+    <Flex id="header" className={classes.root}>
       <Container className={classes.container}>
         <Group className={classes.links} visibleFrom="sm">
           {links}
