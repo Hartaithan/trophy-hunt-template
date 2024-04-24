@@ -2,7 +2,8 @@
   --list-spacing: 0.2rem;
   --paragraph: 1.6rem;
   @media (max-width: $mantine-breakpoint-lg) {
-    padding: 0 var(--mantine-spacing-sm);
+    padding-left: 0.25rem;
+    padding-right: var(--mantine-spacing-sm);
   }
 }
 

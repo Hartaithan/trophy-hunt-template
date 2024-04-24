@@ -22,7 +22,7 @@ const TutorialAppSection: FC = () => {
         <ListItem className={classes.item}>
           <TutorialHighlight>You&apos;re all set!</TutorialHighlight>
           &nbsp;Head over to the&nbsp;
-          <TutorialLink href="https://trophy-hunt-template.vercel.app/signIn">
+          <TutorialLink href="https://trophy-hunt-template.vercel.app/add">
             game addition page
           </TutorialLink>
           &nbsp;to start building your backlog
