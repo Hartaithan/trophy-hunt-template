@@ -1,10 +1,10 @@
 .container {
   height: 100%;
   flex-direction: column;
-  padding-top: var(--mantine-spacing-xl);
+  padding-top: var(--mantine-spacing-lg);
   padding-bottom: var(--mantine-spacing-xl);
   @media (max-width: $mantine-breakpoint-md) {
-    padding-top: var(--mantine-spacing-md);
+    padding-top: var(--mantine-spacing-sm);
     padding-bottom: var(--mantine-spacing-md);
   }
 }

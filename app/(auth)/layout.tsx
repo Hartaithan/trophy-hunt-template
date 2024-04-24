@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import type { FC, PropsWithChildren } from "react";
 import { Container } from "@mantine/core";
+import Header from "@/components/Header/Header";
 
 export const metadata: Metadata = {
   title: "Trophy Hunt Template",
@@ -14,7 +15,12 @@ export const viewport: Viewport = {
 };
 
 const AuthLayout: FC<PropsWithChildren> = ({ children }) => {
-  return <Container id="main">{children}</Container>;
+  return (
+    <>
+      <Header />
+      <Container id="main">{children}</Container>
+    </>
+  );
 };
 
 export default AuthLayout;
