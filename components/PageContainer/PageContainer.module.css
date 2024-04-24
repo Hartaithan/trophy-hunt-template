@@ -1,5 +1,6 @@
 .container {
-  height: 100%;
+  height: auto;
+  flex-grow: 1;
   flex-direction: column;
   padding-top: var(--mantine-spacing-lg);
   padding-bottom: var(--mantine-spacing-xl);

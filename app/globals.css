@@ -35,9 +35,11 @@ body {
 }
 
 #main {
-  flex-grow: 1;
   height: auto;
   width: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
   scrollbar-gutter: stable;
   padding-inline: var(--mantine-spacing-md);
   padding-right: calc(var(--mantine-spacing-md) - var(--scrollbar-size));
