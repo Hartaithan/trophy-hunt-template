@@ -3,7 +3,7 @@ import "@mantine/core/styles.css";
 import "@mantine/notifications/styles.css";
 import type { Metadata, Viewport } from "next";
 import type { FC, PropsWithChildren } from "react";
-import { ColorSchemeScript } from "@mantine/core";
+import { ColorSchemeScript, Container } from "@mantine/core";
 import AppProviders from "@/providers/AppProviders";
 import { Montserrat } from "next/font/google";
 
@@ -13,9 +13,9 @@ const font = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Welcome to Trophy Hunt Template",
-  description: "Trophy Hunt Template",
-  applicationName: "Trophy Hunt Template",
+  title: "Trophy Hunt Template",
+  description: "Trophy Hunt Template for Notion",
+  applicationName: "Trophy Hunt",
 };
 
 export const viewport: Viewport = {
@@ -31,7 +31,7 @@ const MainLayout: FC<PropsWithChildren> = ({ children }) => {
       </head>
       <body>
         <AppProviders fontFamily={font.style.fontFamily}>
-          {children}
+          <Container id="main">{children}</Container>
         </AppProviders>
       </body>
     </html>
