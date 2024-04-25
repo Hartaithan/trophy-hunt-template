@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, type FC } from "react";
-import { useDisclosure } from "@mantine/hooks";
+import { useMemo, useState, type FC } from "react";
+import { useClickOutside, useDisclosure } from "@mantine/hooks";
 import {
   Anchor,
   Burger,
@@ -56,7 +56,12 @@ const items: NavLink[] = [
 
 const Header: FC = () => {
   const segment = useSelectedLayoutSegment();
-  const [opened, { toggle }] = useDisclosure(false);
+  const [opened, { toggle, close }] = useDisclosure(false);
+  const [disabled, setDisabled] = useState(false);
+  const [dropdown, setDropdown] = useState<HTMLDivElement | null>(null);
+  const [trigger, setTrigger] = useState<HTMLButtonElement | null>(null);
+
+  useClickOutside(() => close(), null, [trigger, dropdown]);
 
   const links = useMemo(
     () =>
@@ -83,20 +88,31 @@ const Header: FC = () => {
           {links}
         </Group>
         <Burger
+          ref={setTrigger}
           className={classes.trigger}
           opened={opened}
           onClick={toggle}
           hiddenFrom="sm"
           size="sm"
         />
-        <Transition transition="slide-down" duration={200} mounted={opened}>
+        <Transition
+          transition="slide-down"
+          duration={200}
+          mounted={opened}
+          onEnter={() => setDisabled(true)}
+          onEntered={() => setDisabled(false)}
+          onExit={() => setDisabled(true)}
+          onExited={() => setDisabled(false)}
+          keepMounted>
           {(styles) => (
             <Stack
+              ref={setDropdown}
               hiddenFrom="sm"
               className={classes.dropdown}
               style={{
                 ...styles,
                 transform: styles.transform + " translateX(-50%)",
+                pointerEvents: disabled ? "none" : "all",
               }}>
               {links}
             </Stack>

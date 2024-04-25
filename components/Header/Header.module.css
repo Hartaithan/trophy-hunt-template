@@ -54,7 +54,3 @@
   top: var(--header-height);
   padding: var(--mantine-spacing-md) var(--mantine-spacing-lg);
 }
-
-.dropdown:not([data-with-border]) {
-  transform: translateX(-50%);
-}
