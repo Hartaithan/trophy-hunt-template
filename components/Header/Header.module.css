@@ -14,9 +14,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  @media (max-width: $mantine-breakpoint-sm) {
-    padding-inline: var(--mantine-spacing-md);
-    padding-right: calc(var(--mantine-spacing-md) - var(--scrollbar-size));
+  &[data-size] {
+    padding: 0px;
+    padding-inline: 0px;
   }
 }
 
