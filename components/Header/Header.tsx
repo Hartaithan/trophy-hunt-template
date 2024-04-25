@@ -40,6 +40,13 @@ const items: NavLink[] = [
   },
   {
     id: 4,
+    label: "Download",
+    href: "/download",
+    segment: "download",
+    disabled: false,
+  },
+  {
+    id: 5,
     label: "Help",
     href: "/help",
     segment: "help",
