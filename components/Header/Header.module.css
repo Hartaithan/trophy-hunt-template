@@ -20,6 +20,10 @@
   }
 }
 
+.links {
+  gap: var(--mantine-spacing-xl);
+}
+
 .link {
   font-weight: 500;
   color: var(--mantine-color-accented-5);

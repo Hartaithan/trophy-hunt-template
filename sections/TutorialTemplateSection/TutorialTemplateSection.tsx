@@ -14,15 +14,20 @@ const TutorialTemplateSection: FC = () => {
           two things you need to do:&nbsp;
           <br />
           <TutorialHighlight>
-            connect the template to the integration
+            connect the duplicated template to the integration
           </TutorialHighlight>
           &nbsp;and find the&nbsp;
           <TutorialHighlight>Database ID</TutorialHighlight>
         </Text>
         <ListItem className={classes.item}>
-          To connect the template to the integration, follow these steps:&nbsp;
-          <TutorialHighlight>Menu (•••)</TutorialHighlight>
-          &nbsp;-&nbsp;
+          To connect the template to the integration, first, locate the&nbsp;
+          <TutorialHighlight>
+            Menu (it&apos;s the icon with three dots in the top right corner)
+          </TutorialHighlight>
+          &nbsp;and click on it
+        </ListItem>
+        <ListItem className={classes.item}>
+          Then, follow these steps:&nbsp;
           <TutorialHighlight>Connect to</TutorialHighlight>
           &nbsp;-&nbsp;
           <TutorialHighlight>
