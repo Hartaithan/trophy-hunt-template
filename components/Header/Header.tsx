@@ -50,7 +50,7 @@ const items: NavLink[] = [
     label: "Help",
     href: "/help",
     segment: "help",
-    disabled: true,
+    disabled: false,
   },
 ];
 

@@ -1,7 +1,7 @@
 import { NextResponse, type NextMiddleware } from "next/server";
 
 const authPages = new Set<string>(["/signIn"]);
-const publicPages = new Set<string>(["/", "/download", "/tutorial"]);
+const publicPages = new Set<string>(["/", "/download", "/tutorial", "/help"]);
 const requestPages = /^(.*?)(?:\/progress|\/check|\/uncheck)$/;
 
 export const config = {
