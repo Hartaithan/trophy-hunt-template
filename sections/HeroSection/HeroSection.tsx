@@ -31,6 +31,9 @@ const HeroSection: FC = () => {
         <LandingLink className={classes.link} href="/download">
           Get template!
         </LandingLink>
+        <LandingLink className={classes.link} href="/help">
+          I need help!
+        </LandingLink>
       </Group>
     </Flex>
   );
