@@ -7,11 +7,20 @@
   line-height: var(--mantine-h3-line-height);
   font-size: var(--mantine-h3-font-size);
   text-align: center;
+  margin-bottom: 0.35rem;
+  @media (max-width: $mantine-breakpoint-sm) {
+    font-weight: var(--mantine-h4-font-weight);
+    line-height: var(--mantine-h4-line-height);
+    font-size: var(--mantine-h4-font-size);
+  }
 }
 
 .description {
   font-weight: 500;
   text-align: center;
+  @media (max-width: $mantine-breakpoint-sm) {
+    font-size: var(--mantine-font-size-sm);
+  }
 }
 
 .links {
@@ -24,5 +33,14 @@
   gap: var(--mantine-spacing-xs);
   & > * {
     font-weight: 600;
+  }
+  @media (max-width: $mantine-breakpoint-sm) {
+    & > * {
+      font-size: var(--mantine-font-size-sm);
+    }
+  }
+  @media (max-width: $mantine-breakpoint-xs) {
+    width: 90%;
+    justify-content: center;
   }
 }
