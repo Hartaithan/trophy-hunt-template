@@ -3,7 +3,8 @@
 import type { ActionResponse } from "@/models/ActionModel";
 import type { PageBlocks } from "@/models/PageModel";
 import { getAllBlocks } from "@/utils/blocks";
-import { getNotionClient, getNotionError } from "@/utils/notion";
+import { getNotionClient } from "@/utils/notion";
+import { getNotionError } from "@/utils/error";
 import { calculateProgress } from "@/utils/progress";
 
 export const updateProgress = async (

@@ -1,7 +1,8 @@
 "use server";
 
 import type { ActionResponse } from "@/models/ActionModel";
-import { getDatabaseID, getNotionClient, getNotionError } from "@/utils/notion";
+import { getDatabaseID, getNotionClient } from "@/utils/notion";
+import { getNotionError } from "@/utils/error";
 import type { FetchGameResponse } from "@/models/GameModel";
 import { fetchGame } from "@/utils/game";
 import type {
