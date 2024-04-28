@@ -3,7 +3,7 @@
 import type { ActionResponse } from "@/models/ActionModel";
 import type { PageBlocks } from "@/models/PageModel";
 import { getAllBlocks } from "@/utils/blocks";
-import { getNotionClient } from "@/utils/config";
+import { getNotionClient, getNotionError } from "@/utils/notion";
 import { calculateProgress } from "@/utils/progress";
 
 export const updateProgress = async (
@@ -46,7 +46,7 @@ export const updateProgress = async (
     console.error("update page error", error);
     return {
       status: "error",
-      message: "Unable to update page properties",
+      message: getNotionError(error, "Unable to update page properties"),
     };
   }
 };

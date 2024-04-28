@@ -1,7 +1,7 @@
 "use server";
 
 import type { ActionResponse } from "@/models/ActionModel";
-import { getDatabaseID, getNotionClient } from "@/utils/config";
+import { getDatabaseID, getNotionClient, getNotionError } from "@/utils/notion";
 import type { FetchGameResponse } from "@/models/GameModel";
 import { fetchGame } from "@/utils/game";
 import type {
@@ -221,7 +221,7 @@ export const addGame = async (
     console.error("create game error", error);
     return {
       status: "error",
-      message: "Unable to add game",
+      message: getNotionError(error, "Unable to add game"),
     };
   }
 
@@ -246,7 +246,7 @@ export const addGame = async (
     console.error("update game error", error);
     return {
       status: "error",
-      message: "Unable to add links",
+      message: getNotionError(error, "Unable to add links"),
     };
   }
 };
