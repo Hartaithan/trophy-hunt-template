@@ -21,10 +21,11 @@ const ResultItem: FC<Props> = (props) => {
   const { item, languageRef } = props;
 
   const handleAdd = useCallback(
-    async (url: string) => {
+    async (item: SearchResult) => {
+      const { path, url } = item;
       const language = getLanguageValue(languageRef);
       notifications.show({
-        id: "add",
+        id: path,
         loading: true,
         title: "Adding a game...",
         message:
@@ -35,7 +36,7 @@ const ResultItem: FC<Props> = (props) => {
       const response = await addGame(url, language);
       if (response?.status === "success") {
         notifications.update({
-          id: "add",
+          id: path,
           loading: false,
           title: "Success!",
           message: response?.message,
@@ -44,7 +45,7 @@ const ResultItem: FC<Props> = (props) => {
         });
       } else {
         notifications.update({
-          id: "add",
+          id: path,
           loading: false,
           color: "red",
           title: "Something went wrong!",
@@ -73,9 +74,7 @@ const ResultItem: FC<Props> = (props) => {
           <Text className={classes.platform}>{item.platforms?.join(", ")}</Text>
         )}
       </Flex>
-      <ActionIcon
-        className={classes.button}
-        onClick={() => handleAdd(item.url)}>
+      <ActionIcon className={classes.button} onClick={() => handleAdd(item)}>
         <IconPlus width={18} height={18} />
         <Text>Add</Text>
       </ActionIcon>
