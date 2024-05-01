@@ -22,18 +22,18 @@ const ResultItem: FC<Props> = (props) => {
 
   const handleAdd = useCallback(
     async (item: SearchResult) => {
-      const { path, url } = item;
+      const { name, path } = item;
       const language = getLanguageValue(languageRef);
       notifications.show({
         id: path,
         loading: true,
-        title: "Adding a game...",
+        title: `Adding ${name}...`,
         message:
           "The game is being added, it shouldn't take long, don't reload the page.",
         autoClose: false,
         withCloseButton: false,
       });
-      const response = await addGame(url, language);
+      const response = await addGame(item, language);
       if (response?.status === "success") {
         notifications.update({
           id: path,

@@ -22,12 +22,15 @@ import { createTrophyTitle } from "@/utils/trophy";
 import { defaultLanguage } from "@/constants/language";
 import { chunkBlocks } from "@/utils/blocks";
 import { baseTitle } from "@/constants/trophy";
+import type { SearchResult } from "@/models/SearchModel";
 
 export const addGame = async (
-  url: string,
+  item: SearchResult,
   lang: string = defaultLanguage,
   example: Example | null = null,
 ): Promise<ActionResponse> => {
+  const { url, name } = item;
+
   let game: FetchGameResponse | null = await fetchGame(url, lang, example);
   if (!game) {
     console.error("unable to fetch game");
@@ -241,7 +244,7 @@ export const addGame = async (
     console.info("page updated", updated.id);
     return {
       status: "success",
-      message: "Game successfully added!",
+      message: `${name} successfully added!`,
     };
   } catch (error) {
     console.error("update game error", error);
