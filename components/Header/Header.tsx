@@ -47,6 +47,13 @@ const items: NavLink[] = [
   },
   {
     id: 5,
+    label: "Profile",
+    href: "/profile",
+    segment: "profile",
+    disabled: false,
+  },
+  {
+    id: 6,
     label: "Help",
     href: "/help",
     segment: "help",
