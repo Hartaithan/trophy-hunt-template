@@ -1,7 +1,8 @@
 import type { FC } from "react";
 import type { ProfileFormValues } from "@/models/ProfileModel";
-import { Flex, TextInput } from "@mantine/core";
+import { Button, Flex, TextInput } from "@mantine/core";
 import CopyValueButton from "@/components/CopyButton/CopyButton";
+import { signOut } from "@/actions/sign-out";
 
 interface Props {
   values: ProfileFormValues;
@@ -10,7 +11,13 @@ interface Props {
 const ProfileForm: FC<Props> = (props) => {
   const { values } = props;
   return (
-    <Flex direction="column" w="100%" maw={{ base: "100%", sm: 400 }} gap="md">
+    <Flex
+      component="form"
+      action={signOut}
+      direction="column"
+      w="100%"
+      maw={{ base: "100%", sm: 400 }}
+      gap="md">
       <TextInput
         label="Notion Secret"
         value={values.notionToken}
@@ -23,6 +30,9 @@ const ProfileForm: FC<Props> = (props) => {
         rightSection={<CopyValueButton value={values.notionToken} />}
         readOnly
       />
+      <Button type="submit" fullWidth mt="md" variant="light" color="red">
+        Sign Out
+      </Button>
     </Flex>
   );
 };
