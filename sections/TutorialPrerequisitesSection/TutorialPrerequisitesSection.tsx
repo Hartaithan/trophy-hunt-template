@@ -15,11 +15,11 @@ const TutorialPrerequisitesSection: FC = () => {
         </Text>
         <ListItem className={classes.item}>
           Notion account. You can create one&nbsp;
-          <TutorialLink href="https://github.com/signup">here</TutorialLink>
+          <TutorialLink href="https://www.notion.so/signup">here</TutorialLink>
         </ListItem>
         <ListItem className={classes.item}>
           GitHub account. You can create one&nbsp;
-          <TutorialLink href="https://www.notion.so/signup">here</TutorialLink>
+          <TutorialLink href="https://github.com/signup">here</TutorialLink>
         </ListItem>
       </List>
     </div>
