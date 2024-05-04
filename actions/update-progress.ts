@@ -2,7 +2,7 @@
 
 import type { ActionResponse } from "@/models/ActionModel";
 import type { PageBlocks } from "@/models/PageModel";
-import { getAllBlocks } from "@/utils/blocks";
+import { collectPaginatedAPI } from "@notionhq/client";
 import { getNotionClient } from "@/utils/notion";
 import { getNotionError } from "@/utils/error";
 import { calculateProgress } from "@/utils/progress";
@@ -15,7 +15,9 @@ export const updateProgress = async (
 
   let blocks: PageBlocks | null = null;
   try {
-    blocks = await getAllBlocks(notion, page);
+    blocks = await collectPaginatedAPI(notion.blocks.children.list, {
+      block_id: page,
+    });
   } catch (error) {
     console.error("page children list error", error);
     return {
