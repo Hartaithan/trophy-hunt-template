@@ -46,9 +46,7 @@ const TutorialTemplateSection: FC = () => {
         <ListItem className={classes.item}>
           Either manually extract the ID from the link or use the handy tool
           provided on the&nbsp;
-          <TutorialLink href="https://trophy-hunt-template.vercel.app/signIn">
-            login page
-          </TutorialLink>
+          <TutorialLink href="/signIn">login page</TutorialLink>
         </ListItem>
       </List>
     </div>

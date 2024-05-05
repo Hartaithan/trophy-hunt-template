@@ -11,9 +11,7 @@ const TutorialDownloadSection: FC = () => {
       <List className={classes.list} type="ordered">
         <ListItem className={classes.item}>
           Go to&nbsp;
-          <TutorialLink href="https://trophy-hunt-template.vercel.app/download">
-            Download Page
-          </TutorialLink>
+          <TutorialLink href="/download">Download Page</TutorialLink>
           &nbsp;and sign in using your GitHub account
         </ListItem>
         <ListItem className={classes.item}>

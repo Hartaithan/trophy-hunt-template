@@ -11,10 +11,8 @@ const TutorialAppSection: FC = () => {
       <List className={classes.list} type="ordered">
         <ListItem className={classes.item}>
           On the&nbsp;
-          <TutorialLink href="https://trophy-hunt-template.vercel.app/signIn">
-            login page
-          </TutorialLink>
-          , enter your&nbsp;
+          <TutorialLink href="/signIn">login page</TutorialLink>, enter
+          your&nbsp;
           <TutorialHighlight>Notion Secret</TutorialHighlight>
           &nbsp;and&nbsp;
           <TutorialHighlight>Database ID</TutorialHighlight>
@@ -22,7 +20,7 @@ const TutorialAppSection: FC = () => {
         <ListItem className={classes.item}>
           <TutorialHighlight>You&apos;re all set!</TutorialHighlight>
           &nbsp;Head over to the&nbsp;
-          <TutorialLink href="https://trophy-hunt-template.vercel.app/add">
+          <TutorialLink href="/add" target="_self">
             game addition page
           </TutorialLink>
           &nbsp;to start building your backlog
