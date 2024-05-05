@@ -30,8 +30,7 @@ const DownloadSection: FC = () => {
 
   const handleСheckRequirements = async () => {
     setChecking(true);
-    notifications.show({
-      id: "check",
+    const id = notifications.show({
       loading: true,
       title: "Checking...",
       message:
@@ -44,7 +43,7 @@ const DownloadSection: FC = () => {
     setCheck(response?.data ?? null);
     if (response?.status === "success") {
       notifications.update({
-        id: "check",
+        id,
         loading: false,
         title: "Success!",
         message: response?.message,
@@ -53,7 +52,7 @@ const DownloadSection: FC = () => {
       });
     } else {
       notifications.update({
-        id: "check",
+        id,
         loading: false,
         color: "red",
         title: "Oops!",

@@ -22,10 +22,9 @@ const ResultItem: FC<Props> = (props) => {
 
   const handleAdd = useCallback(
     async (item: SearchResult) => {
-      const { name, path } = item;
+      const { name } = item;
       const language = getLanguageValue(languageRef);
-      notifications.show({
-        id: path,
+      const id = notifications.show({
         loading: true,
         title: `Adding ${name}...`,
         message:
@@ -36,7 +35,7 @@ const ResultItem: FC<Props> = (props) => {
       const response = await addGame(item, language);
       if (response?.status === "success") {
         notifications.update({
-          id: path,
+          id,
           loading: false,
           title: "Success!",
           message: response?.message,
@@ -45,7 +44,7 @@ const ResultItem: FC<Props> = (props) => {
         });
       } else {
         notifications.update({
-          id: path,
+          id,
           loading: false,
           color: "red",
           title: "Something went wrong!",
