@@ -13,9 +13,31 @@ const font = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Trophy Hunt Template",
+  title: {
+    default: "Trophy Hunt Template",
+    template: "%s | Trophy Hunt Template",
+  },
   description: "Trophy Hunt Template for Notion",
   applicationName: "Trophy Hunt",
+  twitter: {
+    card: "summary_large_image",
+  },
+  keywords: [
+    "trophy",
+    "trophies",
+    "rare trophies",
+    "backlog",
+    "trophy backlog",
+    "trophy tracking",
+    "trophy hunting app",
+    "gaming",
+    "platinum",
+    "playstation",
+    "playstation games",
+    "trophy guide",
+    "trophy hunting",
+  ],
+  robots: "all",
 };
 
 export const viewport: Viewport = {

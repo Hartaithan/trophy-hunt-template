@@ -3,6 +3,11 @@ import PageContainer from "@/components/PageContainer/PageContainer";
 import ProfileForm from "@/forms/ProfileForm/ProfileForm";
 import { getDatabaseID, getNotionToken } from "@/utils/notion";
 import type { ProfileFormValues } from "@/models/ProfileModel";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Profile",
+};
 
 const getFormValues = (): ProfileFormValues => {
   const databaseID = getDatabaseID();

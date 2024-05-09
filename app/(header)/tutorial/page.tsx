@@ -5,6 +5,11 @@ import TutorialDownloadSection from "@/sections/TutorialDownloadSection/Tutorial
 import TutorialTemplateSection from "@/sections/TutorialTemplateSection/TutorialTemplateSection";
 import TutorialAppSection from "@/sections/TutorialAppSection/TutorialAppSection";
 import type { FC } from "react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Get Started",
+};
 
 const TutorialPage: FC = () => {
   return (
