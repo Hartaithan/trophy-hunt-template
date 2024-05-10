@@ -29,7 +29,6 @@
 }
 
 .link {
-  width: 15rem;
   gap: var(--mantine-spacing-xs);
   & > * {
     font-weight: 600;
@@ -42,5 +41,20 @@
   @media (max-width: $mantine-breakpoint-xs) {
     width: 90%;
     justify-content: center;
+  }
+}
+
+.docs {
+  margin-top: 4rem;
+  justify-content: center;
+  & a {
+    font-weight: 600;
+    font-size: var(--mantine-font-size-md);
+  }
+  @media (max-width: $mantine-breakpoint-sm) {
+    margin-top: 4rem;
+    & a {
+      font-size: var(--mantine-font-size-sm);
+    }
   }
 }

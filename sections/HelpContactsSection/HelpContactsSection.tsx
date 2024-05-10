@@ -3,6 +3,7 @@ import { Anchor, Flex, Group, Stack, Text } from "@mantine/core";
 import classes from "./HelpContactsSection.module.css";
 import LandingTitle from "@/components/Highlight/LandingTitle";
 import { IconBrandDiscord, IconMail } from "@tabler/icons-react";
+import Link from "next/link";
 
 const HelpContactsSection: FC = () => {
   return (
@@ -29,6 +30,14 @@ const HelpContactsSection: FC = () => {
           </Anchor>
         </Group>
       </Stack>
+      <Group className={classes.docs}>
+        <Anchor component={Link} href="/privacy">
+          Privacy Policy
+        </Anchor>
+        <Anchor component={Link} href="/terms">
+          Terms and Conditions
+        </Anchor>
+      </Group>
     </Flex>
   );
 };
