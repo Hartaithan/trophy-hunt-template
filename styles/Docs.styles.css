@@ -1,0 +1,24 @@
+#doc {
+  padding-top: var(--mantine-spacing-xl);
+  padding-bottom: var(--mantine-spacing-xl);
+}
+
+#doc p {
+  line-height: 2rem;
+}
+
+#doc h1,
+#doc h2,
+#doc h3 {
+  margin-top: var(--mantine-spacing-md);
+  margin-bottom: var(--mantine-spacing-md);
+}
+
+#doc ul {
+  list-style-type: square;
+  padding-inline-start: 30px;
+}
+
+#doc a {
+  color: var(--mantine-color-white);
+}
