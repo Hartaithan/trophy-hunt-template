@@ -6,6 +6,7 @@ import type { FC, PropsWithChildren } from "react";
 import { ColorSchemeScript, Container } from "@mantine/core";
 import AppProviders from "@/providers/AppProviders";
 import { Montserrat } from "next/font/google";
+import { BASE_URL } from "@/constants/variables";
 
 const font = Montserrat({
   subsets: ["latin"],
@@ -38,6 +39,10 @@ export const metadata: Metadata = {
     "trophy hunting",
   ],
   robots: "all",
+  metadataBase: new URL(BASE_URL),
+  openGraph: {
+    images: "/opengraph-image.png",
+  },
 };
 
 export const viewport: Viewport = {
