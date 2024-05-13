@@ -81,11 +81,12 @@ const Header: FC = () => {
           className={classes.link}
           data-active={segment === link.segment}
           data-disabled={link.disabled}
-          prefetch={false}>
+          prefetch={false}
+          onClick={close}>
           {link.label}
         </Anchor>
       )),
-    [segment],
+    [segment, close],
   );
 
   return (
