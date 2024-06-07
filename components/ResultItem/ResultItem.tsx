@@ -5,11 +5,10 @@ import { ActionIcon, Flex, Text } from "@mantine/core";
 import type { RefObject } from "react";
 import { useCallback, type FC } from "react";
 import classes from "./ResultItem.module.css";
-import IconPlus from "@/icons/IconPlus";
 import { addGame } from "@/actions/add-game";
 import ResultImage from "../ResultImage/ResultImage";
 import { notifications } from "@mantine/notifications";
-import { IconAlertOctagon, IconCheck } from "@tabler/icons-react";
+import { IconAlertOctagon, IconCheck, IconPlus } from "@tabler/icons-react";
 import { getLanguageValue } from "@/utils/language";
 
 interface Props {
