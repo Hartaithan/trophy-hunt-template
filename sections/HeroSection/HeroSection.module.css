@@ -2,9 +2,6 @@
   width: 100%;
   flex-direction: column;
   align-items: center;
-  @media (max-width: $mantine-breakpoint-xs) {
-    margin-top: 3rem;
-  }
 }
 
 .title,
@@ -41,16 +38,10 @@
 .links {
   justify-content: center;
   align-items: center;
+  margin-top: var(--mantine-spacing-md);
   @media (max-width: $mantine-breakpoint-xs) {
     margin-top: var(--mantine-spacing-lg);
     flex-direction: column;
     gap: var(--mantine-spacing-xs);
-  }
-}
-
-.link {
-  margin-top: var(--mantine-spacing-md);
-  @media (max-width: $mantine-breakpoint-xs) {
-    margin-top: 0px;
   }
 }
