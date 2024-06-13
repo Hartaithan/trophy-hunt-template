@@ -42,6 +42,9 @@ export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   openGraph: {
     images: "/opengraph-image.png",
+    siteName: "Trophy Hunt Template",
+    url: BASE_URL,
+    type: "website",
   },
 };
 
