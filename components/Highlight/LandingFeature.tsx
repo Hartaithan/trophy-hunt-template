@@ -14,7 +14,7 @@ const gradient: MantineGradient = {
 const LandingFeature: FC<Props> = (props) => {
   const { children, ...rest } = props;
   return (
-    <Text variant="gradient" gradient={gradient} {...rest}>
+    <Text component="h1" variant="gradient" gradient={gradient} {...rest}>
       {children}
     </Text>
   );

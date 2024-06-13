@@ -30,7 +30,8 @@ const FeaturesSection: FC = () => {
             with intuitive interface. Easily prioritize your goals using our
             drag-and-drop feature. Stay updated with at-a-glance status updates
             that let you know whether a game is in backlog, in progress, or
-            completed. Template is designed to make managing your backlog as
+            completed. Template is designed to make managing your platinum
+            backlog as
             <LandingHighlight>&nbsp;simple and enjoyable</LandingHighlight> as
             possible.
           </Text>
@@ -49,8 +50,8 @@ const FeaturesSection: FC = () => {
           </Flex>
           <Text className={classes.description}>
             <LandingHighlight>Quickly</LandingHighlight> add new titles to your
-            backlog with our streamlined search and select feature, designed to
-            make building your backlog a breeze.
+            trophy backlog with our streamlined search and select feature,
+            designed to make building your backlog a breeze.
           </Text>
         </Flex>
       </GridCol>
