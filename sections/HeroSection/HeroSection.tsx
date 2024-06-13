@@ -15,9 +15,9 @@ const HeroSection: FC = () => {
         <LandingHighlight>Organize&nbsp;</LandingHighlight>
         your trophy hunting adventures with our Notion template!
         <LandingHighlight>&nbsp;Add&nbsp;</LandingHighlight>
-        new games to your backlog,
+        new games to your platinum backlog,
         <LandingHighlight>&nbsp;prioritize&nbsp;</LandingHighlight>
-        your current goals, and
+        your current trophy goals, and
         <LandingHighlight>&nbsp;celebrate&nbsp;</LandingHighlight>
         each victory with a visual showcase.
       </Text>
