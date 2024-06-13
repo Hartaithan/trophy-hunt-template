@@ -2,6 +2,7 @@
 
 import type { ActionResponse } from "@/models/ActionModel";
 import { Octokit } from "@octokit/rest";
+import type { Session } from "next-auth";
 
 export interface CheckResponse {
   follow: boolean;
@@ -13,16 +14,18 @@ const owner = process.env.NEXT_PUBLIC_OWNER ?? "";
 const repo = process.env.NEXT_PUBLIC_REPO ?? "";
 
 export const checkRequirements = async (
-  token: string | undefined,
+  session: Session | null,
 ): Promise<ActionResponse<CheckResponse>> => {
-  if (!token) {
+  if (!session) {
     return {
       status: "error",
-      message: "Token not found!",
+      message: "session not found!",
     };
   }
 
-  const octokit = new Octokit({ auth: token });
+  console.info(session?.user?.email, "checking", owner, "and", repo);
+
+  const octokit = new Octokit({ auth: session.access_token });
 
   const requirements = [
     octokit.rest.users.checkPersonIsFollowedByAuthenticated({
