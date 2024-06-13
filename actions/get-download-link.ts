@@ -4,13 +4,14 @@ import { TEMPLATE_URL } from "@/constants/variables";
 import { redirect } from "next/navigation";
 import type { ActionResponse } from "@/models/ActionModel";
 import { checkRequirements } from "./check-requirements";
+import type { Session } from "next-auth";
 
 export const getDownloadLink = async (
-  token: string | undefined,
+  session: Session | null,
 ): Promise<ActionResponse> => {
-  if (!token) return { status: "error", message: "Token not found!" };
+  if (!session) return { status: "error", message: "session not found!" };
 
-  const response = await checkRequirements(token);
+  const response = await checkRequirements(session);
   if (response.status === "error") return response;
 
   return redirect(TEMPLATE_URL);

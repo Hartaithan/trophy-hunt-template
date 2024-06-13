@@ -49,6 +49,25 @@ const HelpFAQSection: FC = () => {
               same.
             </AccordionPanel>
           </AccordionItem>
+          <AccordionItem value="customize">
+            <AccordionControl>
+              Can I customize the template to suit my needs?
+            </AccordionControl>
+            <AccordionPanel>
+              Yes! The template is customizable. You can modify existing page
+              properties, add new ones, and adjust the appearance to fit your
+              preferences. Basic knowledge of how Notion works is required.
+            </AccordionPanel>
+          </AccordionItem>
+          <AccordionItem value="suggest">
+            <AccordionControl>
+              How can I suggest new features or improvements?
+            </AccordionControl>
+            <AccordionPanel>
+              Yes, you can leave your suggestions using the contact information
+              below. I always welcome ideas and feedback from users.
+            </AccordionPanel>
+          </AccordionItem>
         </Accordion>
       </Box>
     </Flex>

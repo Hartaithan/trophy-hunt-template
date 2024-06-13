@@ -38,7 +38,7 @@ const DownloadSection: FC = () => {
       autoClose: false,
       withCloseButton: false,
     });
-    const response = await checkRequirements(session.data?.access_token);
+    const response = await checkRequirements(session.data);
     setChecking(false);
     setCheck(response?.data ?? null);
     if (response?.status === "success") {
@@ -66,7 +66,7 @@ const DownloadSection: FC = () => {
   const handleDownload = async () => {
     try {
       setDownloading(true);
-      const response = await getDownloadLink(session.data?.access_token);
+      const response = await getDownloadLink(session.data);
       setDownloading(false);
       if (response?.status === "error") {
         notifications.show({
