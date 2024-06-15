@@ -2,10 +2,11 @@
 
 import type { ActionResponse } from "@/models/ActionModel";
 import type { SignInPayload } from "@/models/AuthModel";
+import { getCookieExpires } from "@/utils/cookies";
 import { cookies } from "next/headers";
 
 const cookiesOptions = {
-  expires: new Date(253402300000000),
+  expires: getCookieExpires(),
 };
 
 export const signIn = async (

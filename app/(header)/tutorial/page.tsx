@@ -1,4 +1,5 @@
 import PageContainer from "@/components/PageContainer/PageContainer";
+import TutorialVideoSection from "@/sections/TutorialVideoSection/TutorialVideoSection";
 import TutorialPrerequisitesSection from "@/sections/TutorialPrerequisitesSection/TutorialPrerequisitesSection";
 import TutorialNotionSection from "@/sections/TutorialNotionSection/TutorialNotionSection";
 import TutorialDownloadSection from "@/sections/TutorialDownloadSection/TutorialDownloadSection";
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
 const TutorialPage: FC = () => {
   return (
     <PageContainer w="100%" justify="center" gap="xl" pb="xl">
+      <TutorialVideoSection />
       <TutorialPrerequisitesSection />
       <TutorialNotionSection />
       <TutorialDownloadSection />
