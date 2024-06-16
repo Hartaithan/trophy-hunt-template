@@ -1,21 +1,16 @@
 .root {
-  width: 500px;
+  width: 400px;
   position: fixed;
-  top: 3rem;
+  bottom: var(--mantine-spacing-lg);
   left: var(--mantine-spacing-lg);
   padding: var(--mantine-spacing-xs) var(--mantine-spacing-sm);
   border-radius: var(--mantine-radius-md);
   z-index: 999;
   @media (max-width: $mantine-breakpoint-sm) {
-    top: unset;
     bottom: var(--mantine-spacing-sm);
     left: var(--mantine-spacing-xs);
     width: calc(100% - (var(--mantine-spacing-xs) * 2));
   }
-}
-
-.body {
-  gap: 0.25rem;
 }
 
 .icon {
@@ -37,4 +32,9 @@
   @media (max-width: $mantine-breakpoint-sm) {
     font-size: 0.65rem;
   }
+}
+
+.button {
+  margin-top: var(--mantine-spacing-xs);
+  flex: 1;
 }
