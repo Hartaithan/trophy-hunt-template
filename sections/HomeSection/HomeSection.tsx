@@ -17,7 +17,11 @@ const HomeSection: FC = () => {
         trophy progress.
       </Text>
       <Stack className={classes.links}>
-        <UnstyledButton component={Link} href="/add" className={classes.card}>
+        <UnstyledButton
+          component={Link}
+          href="/add"
+          prefetch={false}
+          className={classes.card}>
           <IconPlaylistAdd
             size="1.2rem"
             color="var(--mantine-color-accent-dark-9)"
@@ -27,6 +31,7 @@ const HomeSection: FC = () => {
         <UnstyledButton
           component={Link}
           href="/profile"
+          prefetch={false}
           className={classes.card}>
           <IconUser size="1.2rem" color="var(--mantine-color-accent-dark-9)" />
           <LandingFeature className={classes.title}>Profile</LandingFeature>
