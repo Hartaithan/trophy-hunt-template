@@ -4,47 +4,7 @@
   align-items: center;
 }
 
-.alertRoot {
-  width: 500px;
-  position: fixed;
-  top: var(--mantine-spacing-lg);
-  left: var(--mantine-spacing-lg);
-  padding: var(--mantine-spacing-xs) var(--mantine-spacing-sm);
-  border-radius: var(--mantine-radius-md);
-  @media (max-width: $mantine-breakpoint-sm) {
-    top: unset;
-    bottom: var(--mantine-spacing-sm);
-    left: var(--mantine-spacing-xs);
-    width: calc(100% - (var(--mantine-spacing-xs) * 2));
-  }
-}
-
-.alertBody {
-  gap: 0.25rem;
-}
-
-.alertIcon {
-  margin-right: var(--mantine-spacing-xs);
-  @media (max-width: $mantine-breakpoint-sm) {
-    display: none;
-  }
-}
-
-.alertTitle {
-  @media (max-width: $mantine-breakpoint-sm) {
-    font-size: var(--mantine-font-size-xs);
-  }
-}
-
-.alertMessage {
-  font-size: var(--mantine-font-size-xs);
-  font-weight: 500;
-  @media (max-width: $mantine-breakpoint-sm) {
-    font-size: 0.65rem;
-  }
-}
-
-.sectionTitle {
+.title {
   font-weight: var(--mantine-h2-font-weight);
   line-height: var(--mantine-h2-line-height);
   font-size: var(--mantine-h2-font-size);
@@ -57,19 +17,19 @@
   }
 }
 
-.sectionDescription {
+.description {
   font-weight: 500;
   font-size: var(--mantine-font-size-sm);
   margin-bottom: var(--mantine-spacing-sm);
   text-align: center;
 }
 
-.checkSection {
+.section {
   flex-direction: column;
   align-items: center;
 }
 
-.checkButtons {
+.buttons {
   @media (max-width: $mantine-breakpoint-sm) {
     justify-content: center;
     gap: var(--mantine-spacing-xs);
@@ -77,13 +37,13 @@
   }
 }
 
-.checkSteps {
+.steps {
   margin-top: var(--mantine-spacing-xl);
   gap: var(--mantine-spacing-xl);
   justify-content: center;
 }
 
-.stepRoot {
+.step {
   @media (max-width: $mantine-breakpoint-sm) {
     width: 20rem;
     padding: 0 var(--mantine-spacing-xl);
