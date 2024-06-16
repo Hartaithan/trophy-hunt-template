@@ -16,7 +16,12 @@ const gradient: MantineGradient = {
 const LandingLink: FC<Props> = (props) => {
   const { children, ...rest } = props;
   return (
-    <Button variant="gradient" gradient={gradient} component={Link} {...rest}>
+    <Button
+      variant="gradient"
+      gradient={gradient}
+      component={Link}
+      prefetch={false}
+      {...rest}>
       {children}
     </Button>
   );

@@ -31,10 +31,10 @@ const HelpContactsSection: FC = () => {
         </Group>
       </Stack>
       <Group className={classes.docs}>
-        <Anchor component={Link} href="/privacy">
+        <Anchor component={Link} href="/privacy" prefetch={false}>
           Privacy Policy
         </Anchor>
-        <Anchor component={Link} href="/terms">
+        <Anchor component={Link} href="/terms" prefetch={false}>
           Terms and Conditions
         </Anchor>
       </Group>
