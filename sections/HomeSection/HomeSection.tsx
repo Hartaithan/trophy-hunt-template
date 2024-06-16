@@ -5,10 +5,12 @@ import { IconPlaylistAdd, IconUser } from "@tabler/icons-react";
 import Link from "next/link";
 import LandingFeature from "@/components/Highlight/LandingFeature";
 import LandingHighlight from "@/components/Highlight/LandingHighlight";
+import DonationMessage from "@/components/DonationMessage/DonationMessage";
 
 const HomeSection: FC = () => {
   return (
     <Flex className={classes.container}>
+      <DonationMessage />
       <LandingHighlight className={classes.heading}>
         Welcome, Trophy Hunter!
       </LandingHighlight>
