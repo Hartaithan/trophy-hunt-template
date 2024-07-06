@@ -24,12 +24,12 @@ import { chunkBlocks } from "@/utils/blocks";
 import { baseTitle } from "@/constants/trophy";
 import type { SearchResult } from "@/models/SearchModel";
 
-export const addGame = async (
+export const addGameFetch = async (
   item: SearchResult,
   lang: string = defaultLanguage,
   example: Example | null = null,
-): Promise<ActionResponse> => {
-  const { url, name } = item;
+): Promise<ActionResponse<FetchGameResponse>> => {
+  const { url } = item;
 
   let game: FetchGameResponse | null = await fetchGame(url, lang, example);
   if (!game) {
@@ -40,8 +40,18 @@ export const addGame = async (
     };
   }
 
+  return {
+    status: "success",
+    message: "Creating page, don't reload the page...",
+    data: game,
+  };
+};
+
+export const addGameCreate = async (
+  game: FetchGameResponse,
+): Promise<ActionResponse<CreatePageResponse>> => {
   const databaseID = getDatabaseID();
-  const { notion, token } = getNotionClient();
+  const { notion } = getNotionClient();
 
   const cover: PageCover = {
     type: "external",
@@ -229,6 +239,26 @@ export const addGame = async (
     };
   }
 
+  if (!page) {
+    return {
+      status: "error",
+      message: "Unable to create game's page",
+    };
+  }
+
+  return {
+    status: "success",
+    message: "Adding links, don't reload the page...",
+    data: page,
+  };
+};
+
+export const addGameUpdate = async (
+  item: SearchResult,
+  page: CreatePageResponse,
+): Promise<ActionResponse> => {
+  const { name } = item;
+  const { notion, token } = getNotionClient();
   try {
     const compressed = lz.compressToEncodedURIComponent(token);
     const session = new URLSearchParams({ session: compressed });

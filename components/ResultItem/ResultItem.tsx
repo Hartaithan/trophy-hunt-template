@@ -5,7 +5,7 @@ import { ActionIcon, Flex, Text } from "@mantine/core";
 import type { RefObject } from "react";
 import { useCallback, type FC } from "react";
 import classes from "./ResultItem.module.css";
-import { addGame } from "@/actions/add-game";
+import { addGameFetch, addGameCreate, addGameUpdate } from "@/actions/add-game";
 import ResultImage from "../ResultImage/ResultImage";
 import { notifications } from "@mantine/notifications";
 import { IconAlertOctagon, IconCheck, IconPlus } from "@tabler/icons-react";
@@ -23,35 +23,72 @@ const ResultItem: FC<Props> = (props) => {
     async (item: SearchResult) => {
       const { name } = item;
       const language = getLanguageValue(languageRef);
+
       const id = notifications.show({
         loading: true,
         title: `Adding ${name}...`,
-        message:
-          "The game is being added, it shouldn't take long, don't reload the page.",
+        message: "Receiving trophies, don't reload the page...",
         autoClose: false,
         withCloseButton: false,
       });
-      const response = await addGame(item, language);
-      if (response?.status === "success") {
-        notifications.update({
-          id,
-          loading: false,
-          title: "Success!",
-          message: response?.message,
-          icon: <IconCheck size="1rem" />,
-          autoClose: 3000,
-        });
-      } else {
+
+      const fetchRes = await addGameFetch(item, language);
+      if (fetchRes?.status === "error") {
         notifications.update({
           id,
           loading: false,
           color: "red",
           title: "Something went wrong!",
-          message: response?.message,
+          message: fetchRes?.message,
           icon: <IconAlertOctagon size="1rem" />,
           withCloseButton: true,
         });
+        return;
       }
+      notifications.update({
+        id,
+        message: fetchRes?.message,
+      });
+
+      const createRes = await addGameCreate(fetchRes.data!);
+      if (createRes?.status === "error") {
+        notifications.update({
+          id,
+          loading: false,
+          color: "red",
+          title: "Something went wrong!",
+          message: createRes?.message,
+          icon: <IconAlertOctagon size="1rem" />,
+          withCloseButton: true,
+        });
+        return;
+      }
+      notifications.update({
+        id,
+        message: createRes?.message,
+      });
+
+      const updateRes = await addGameUpdate(item, createRes.data!);
+      if (updateRes?.status === "error") {
+        notifications.update({
+          id,
+          loading: false,
+          color: "red",
+          title: "Something went wrong!",
+          message: updateRes?.message,
+          icon: <IconAlertOctagon size="1rem" />,
+          withCloseButton: true,
+        });
+        return;
+      }
+      notifications.update({
+        id,
+        loading: false,
+        title: "Success!",
+        message: updateRes?.message,
+        icon: <IconCheck size="1rem" />,
+        autoClose: 3000,
+      });
     },
     [languageRef],
   );
