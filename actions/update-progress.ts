@@ -7,17 +7,21 @@ import { getNotionClient } from "@/utils/notion";
 import { getNotionError } from "@/utils/error";
 import { calculateProgress } from "@/utils/progress";
 
-export const updateProgress = async (
+export const updateProgressFetch = async (
   page: string,
   session?: string,
-): Promise<ActionResponse> => {
+): Promise<ActionResponse<PageBlocks>> => {
   const { notion } = getNotionClient(session);
 
-  let blocks: PageBlocks | null = null;
   try {
-    blocks = await collectPaginatedAPI(notion.blocks.children.list, {
+    const blocks = await collectPaginatedAPI(notion.blocks.children.list, {
       block_id: page,
     });
+    return {
+      status: "success",
+      message: "Updating progress, don't reload the page...",
+      data: blocks,
+    };
   } catch (error) {
     console.error("page children list error", error);
     return {
@@ -25,6 +29,14 @@ export const updateProgress = async (
       message: "Unable to fetch page blocks",
     };
   }
+};
+
+export const updateProgress = async (
+  page: string,
+  blocks: PageBlocks,
+  session?: string,
+): Promise<ActionResponse> => {
+  const { notion } = getNotionClient(session);
 
   try {
     const calculated = calculateProgress(blocks);

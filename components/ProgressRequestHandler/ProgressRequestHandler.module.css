@@ -1,0 +1,14 @@
+.root {
+  width: 400px;
+  padding: var(--mantine-spacing-md);
+  border-radius: var(--mantine-radius-md);
+  @media (max-width: $mantine-breakpoint-sm) {
+    width: 100%;
+    padding: var(--mantine-spacing-sm);
+  }
+}
+
+.icon {
+  width: auto;
+  height: auto;
+}
