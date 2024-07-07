@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Trophy Hunt Template
 
-## Getting Started
+![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
+![Mantine](https://img.shields.io/badge/Mantine-ffffff?style=for-the-badge&logo=Mantine&logoColor=339af0)
+![Notion](https://img.shields.io/badge/Notion-%23000000.svg?style=for-the-badge&logo=notion&logoColor=white)
+[![Licence](https://img.shields.io/github/license/Ileriayo/markdown-badges?style=for-the-badge)](./LICENSE)
 
-First, run the development server:
+Organize your trophy hunting adventures with our Notion template! Add new games to your platinum backlog, prioritize your current trophy goals, and celebrate each victory with a visual showcase.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+[Try it now!](https://trophy-hunt-template.vercel.app/)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+[![Trophy Hunt Template Promo](https://i3.ytimg.com/vi/YMm_rRa7qjk/maxresdefault.jpg)](https://www.youtube.com/watch?v=YMm_rRa7qjk "Trophy Hunt Template Promo")
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Features
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- #### Backlog Structuring
 
-## Learn More
+Effortlessly structure your backlog with intuitive interface. Easily prioritize your goals using our drag-and-drop feature. Stay updated with at-a-glance status updates that let you know whether a game is in backlog, in progress, or completed. Template is designed to make managing your platinum backlog as simple and enjoyable as possible.
 
-To learn more about Next.js, take a look at the following resources:
+- #### Intuitive Game Addition
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Quickly add new titles to your trophy backlog with our streamlined search and select feature, designed to make building your backlog a breeze.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- #### Quick Status Update
 
-## Deploy on Vercel
+Mark games as Backlog, In Progress, Platinum, or 100% Completed with a simple action, making backlog updates quick and simple.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Links
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [App](https://trophy-hunt-template.vercel.app/)
+- [Tutorial](https://trophy-hunt-template.vercel.app/tutorial)
+- [Promo Video](https://www.youtube.com/watch?v=YMm_rRa7qjk)
+- [Tutorial Video](https://www.youtube.com/watch?v=Epk6h7hdUt4)
