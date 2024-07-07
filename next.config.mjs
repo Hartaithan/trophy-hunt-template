@@ -16,7 +16,6 @@ const nextConfig = {
       "@mantine/core",
       "@mantine/hooks",
       "@mantine/form",
-      "@mantine/notifications",
     ],
   },
 };
