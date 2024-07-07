@@ -21,8 +21,10 @@ const SearchSection: FC = () => {
   const languageRef = useRef<HTMLInputElement>(null);
 
   const handleReset = useCallback(() => {
+    setSearch("");
     setLoading(false);
-    setResults([]);
+    setFetching(false);
+    setResults(null);
   }, []);
 
   const handleChange = useCallback(
@@ -93,6 +95,7 @@ const SearchSection: FC = () => {
         isLoading={isLoading}
         languageRef={languageRef}
         handleChange={handleChange}
+        onClear={handleReset}
       />
       <SearchResults results={results} languageRef={languageRef} />
       {!isLoading && results && results.length > 0 && nextPage && (

@@ -2,6 +2,7 @@
 
 import { defaultLanguage, languageOptions } from "@/constants/language";
 import {
+  ComboboxClearButton,
   Flex,
   Group,
   InputLabel,
@@ -18,12 +19,26 @@ import LanguagePopover from "@/components/LanguagePopover/LanguagePopover";
 interface Props {
   search: string;
   isLoading: boolean;
+  onClear: () => void;
   handleChange: (value: string) => void;
   languageRef: RefObject<HTMLInputElement>;
 }
 
+interface RightSectionProps {
+  isClear: boolean;
+  isLoading: boolean;
+  onClear: () => void;
+}
+
+const RightSection: FC<RightSectionProps> = memo((props) => {
+  const { isLoading, isClear, onClear } = props;
+  if (isLoading) return <Loader size="xs" />;
+  if (isClear) return <ComboboxClearButton onClear={onClear} />;
+  return null;
+});
+
 const SearchForm: FC<Props> = (props) => {
-  const { search, isLoading, handleChange, languageRef } = props;
+  const { search, isLoading, handleChange, onClear, languageRef } = props;
   return (
     <Flex className={classes.container}>
       <InputWrapper>
@@ -43,7 +58,13 @@ const SearchForm: FC<Props> = (props) => {
         placeholder="Search..."
         value={search}
         onChange={(e) => handleChange(e.target.value)}
-        rightSection={isLoading && <Loader size="xs" />}
+        rightSection={
+          <RightSection
+            isLoading={isLoading}
+            isClear={search.length > 0}
+            onClear={onClear}
+          />
+        }
       />
     </Flex>
   );
