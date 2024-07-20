@@ -96,6 +96,10 @@ const Header: FC = () => {
           {links}
         </Group>
         <Burger
+          type="button"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
+          aria-controls="navigation-menu"
           ref={setTrigger}
           className={classes.trigger}
           opened={opened}
