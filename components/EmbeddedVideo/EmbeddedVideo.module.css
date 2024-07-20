@@ -1,0 +1,31 @@
+.container {
+  cursor: pointer;
+  position: relative;
+}
+
+.video {
+  overflow: hidden;
+  border-radius: var(--mantine-radius-lg);
+  width: auto;
+  height: 500px;
+  aspect-ratio: 16 / 9;
+  @media (max-width: $mantine-breakpoint-md) {
+    height: auto;
+    width: 95%;
+  }
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  position: absolute;
+  top: var(--mantine-spacing-lg);
+  left: var(--mantine-spacing-lg);
+  font-weight: 600;
+  font-size: var(--mantine-font-size-lg);
+}
