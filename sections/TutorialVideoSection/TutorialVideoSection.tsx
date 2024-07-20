@@ -9,6 +9,7 @@ const TutorialVideoSection: FC = () => {
       <EmbeddedVideo
         videoId="Epk6h7hdUt4"
         title="Trophy Hunt Template Tutorial"
+        alt="Thumbnail for Trophy Hunt Template tutorial video"
       />
     </Flex>
   );

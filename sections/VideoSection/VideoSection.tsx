@@ -6,7 +6,11 @@ import EmbeddedVideo from "@/components/EmbeddedVideo/EmbeddedVideo";
 const VideoSection: FC = () => {
   return (
     <Flex className={classes.container}>
-      <EmbeddedVideo videoId="YMm_rRa7qjk" title="Trophy Hunt Template Promo" />
+      <EmbeddedVideo
+        videoId="YMm_rRa7qjk"
+        title="Trophy Hunt Template Promo"
+        alt="Thumbnail for Trophy Hunt Template video"
+      />
     </Flex>
   );
 };
