@@ -33,9 +33,11 @@ const EmbeddedVideo: FC<Props> = (props) => {
       <UnstyledButton
         className={clsx(classes.container, classes.video, className)}
         onClick={handleVideoClick}>
-        <Text className={classes.title}>{title}</Text>
+        <Text className={classes.title} lineClamp={1}>
+          {title}
+        </Text>
         <Flex className={classes.overlay}>
-          <IconBrandYoutubeFilled size="5rem" />
+          <IconBrandYoutubeFilled className={classes.icon} size="5rem" />
         </Flex>
         <Image
           className={clsx(classes.video, className)}

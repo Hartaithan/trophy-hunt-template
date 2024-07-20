@@ -28,4 +28,19 @@
   left: var(--mantine-spacing-lg);
   font-weight: 600;
   font-size: var(--mantine-font-size-lg);
+  @media (max-width: $mantine-breakpoint-md) {
+    font-size: var(--mantine-font-size-md);
+  }
+  @media (max-width: $mantine-breakpoint-sm) {
+    top: var(--mantine-spacing-md);
+    left: var(--mantine-spacing-md);
+    font-size: var(--mantine-font-size-sm);
+  }
+}
+
+.icon {
+  @media (max-width: $mantine-breakpoint-sm) {
+    height: 3rem;
+    width: 3rem;
+  }
 }
