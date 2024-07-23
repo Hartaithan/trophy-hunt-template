@@ -40,7 +40,7 @@ const EmbeddedVideo: FC<Props> = (props) => {
           <IconBrandYoutubeFilled className={classes.icon} size="5rem" />
         </Flex>
         <Image
-          className={clsx(classes.video, className)}
+          className={clsx(classes.image, className)}
           src={`https://i3.ytimg.com/vi/${videoId}/maxresdefault.jpg`}
           alt={alt}
           height={500}
