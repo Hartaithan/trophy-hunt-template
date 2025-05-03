@@ -11,6 +11,7 @@ import {
 import classes from "./EmbeddedVideo.module.css";
 import { Flex, Text, UnstyledButton } from "@mantine/core";
 import { IconBrandYoutubeFilled } from "@tabler/icons-react";
+import posthog from "posthog-js";
 
 interface Props extends ComponentPropsWithoutRef<"iframe"> {
   videoId: string;
@@ -26,7 +27,8 @@ const EmbeddedVideo: FC<Props> = (props) => {
 
   const handleVideoClick = useCallback(() => {
     setVisible(true);
-  }, []);
+    posthog.capture("tht-video-click", { title });
+  }, [title]);
 
   if (!visible) {
     return (

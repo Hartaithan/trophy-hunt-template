@@ -1,0 +1,22 @@
+import { BASE_URL, POSTHOG_KEY } from "@/constants/variables";
+import { cookies } from "next/headers";
+import type { PostHogOptions } from "posthog-node";
+import { PostHog } from "posthog-node";
+
+const HOST = BASE_URL + "/ingest";
+
+const options: PostHogOptions = {
+  host: HOST,
+  flushAt: 1,
+  flushInterval: 0,
+};
+
+export const capture = async (
+  event: string,
+  properties?: Record<string | number, any>,
+) => {
+  const id = cookies().get("database-id");
+  const client = new PostHog(POSTHOG_KEY, options);
+  client.capture({ event, distinctId: id?.value || "anonymous", properties });
+  await client.shutdown();
+};

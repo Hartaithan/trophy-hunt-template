@@ -6,6 +6,7 @@ import { collectPaginatedAPI } from "@notionhq/client";
 import { getNotionClient } from "@/utils/notion";
 import { getNotionError } from "@/utils/error";
 import { calculateProgress } from "@/utils/progress";
+import { capture } from "@/utils/analytics";
 
 export const updateProgressFetch = async (
   page: string,
@@ -17,17 +18,14 @@ export const updateProgressFetch = async (
     const blocks = await collectPaginatedAPI(notion.blocks.children.list, {
       block_id: page,
     });
-    return {
-      status: "success",
-      message: "Updating progress, don't reload the page...",
-      data: blocks,
-    };
+    const message = "Updating progress, don't reload the page...";
+    await capture("tht-update-progress-fetch-success", { page, message });
+    return { status: "success", message, data: blocks };
   } catch (error) {
     console.error("page children list error", error);
-    return {
-      status: "error",
-      message: "Unable to fetch page blocks",
-    };
+    const message = "Unable to fetch page blocks";
+    await capture("tht-update-progress-fetch-error", { page, message });
+    return { status: "error", message };
   }
 };
 
@@ -53,15 +51,13 @@ export const updateProgress = async (
         },
       },
     });
-    return {
-      status: "success",
-      message: `Progress successfully updated!`,
-    };
+    const message = "Progress successfully updated!";
+    await capture("tht-update-progress-success", { page, message });
+    return { status: "success", message };
   } catch (error) {
     console.error("update page error", error);
-    return {
-      status: "error",
-      message: getNotionError(error, "Unable to update page properties"),
-    };
+    const message = getNotionError(error, "Unable to update page properties");
+    await capture("tht-update-progress-error", { page, message });
+    return { status: "error", message };
   }
 };

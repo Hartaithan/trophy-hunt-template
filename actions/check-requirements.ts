@@ -1,6 +1,7 @@
 "use server";
 
 import type { ActionResponse } from "@/models/ActionModel";
+import { capture } from "@/utils/analytics";
 import { Octokit } from "@octokit/rest";
 import type { Session } from "next-auth";
 
@@ -17,10 +18,9 @@ export const checkRequirements = async (
   session: Session | null,
 ): Promise<ActionResponse<CheckResponse>> => {
   if (!session) {
-    return {
-      status: "error",
-      message: "session not found!",
-    };
+    const message = "Session not found!";
+    await capture("tht-check-error", { message, session });
+    return { status: "error", message };
   }
 
   console.info(session?.user?.email, "checking", owner, "and", repo);
@@ -57,13 +57,13 @@ export const checkRequirements = async (
   };
 
   if (!followFound || !starFound) {
+    await capture("tht-check-error", { message, data });
     return { status: "error", message, data };
   }
 
-  return {
-    status: "success",
-    message:
-      "Thanks for the follow and star. Now you can download the template!",
-    data,
-  };
+  message =
+    "Thanks for the follow and star. Now you can download the template!";
+  await capture("tht-check-success", { message, data });
+
+  return { status: "success", message, data };
 };

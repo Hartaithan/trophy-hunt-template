@@ -23,28 +23,29 @@ import { defaultLanguage } from "@/constants/language";
 import { chunkBlocks } from "@/utils/blocks";
 import { baseTitle } from "@/constants/trophy";
 import type { SearchResult } from "@/models/SearchModel";
+import { capture } from "@/utils/analytics";
 
 export const addGameFetch = async (
   item: SearchResult,
   lang: string = defaultLanguage,
   example: Example | null = null,
 ): Promise<ActionResponse<FetchGameResponse>> => {
-  const { url } = item;
+  const { name, url } = item;
 
   let game: FetchGameResponse | null = await fetchGame(url, lang, example);
   if (!game) {
+    const message = "Unable to add game";
     console.error("unable to fetch game");
+    await capture("tht-add-game-fetch-error", { message, name });
     return {
       status: "error",
       message: "Unable to add game",
     };
   }
 
-  return {
-    status: "success",
-    message: "Creating page, don't reload the page...",
-    data: game,
-  };
+  const message = "Creating page, don't reload the page...";
+  await capture("tht-add-game-fetch-success", { message, name: game.title });
+  return { status: "success", message, data: game };
 };
 
 export const addGameCreate = async (
@@ -233,24 +234,20 @@ export const addGameCreate = async (
     }
   } catch (error) {
     console.error("create game error", error);
-    return {
-      status: "error",
-      message: getNotionError(error, "Unable to add game"),
-    };
+    const message = getNotionError(error, "Unable to add game");
+    await capture("tht-add-game-create-error", { message, game: game.title });
+    return { status: "error", message };
   }
 
   if (!page) {
-    return {
-      status: "error",
-      message: "Unable to create game's page",
-    };
+    const message = "Unable to create game's page";
+    await capture("tht-add-game-create-error", { message, game: game.title });
+    return { status: "error", message };
   }
 
-  return {
-    status: "success",
-    message: "Adding links, don't reload the page...",
-    data: page,
-  };
+  const message = "Adding links, don't reload the page...";
+  await capture("tht-add-game-create-success", { message, game: game.title });
+  return { status: "success", message, data: page };
 };
 
 export const addGameUpdate = async (
@@ -271,16 +268,14 @@ export const addGameUpdate = async (
         },
       },
     });
+    const message = `${name} successfully added!`;
     console.info("page updated", updated.id);
-    return {
-      status: "success",
-      message: `${name} successfully added!`,
-    };
+    await capture("tht-add-game-update-success", { message, name });
+    return { status: "success", message };
   } catch (error) {
+    const message = getNotionError(error, "Unable to add links");
     console.error("update game error", error);
-    return {
-      status: "error",
-      message: getNotionError(error, "Unable to add links"),
-    };
+    await capture("tht-add-game-update-error", { message, name });
+    return { status: "error", message };
   }
 };

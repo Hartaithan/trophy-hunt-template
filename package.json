@@ -25,6 +25,7 @@
     "next": "^14.2.2",
     "next-auth": "^4.24.7",
     "posthog-js": "^1.239.1",
+    "posthog-node": "^4.17.1",
     "react": "^18",
     "react-dom": "^18"
   },

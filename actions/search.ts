@@ -4,6 +4,7 @@ import { SERVICE_URL } from "@/constants/variables";
 import type { ActionResponse } from "@/models/ActionModel";
 import type { Example } from "@/models/ExampleModel";
 import type { SearchResponse, SearchResult } from "@/models/SearchModel";
+import { capture } from "@/utils/analytics";
 import { fetchPage } from "@/utils/page";
 import { load } from "cheerio";
 
@@ -29,10 +30,9 @@ export const searchByQuery = async (
   const content = await fetchPage(url.toString(), example);
   if (!content) {
     console.error("unable to fetch page", url);
-    return {
-      status: "error",
-      message: "Unable to fetch page",
-    };
+    const message = "Unable to fetch page";
+    await capture("tht-search-error", { message, query });
+    return { status: "error", message };
   }
 
   const cheerio = load(content.body);
@@ -84,9 +84,7 @@ export const searchByQuery = async (
 
   const response: SearchResponse = { query, resultQuery, results, nextPage };
 
-  return {
-    data: response,
-    status: "success",
-    message: `Successful search by query: ${query}!`,
-  };
+  const message = `Successful search by query: ${query}!`;
+  await capture("tht-search-success", { message, query });
+  return { data: response, status: "success", message };
 };
