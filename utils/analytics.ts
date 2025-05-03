@@ -1,4 +1,4 @@
-import { POSTHOG_HOST, POSTHOG_KEY } from "@/constants/variables";
+import { BASE_URL, POSTHOG_HOST, POSTHOG_KEY } from "@/constants/variables";
 import { cookies } from "next/headers";
 import type { PostHogOptions } from "posthog-node";
 import { PostHog } from "posthog-node";
@@ -15,6 +15,8 @@ export const capture = async (
 ) => {
   const id = cookies().get("database-id");
   const client = new PostHog(POSTHOG_KEY, options);
-  client.capture({ event, distinctId: id?.value || "anonymous", properties });
+  const distinctId = id?.value || "anonymous";
+  const allProperties = { ...properties, $current_url: BASE_URL + "/" };
+  client.capture({ event, distinctId, properties: allProperties });
   await client.shutdown();
 };
