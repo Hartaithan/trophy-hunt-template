@@ -1,12 +1,10 @@
-import { BASE_URL, POSTHOG_KEY } from "@/constants/variables";
+import { POSTHOG_HOST, POSTHOG_KEY } from "@/constants/variables";
 import { cookies } from "next/headers";
 import type { PostHogOptions } from "posthog-node";
 import { PostHog } from "posthog-node";
 
-const HOST = BASE_URL + "/ingest";
-
 const options: PostHogOptions = {
-  host: HOST,
+  host: POSTHOG_HOST,
   flushAt: 1,
   flushInterval: 0,
 };
