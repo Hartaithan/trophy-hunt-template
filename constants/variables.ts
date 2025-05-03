@@ -9,3 +9,5 @@ export const FETCH_BACKUP_API_KEY =
 export const FETCH_BACKUP_HOST =
   process.env.NEXT_PUBLIC_FETCH_BACKUP_HOST ?? "";
 export const TEMPLATE_URL = process.env.NEXT_PUBLIC_TEMPLATE_URL ?? "";
+export const POSTHOG_KEY = process.env.NEXT_PUBLIC_POSTHOG_KEY ?? "";
+export const POSTHOG_HOST = process.env.NEXT_PUBLIC_POSTHOG_HOST ?? "";
